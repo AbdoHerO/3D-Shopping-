@@ -103,7 +103,7 @@ describe('place_order', () => {
     expect(Number(r.subtotal)).toBe(178)
     expect(Number(r.delivery_fee)).toBe(30)
     expect(Number(r.total)).toBe(208)
-    expect(r.order_number).toMatch(/^ML-\d{6}-[0-9A-F]{4}$/)
+    expect(r.order_number).toMatch(/^TF-\d{6}-[0-9A-F]{4}$/)
     expect(await stock('shampooing-argan')).toBe(before - 2)
   })
 

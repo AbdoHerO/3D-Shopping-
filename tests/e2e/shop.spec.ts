@@ -30,7 +30,7 @@ test('walk in, tap a shade on the shelf and send the order by WhatsApp', async (
   await page.getByTestId('place-order').click()
 
   await expect(page.getByTestId('order-confirmation')).toBeVisible()
-  await expect(page.getByTestId('order-number')).toContainText(/ML-\d{6}-[A-Z0-9]{4}/)
+  await expect(page.getByTestId('order-number')).toContainText(/TF-\d{6}-[A-Z0-9]{4}/)
   const href = await page.getByTestId('whatsapp-link').getAttribute('href')
   expect(href).toContain('https://wa.me/212600000000?text=')
   const message = decodeURIComponent(href!.split('text=')[1])

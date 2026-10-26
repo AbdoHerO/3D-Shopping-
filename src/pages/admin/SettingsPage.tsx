@@ -93,8 +93,8 @@ export default function SettingsPage() {
         <Card title={a('Enseigne (façade)', 'Storefront sign')}>
           <p className="mb-3 text-sm text-mist">
             {a(
-              'Le texte et le logo de l’enseigne lumineuse. Les photos de référence montrent « TIFAWIN / PARFUMERIE » : à confirmer avant de l’utiliser.',
-              'The text and logo of the lit sign. The reference photos read “TIFAWIN / PARFUMERIE”: confirm before using it.',
+              'Le texte et le logo de l’enseigne lumineuse au-dessus de la porte, en 3D.',
+              'The text and logo of the lit sign above the door, in 3D.',
             )}
           </p>
           <div className="grid gap-3 sm:grid-cols-2">

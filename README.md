@@ -1,4 +1,4 @@
-# Maison Lumière — a 3D beauty boutique you can shop from your phone
+# Tifawin Parfumerie — a 3D beauty boutique you can shop from your phone
 
 An immersive web shop for a small women's cosmetics boutique (about 3.5 m × 6.5 m). Customers
 stand on the pavement in front of a black shopfront, watch the doors slide open, walk in, browse
@@ -19,8 +19,10 @@ automatically from its photo (see *Product photos → 3D*).
 |---|---|---|
 | ![](docs/screenshots/desktop-02-entrance.jpg) | ![](docs/screenshots/desktop-11-product.jpg) | ![](docs/screenshots/phone-11-product.jpg) |
 
-> "Maison Lumière", its brands and its 81 products are **fictional demo content** so the shop can
-> be shown without anyone's trademarks. Replace them with your own (see *Make it yours*).
+> The shop is **Tifawin Parfumerie**. Its 81 products, their brands, prices and stock are still
+> **fictional demo content**, and the WhatsApp number is a placeholder (`212600000000`). Replace them
+> with the shop's own (see *Make it yours* and *Importing products*). The address and opening hours
+> are empty until set in the admin.
 
 ---
 

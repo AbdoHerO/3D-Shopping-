@@ -57,8 +57,8 @@ export interface ProductSource {
 }
 
 export const settings: Settings = {
-  shopName: 'Maison Lumière',
-  tagline: t('Beauté & parfums', 'Beauty & fragrance', 'جمال وعطور'),
+  shopName: 'Tifawin',
+  tagline: t('Parfumerie & beauté', 'Perfumery & beauty', 'عطور وتجميل'),
   logoUrl: null,
   primaryColor: '#6B1F3D',
   accentColor: '#C9A46A',
@@ -66,24 +66,16 @@ export const settings: Settings = {
   currency: 'MAD',
   currencyLabel: t('DH', 'MAD', 'د.م.'),
   defaultLocale: 'fr',
-  orderPrefix: 'ML',
-  address: t(
-    '12 rue des Orangers, Casablanca',
-    '12 Orange Tree Street, Casablanca',
-    '12 زنقة أشجار البرتقال، الدار البيضاء',
-  ),
-  openingHours: t(
-    'Lun–sam 10h–20h · dim 11h–18h',
-    'Mon–Sat 10am–8pm · Sun 11am–6pm',
-    'الإثنين–السبت 10–20 · الأحد 11–18',
-  ),
+  orderPrefix: 'TF',
+  // the shop's real address and opening hours are set in Admin → Settings (hidden while empty)
+  address: t('', '', ''),
+  openingHours: t('', '', ''),
   instagramUrl: null,
   freeDeliveryThreshold: 500,
   store: { width: 3.5, depth: 6.5, ceiling: 3.0 },
   fixtureLabels: DEFAULT_FIXTURE_LABELS,
-  // The street sign. The reference photos read "TIFAWIN / PARFUMERIE"; the shop's own name is used
-  // until the owner confirms the final branding (Admin → Settings → Storefront).
-  storefront: { title: 'MAISON LUMIÈRE', subtitle: 'PARFUMERIE', logoUrl: null },
+  // The street sign, as on the shop (Admin → Settings → Storefront sign).
+  storefront: { title: 'TIFAWIN', subtitle: 'PARFUMERIE', logoUrl: null },
 }
 
 export const categories: Category[] = [

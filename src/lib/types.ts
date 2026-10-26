@@ -127,7 +127,7 @@ export interface StoreDims {
   ceiling: number
 }
 
-/** The street sign. Defaults to the shop name; the photo reference reads "TIFAWIN / PARFUMERIE". */
+/** The street sign (title, subtitle, logo). Defaults to the shop name and tagline. */
 export interface Storefront {
   title: string
   subtitle: string

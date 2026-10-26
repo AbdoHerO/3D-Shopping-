@@ -148,7 +148,7 @@ async function main() {
       variants,
       displayVariants: Boolean(src.displayVariants),
       asset: null,
-      source: { kind: 'demo', name: 'Maison Lumière demo catalogue', id: src.slug, url: null, license: 'Fictional demo content drawn by scripts/catalog/art.ts', attribution: null },
+      source: { kind: 'demo', name: 'Tifawin demo catalogue', id: src.slug, url: null, license: 'Fictional demo content drawn by scripts/catalog/art.ts', attribution: null },
     }
   })
 

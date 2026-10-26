@@ -65,7 +65,7 @@ Arabic RTL; catalogue fallback. Plus lint, type check, build, desktop and phone 
 | Item | State |
 | --- | --- |
 | Boutique rebuilt from the photos (shopfront, floor, ceiling, shelving on three walls, glass counter, polish stand, window displays) | Done; sizes are estimates in `SHOP` (`src/lib/layout.ts`) and the room's width, depth and ceiling in Settings |
-| Configurable shopfront sign (title, subtitle, logo) | Done; defaults to "MAISON LUMIÈRE / PARFUMERIE" until the owner confirms the branding |
+| Configurable shopfront sign (title, subtitle, logo) | Done; set to TIFAWIN / PARFUMERIE, as on the shop (confirmed by the owner) |
 | Package library (33 families) with photo-measured outlines | Done |
 | Image pipeline (checks, original kept, cut-out, outline, family, size estimate, statuses, retry) | Done in the browser (admin) and in Node (scripts); tested in demo mode |
 | Automatic shelf placement with admin overrides (fixture, shelf, position, orientation, facings, scale) | Done |

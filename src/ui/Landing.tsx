@@ -69,9 +69,11 @@ export function Landing() {
               </span>
               <LanguageSelect />
             </div>
-            <p className="mt-2 hidden text-xs text-mist sm:block">
-              {text(settings.address)} · {text(settings.openingHours)}
-            </p>
+            {(text(settings.address) || text(settings.openingHours)) && (
+              <p className="mt-2 hidden text-xs text-mist sm:block">
+                {[text(settings.address), text(settings.openingHours)].filter(Boolean).join(' · ')}
+              </p>
+            )}
           </div>
         </motion.section>
       )}

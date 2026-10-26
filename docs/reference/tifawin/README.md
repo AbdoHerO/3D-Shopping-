@@ -2,8 +2,8 @@
 
 The 3D boutique was rebuilt from six photographs of a real perfumery supplied by the owner
 (façade, interior, left, back and right walls, and a 3D top-down concept), plus the visual-planning
-PDF. They show another shop's sign and phone number, and this repository is public, so the photos
-are kept out of git (`.gitignore`). Put copies in this folder to work from them locally.
+PDF. They show the shop's phone number and people inside, and this repository is public, so the
+photos are kept out of git (`.gitignore`). Put copies in this folder to work from them locally.
 
 What was taken from them (all as estimates, in `SHOP` at the top of `src/lib/layout.ts`):
 

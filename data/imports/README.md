@@ -28,7 +28,7 @@ silhouette, package family, size estimate, automatic shelf placement), and a rep
     "label": "Brand X press kit",
     "url": "https://brand.example/press",
     "imageHosts": ["media.brand.example"],
-    "permission": { "status": "granted", "basis": "Written authorisation", "reference": "email of 2026-11-02", "license": "Retail use by Maison Lumière", "attribution": "Photos © Brand X" }
+    "permission": { "status": "granted", "basis": "Written authorisation", "reference": "email of 2026-11-02", "license": "Retail use by Tifawin", "attribution": "Photos © Brand X" }
   },
   "products": [
     {

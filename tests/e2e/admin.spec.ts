@@ -14,7 +14,7 @@ test('admin (demo mode): manage an order and change a price the shop then shows'
   await page.getByTestId('field-address').fill('Riad 9, Derb Sidi Bouloukat')
   await page.getByTestId('field-consent').check()
   await page.getByTestId('place-order').click()
-  const number = (await page.getByTestId('order-number').textContent())!.match(/ML-\d{6}-\w{4}/)![0]
+  const number = (await page.getByTestId('order-number').textContent())!.match(/TF-\d{6}-\w{4}/)![0]
 
   // the owner sees it and confirms it
   await page.goto('/admin')

@@ -43,13 +43,19 @@ export function PageShell({ children }: { children: ReactNode }) {
                 <p className="text-mist">{text(settings.tagline)}</p>
               </div>
             </div>
+            {text(settings.address) && (
+              <div>
+                <p className="font-medium">{t('footer.address')}</p>
+                <p>{text(settings.address)}</p>
+              </div>
+            )}
             <div>
-              <p className="font-medium">{t('footer.address')}</p>
-              <p>{text(settings.address)}</p>
-            </div>
-            <div>
-              <p className="font-medium">{t('footer.hours')}</p>
-              <p>{text(settings.openingHours)}</p>
+              {text(settings.openingHours) && (
+                <>
+                  <p className="font-medium">{t('footer.hours')}</p>
+                  <p>{text(settings.openingHours)}</p>
+                </>
+              )}
               <LanguageSelect className="mt-3 inline-flex sm:hidden" />
             </div>
           </div>

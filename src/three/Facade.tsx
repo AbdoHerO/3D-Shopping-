@@ -132,7 +132,7 @@ export function Facade({ layout, m, storefront }: { layout: StoreLayout; m: Mate
   const signZ = Z + 0.165
   const title = storefront.title || ' '
   const signW = Math.min(W - 0.3, 3.1)
-  const titleSize = Math.min(0.36, (signW / Math.max(4, title.length)) * 1.45)
+  const titleSize = Math.min(0.4, (signW / Math.max(4, title.length)) * 1.3)
 
   return (
     <group>
@@ -140,15 +140,15 @@ export function Facade({ layout, m, storefront }: { layout: StoreLayout; m: Mate
       {Object.entries(parts).map(([k, g]) => (
         <mesh key={k} geometry={g} material={m[k as keyof Materials] as THREE.Material} />
       ))}
-      {/* raised lettering: a dark copy behind gives the letters depth, the front glows */}
-      <Text font={FONTS.serif} fontSize={titleSize} letterSpacing={0.05} color="#3a3530" anchorX="center" anchorY="middle" position={[0.012, FASCIA_Y + FASCIA_H * 0.6 - 0.012, signZ]} maxWidth={signW}>
+      {/* raised block letters as on the shop: gold sides (a copy set back and down), lit white faces */}
+      <Text font={FONTS.sign} fontSize={titleSize} letterSpacing={0.03} color="#a8823c" anchorX="center" anchorY="middle" position={[0.016, FASCIA_Y + FASCIA_H * 0.6 - 0.016, signZ]} maxWidth={signW}>
         {title}
       </Text>
-      <Text font={FONTS.serif} fontSize={titleSize} letterSpacing={0.05} color="#fffaf0" anchorX="center" anchorY="middle" position={[0, FASCIA_Y + FASCIA_H * 0.6, signZ + 0.02]} maxWidth={signW} material-toneMapped={false}>
+      <Text font={FONTS.sign} fontSize={titleSize} letterSpacing={0.03} color="#fffdf8" anchorX="center" anchorY="middle" position={[0, FASCIA_Y + FASCIA_H * 0.6, signZ + 0.02]} maxWidth={signW} material-toneMapped={false}>
         {title}
       </Text>
       {storefront.subtitle && (
-        <Text font={FONTS.sans} fontSize={0.085} letterSpacing={0.12} color="#e2c48d" anchorX="center" anchorY="middle" position={[signW * 0.22, FASCIA_Y + 0.11, signZ + 0.01]} material-toneMapped={false}>
+        <Text font={FONTS.sans} fontSize={0.085} letterSpacing={0.12} color="#f4f1ea" anchorX="center" anchorY="middle" position={[signW * 0.22, FASCIA_Y + 0.11, signZ + 0.01]} material-toneMapped={false}>
           {storefront.subtitle}
         </Text>
       )}
