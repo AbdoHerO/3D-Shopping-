@@ -179,30 +179,35 @@ function Mirror({ f, m }: { f: Fixture; m: Materials }) {
     const frame = roundedRectShape(-w / 2 - 0.03, -h / 2 - 0.03, w + 0.06, h + 0.06, 0.06)
     const hole = roundedRectShape(-w / 2, -h / 2, w, h, 0.045)
     frame.holes.push(hole)
+    const cx = (bay.u0 + bay.u1) / 2
+    const cy = 1.42
+    const bulbs = new GeoBuilder<'bulb'>()
+    for (let i = 0; i < 5; i++) {
+      const y = cy - h / 2 + 0.08 + (i * (h - 0.16)) / 4
+      for (const x of [cx - w / 2 - 0.06, cx + w / 2 + 0.06]) bulbs.add('bulb', new THREE.SphereGeometry(0.022, 14, 10), [x, y, 0.05])
+    }
     return {
+      bulbs: bulbs.build().bulb!,
       w,
       h,
-      glass: new THREE.ShapeGeometry(roundedRectShape(-w / 2, -h / 2, w, h, 0.045), 8),
+      glass: (() => {
+        const g = new THREE.ShapeGeometry(roundedRectShape(-w / 2, -h / 2, w, h, 0.045), 8)
+        const pos = g.attributes.position
+        const uv = g.attributes.uv
+        for (let i = 0; i < pos.count; i++) uv.setXY(i, pos.getX(i) / w + 0.5, pos.getY(i) / h + 0.5)
+        return g
+      })(),
       frame: new THREE.ExtrudeGeometry(frame, { depth: 0.02, bevelEnabled: false, curveSegments: 8 }),
     }
   }, [bay])
   if (!bay || !geo) return null
   const cx = (bay.u0 + bay.u1) / 2
   const cy = 1.42
-  const bulbs: [number, number][] = []
-  for (let i = 0; i < 5; i++) {
-    const y = cy - geo.h / 2 + 0.08 + (i * (geo.h - 0.16)) / 4
-    bulbs.push([cx - geo.w / 2 - 0.06, y], [cx + geo.w / 2 + 0.06, y])
-  }
   return (
     <group>
       <mesh geometry={geo.glass} position={[cx, cy, 0.03]} material={m.mirror} />
       <mesh geometry={geo.frame} position={[cx, cy, 0.02]} material={m.gold} />
-      {bulbs.map(([x, y], i) => (
-        <mesh key={i} position={[x, y, 0.05]} material={m.bulb}>
-          <sphereGeometry args={[0.022, 14, 10]} />
-        </mesh>
-      ))}
+      <mesh geometry={geo.bulbs} material={m.bulb} />
     </group>
   )
 }
@@ -241,19 +246,19 @@ function Sign({ f, label, font, m }: { f: Fixture; label: string; font: string; 
   )
 }
 
-/** Soft light falling from the top LED onto each bay's back panel. */
+/** Soft light falling from the top LED onto each bay's back panel (one merged draw per fixture). */
 function WallWashes({ f }: { f: Fixture }) {
-  const tex = wallWashTexture()
-  if (f.kind !== 'wallShelf' && f.kind !== 'nailWall' && f.kind !== 'makeupWall') return null
+  const geometry = useMemo(() => {
+    if (f.kind !== 'wallShelf' && f.kind !== 'nailWall' && f.kind !== 'makeupWall') return null
+    const b = new GeoBuilder<'wash'>()
+    for (const bay of f.bays) b.add('wash', new THREE.PlaneGeometry((bay.u1 - bay.u0) * 1.1, 1.3), [(bay.u0 + bay.u1) / 2, f.height - 0.75, 0.02])
+    return b.build().wash ?? null
+  }, [f])
+  if (!geometry) return null
   return (
-    <>
-      {f.bays.map((bay, i) => (
-        <mesh key={i} position={[(bay.u0 + bay.u1) / 2, f.height - 0.75, 0.02]}>
-          <planeGeometry args={[(bay.u1 - bay.u0) * 1.1, 1.3]} />
-          <meshBasicMaterial map={tex} transparent opacity={0.32} blending={THREE.AdditiveBlending} depthWrite={false} toneMapped={false} />
-        </mesh>
-      ))}
-    </>
+    <mesh geometry={geometry}>
+      <meshBasicMaterial map={wallWashTexture()} transparent opacity={0.32} blending={THREE.AdditiveBlending} depthWrite={false} toneMapped={false} />
+    </mesh>
   )
 }
 

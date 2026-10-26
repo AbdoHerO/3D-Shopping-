@@ -24,10 +24,11 @@ export function CameraRig() {
   useEffect(() => {
     rig.reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
     rig.camera = camera
+    rig.renderer = gl as THREE.WebGLRenderer
     camera.position.copy(rig.pos)
     cur.current.yaw = rig.yaw
     cur.current.pitch = rig.pitch
-  }, [camera])
+  }, [camera, gl])
 
   useEffect(() => {
     const portrait = size.width < size.height

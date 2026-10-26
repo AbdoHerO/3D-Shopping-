@@ -40,13 +40,18 @@ export function Room({ layout, m }: { layout: StoreLayout; m: Materials }) {
     return b.build()
   }, [W, D, H, openings])
 
-  // Recessed downlights: a glowing disc plus a soft halo on the ceiling.
+  // Recessed downlights: glowing discs plus soft halos on the ceiling, merged into two draws.
   const downlights = useMemo(() => {
-    const pts: [number, number][] = []
     const cols = W > 3 ? [-W / 4, W / 4] : [0]
-    for (let z = -0.9; z > -D + 0.4; z -= 1.15) for (const x of cols) pts.push([x, z])
-    return pts
-  }, [W, D])
+    const discs = new GeoBuilder<'bulb' | 'halo'>()
+    for (let z = -0.9; z > -D + 0.4; z -= 1.15) {
+      for (const x of cols) {
+        discs.add('bulb', new THREE.CircleGeometry(0.045, 24), [x, H - 0.003, z], [Math.PI / 2, 0, 0])
+        discs.add('halo', new THREE.PlaneGeometry(0.7, 0.7), [x, H - 0.002, z], [Math.PI / 2, 0, 0])
+      }
+    }
+    return discs.build()
+  }, [W, D, H])
   const halo = radialTexture('rgba(255,236,215,0.9)', 'rgba(255,236,215,0)', 'halo')
 
   return (
@@ -70,17 +75,10 @@ export function Room({ layout, m }: { layout: StoreLayout; m: Materials }) {
       {Object.entries(trims).map(([k, g]) => (
         <mesh key={k} geometry={g} material={m[k as keyof Materials] as THREE.Material} />
       ))}
-      {downlights.map(([x, z], i) => (
-        <group key={i} position={[x, H - 0.002, z]} rotation-x={Math.PI / 2}>
-          <mesh material={m.bulb}>
-            <circleGeometry args={[0.045, 24]} />
-          </mesh>
-          <mesh position-z={0.001}>
-            <planeGeometry args={[0.7, 0.7]} />
-            <meshBasicMaterial map={halo} transparent depthWrite={false} toneMapped={false} opacity={0.55} />
-          </mesh>
-        </group>
-      ))}
+      <mesh geometry={downlights.halo}>
+        <meshBasicMaterial map={halo} transparent depthWrite={false} toneMapped={false} opacity={0.55} />
+      </mesh>
+      <mesh geometry={downlights.bulb} material={m.bulb} />
     </group>
   )
 }

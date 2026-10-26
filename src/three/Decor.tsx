@@ -45,6 +45,62 @@ const vaseProfile = [
   [0.04, 0.22],
 ].map(([x, y]) => new THREE.Vector2(x, y))
 
+function softBoxTexture() {
+  const c = document.createElement('canvas')
+  c.width = c.height = 128
+  const g = c.getContext('2d')!
+  g.filter = 'blur(14px)'
+  g.fillStyle = 'rgba(58,20,36,0.9)'
+  g.fillRect(24, 24, 80, 80)
+  const t = new THREE.CanvasTexture(c)
+  t.colorSpace = THREE.SRGBColorSpace
+  return t
+}
+
+/**
+ * Soft contact shadows under every fixture and podium: one blurred box texture stretched over
+ * each footprint, merged into a single draw (cheap stand-in for baked ambient occlusion).
+ */
+export function Footprints({ layout }: { layout: StoreLayout }) {
+  const { geometry, map } = useMemo(() => {
+    const b = new GeoBuilder<'shadow'>()
+    for (const c of layout.colliders) {
+      const w = c.max[0] - c.min[0]
+      const d = c.max[1] - c.min[1]
+      // the blurred box fills the middle 62% of the texture: grow the quad so the core matches the footprint
+      b.add('shadow', new THREE.PlaneGeometry(w / 0.62 + 0.05, d / 0.62 + 0.05), [(c.min[0] + c.max[0]) / 2, 0.005, (c.min[1] + c.max[1]) / 2], [-Math.PI / 2, 0, 0])
+    }
+    return { geometry: b.build().shadow!, map: softBoxTexture() }
+  }, [layout])
+  return (
+    <mesh geometry={geometry} renderOrder={1}>
+      <meshBasicMaterial map={map} transparent opacity={0.42} depthWrite={false} toneMapped={false} />
+    </mesh>
+  )
+}
+
+/** A bouquet as two draws: instanced flower heads (per-instance colour) and merged stems. */
+function Flowers({ flowers, stem }: { flowers: { color: string; x: number; z: number; y: number; s: number }[]; stem: THREE.Material }) {
+  const { heads, stems } = useMemo(() => {
+    const heads = new THREE.InstancedMesh(new THREE.SphereGeometry(1, 14, 10), new THREE.MeshStandardMaterial({ roughness: 0.8 }), flowers.length)
+    const m = new THREE.Matrix4()
+    const b = new GeoBuilder<'stem'>()
+    flowers.forEach((f, i) => {
+      m.makeScale(f.s, f.s, f.s).setPosition(f.x, f.y, f.z)
+      heads.setMatrixAt(i, m)
+      heads.setColorAt(i, new THREE.Color(f.color))
+      b.add('stem', new THREE.CylinderGeometry(0.003, 0.003, 0.14, 4), [f.x * 0.5, 0.26, f.z * 0.5])
+    })
+    return { heads, stems: b.build().stem! }
+  }, [flowers])
+  return (
+    <>
+      <primitive object={heads} />
+      <mesh geometry={stems} material={stem} />
+    </>
+  )
+}
+
 /** Shop-window podiums, pendants, rug, flowers, corner plants, vanity pouf and the counter logo. */
 export function Decor({ layout, m, shopName }: { layout: StoreLayout; m: Materials; shopName: string }) {
   const { width: W, depth: D, ceiling: H } = layout.dims
@@ -53,7 +109,7 @@ export function Decor({ layout, m, shopName }: { layout: StoreLayout; m: Materia
   const makeup = layout.fixtures.find((f) => f.kind === 'makeupWall')
 
   const parts = useMemo(() => {
-    const b = new GeoBuilder<'lacquer' | 'gold' | 'terracotta' | 'foliage' | 'dark' | 'rosePanel' | 'plum'>()
+    const b = new GeoBuilder<'lacquer' | 'gold' | 'terracotta' | 'foliage' | 'dark' | 'rosePanel' | 'plum' | 'pendants'>()
     for (const s of layout.windowSpots) {
       b.cylinder('lacquer', s.x, 0, s.z, s.radius, s.top - 0.012, 32)
       b.cylinder('gold', s.x, s.top - 0.012, s.z, s.radius + 0.006, 0.012, 32)
@@ -76,6 +132,7 @@ export function Decor({ layout, m, shopName }: { layout: StoreLayout; m: Materia
         const x = sx * (island.length / 2 + 0.12)
         b.cylinder('gold', x, 2.22, cz, 0.006, H - 2.22, 6)
         b.cylinder('gold', x, H - 0.02, cz, 0.05, 0.02, 16)
+        b.add('pendants', new THREE.SphereGeometry(0.1, 24, 16), [x, 2.12, cz])
       }
     }
     // vanity pouf
@@ -109,36 +166,24 @@ export function Decor({ layout, m, shopName }: { layout: StoreLayout; m: Materia
 
   return (
     <group>
-      {Object.entries(parts).map(([k, g]) => (
-        <mesh key={k} geometry={g} material={m[k as keyof Materials] as THREE.Material} />
-      ))}
+      {Object.entries(parts)
+        .filter(([k]) => k !== 'pendants')
+        .map(([k, g]) => (
+          <mesh key={k} geometry={g} material={m[k as keyof Materials] as THREE.Material} />
+        ))}
       {island && (
         <>
           <mesh rotation-x={-Math.PI / 2} position={[0, 0.003, island.position[2] + island.depth / 2]}>
             <circleGeometry args={[Math.min(1.05, W / 2 - 0.5), 64]} />
             <meshStandardMaterial map={rug} roughness={1} />
           </mesh>
-          {[-1, 1].map((sx) => (
-            <mesh key={sx} position={[sx * (island.length / 2 + 0.12), 2.12, island.position[2] + island.depth / 2]} material={m.bulb}>
-              <sphereGeometry args={[0.1, 24, 16]} />
-            </mesh>
-          ))}
+          <mesh geometry={parts.pendants} material={m.bulb} />
         </>
       )}
       {vasePos && (
         <group position={vasePos}>
           <mesh geometry={vase} material={m.lacquer} />
-          {flowers.map((f, i) => (
-            <group key={i}>
-              <mesh position={[f.x * 0.5, 0.26, f.z * 0.5]} material={m.foliage}>
-                <cylinderGeometry args={[0.003, 0.003, 0.14, 4]} />
-              </mesh>
-              <mesh position={[f.x, f.y, f.z]}>
-                <sphereGeometry args={[f.s, 14, 10]} />
-                <meshStandardMaterial color={f.color} roughness={0.8} />
-              </mesh>
-            </group>
-          ))}
+          <Flowers flowers={flowers} stem={m.foliage} />
         </group>
       )}
       {logoPos && counter && (

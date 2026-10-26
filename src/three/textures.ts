@@ -161,3 +161,34 @@ export function windowLetteringTexture(text: string, color = '#C9A46A') {
     return t
   })
 }
+
+/** Stylised mirror: pale reflection with soft diagonal sheens (reads as glass without a reflection pass). */
+export function mirrorTexture() {
+  return memo('mirror', () => {
+    const [c, g] = canvas(256, 256)
+    const grad = g.createLinearGradient(0, 0, 256, 256)
+    grad.addColorStop(0, '#f7f2f3')
+    grad.addColorStop(0.5, '#e6dde1')
+    grad.addColorStop(1, '#d9ccd2')
+    g.fillStyle = grad
+    g.fillRect(0, 0, 256, 256)
+    g.globalAlpha = 0.55
+    g.fillStyle = '#ffffff'
+    g.beginPath()
+    g.moveTo(40, 256)
+    g.lineTo(110, 256)
+    g.lineTo(230, 0)
+    g.lineTo(170, 0)
+    g.fill()
+    g.globalAlpha = 0.3
+    g.beginPath()
+    g.moveTo(130, 256)
+    g.lineTo(150, 256)
+    g.lineTo(256, 30)
+    g.lineTo(256, -10)
+    g.fill()
+    const t = new THREE.CanvasTexture(c)
+    t.colorSpace = THREE.SRGBColorSpace
+    return t
+  })
+}

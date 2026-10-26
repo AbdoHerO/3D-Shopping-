@@ -37,6 +37,7 @@ export const rig = {
   portrait: false,
   /** the live camera (set by CameraRig), used to project 3D points for tests and overlays */
   camera: null as THREE.PerspectiveCamera | null,
+  renderer: null as THREE.WebGLRenderer | null,
 }
 
 let tween: gsap.core.Tween | gsap.core.Timeline | null = null

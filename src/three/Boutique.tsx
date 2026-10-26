@@ -1,6 +1,6 @@
 import { Suspense, useEffect, useMemo, useState } from 'react'
 import { Canvas, useThree, type ThreeEvent } from '@react-three/fiber'
-import { ContactShadows, PerformanceMonitor } from '@react-three/drei'
+import { PerformanceMonitor } from '@react-three/drei'
 import * as THREE from 'three'
 import { useTranslation } from 'react-i18next'
 import { tr } from '@/lib/i18n-text'
@@ -12,7 +12,7 @@ import { Lighting } from './Lighting'
 import { Room } from './Room'
 import { Facade } from './Facade'
 import { Fixtures } from './Fixtures'
-import { Decor } from './Decor'
+import { Decor, Footprints } from './Decor'
 import { Products } from './Products'
 import { CameraRig } from './CameraRig'
 import { Basket } from './Basket'
@@ -77,16 +77,7 @@ function Scene({ tier }: { tier: Tier }) {
         <planeGeometry args={[layout.dims.width, layout.dims.depth]} />
         <meshBasicMaterial transparent opacity={0} depthWrite={false} />
       </mesh>
-      <ContactShadows
-        position={[0, 0.006, -layout.dims.depth / 2]}
-        scale={[layout.dims.width, layout.dims.depth]}
-        resolution={1024}
-        far={1.1}
-        blur={2.6}
-        opacity={0.5}
-        color="#3a1424"
-        frames={1}
-      />
+      <Footprints layout={layout} />
       <CameraRig />
       <Basket />
       <HotspotTracker />

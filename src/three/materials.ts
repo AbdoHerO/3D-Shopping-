@@ -1,7 +1,7 @@
 import { useMemo } from 'react'
 import { useTexture } from '@react-three/drei'
 import * as THREE from 'three'
-import { backlightTexture, flutedNormalTexture } from './textures'
+import { backlightTexture, flutedNormalTexture, mirrorTexture } from './textures'
 
 const base = import.meta.env.BASE_URL + 'textures/'
 const TEXTURES = {
@@ -88,7 +88,7 @@ export function useMaterials(width: number, depth: number) {
     const acrylic = glass.clone()
     acrylic.opacity = 0.5
     acrylic.color.set('#fff7f8')
-    const mirror = new THREE.MeshStandardMaterial({ color: '#efe9ec', metalness: 1, roughness: 0.04, envMapIntensity: 1.3 })
+    const mirror = new THREE.MeshBasicMaterial({ map: mirrorTexture() })
     const led = new THREE.MeshBasicMaterial({ color: '#fff1df', toneMapped: false })
     const bulb = new THREE.MeshBasicMaterial({ color: new THREE.Color('#fff4e6').multiplyScalar(1.6), toneMapped: false })
     const backlight = new THREE.MeshBasicMaterial({ map: backlightTexture(), toneMapped: false })

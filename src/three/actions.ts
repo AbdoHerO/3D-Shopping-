@@ -144,6 +144,13 @@ if (typeof window !== 'undefined') {
     setWalking,
     addToCart,
     rig,
+    /** Renderer counters of the last frame (use ?tier=low: post-processing adds its own passes). */
+    stats() {
+      const info = rig.renderer?.info
+      return info
+        ? { calls: info.render.calls, triangles: info.render.triangles, textures: info.memory.textures, geometries: info.memory.geometries, programs: info.programs?.length ?? 0 }
+        : null
+    },
     /** Screen position (CSS px) of a product on its shelf, or null when off screen. */
     project(productId: string, variantId?: string | null) {
       const f = findFacing(productId, variantId)

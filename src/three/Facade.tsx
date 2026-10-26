@@ -36,7 +36,7 @@ export function Facade({ layout, m, shopName, tagline }: { layout: StoreLayout; 
   }, [ext, openings])
 
   const parts = useMemo(() => {
-    const b = new GeoBuilder<'plum' | 'gold' | 'lacquer' | 'dark' | 'windowDark' | 'terracotta' | 'foliage' | 'facadeAlt'>()
+    const b = new GeoBuilder<'plum' | 'gold' | 'lacquer' | 'dark' | 'windowDark' | 'terracotta' | 'foliage' | 'facadeAlt' | 'bulb' | 'glass'>()
     // shopfront joinery: pilasters, fascia, stall risers under the windows, cornice
     b.boxAt('plum', -W / 2 - 0.12, 0, Z, 0.24, fasciaY + 0.62, 0.1)
     b.boxAt('plum', W / 2 - 0.12, 0, Z, 0.24, fasciaY + 0.62, 0.1)
@@ -90,10 +90,17 @@ export function Facade({ layout, m, shopName, tagline }: { layout: StoreLayout; 
     b.boxAt('dark', lx - 0.03, 3.75, 3.85, 0.06, 0.06, 0.3)
     // curb
     b.boxAt('lacquer', -ext - 6, 0, 4.5, ext * 2 + 12, 0.12, 0.18)
+    // sconces either side of the shopfront, the street lamp's globe
+    for (const side of [-1, 1]) {
+      b.add('gold', new THREE.BoxGeometry(0.04, 0.04, 0.2), [side * (W / 2 + 0.02), 2.25, Z + 0.2])
+      b.add('bulb', new THREE.SphereGeometry(0.07, 16, 12), [side * (W / 2 + 0.02), 2.19, Z + 0.3])
+    }
+    b.add('bulb', new THREE.SphereGeometry(0.17, 20, 14), [W / 2 + 2.6, 3.72, 3.72])
+    // shop-window glazing
+    for (const o of openings.slice(1)) b.add('glass', new THREE.PlaneGeometry(o.x1 - o.x0, o.y1 - o.y0), [(o.x0 + o.x1) / 2, (o.y0 + o.y1) / 2, Z * 0.5])
     return b.build()
   }, [W, ext, openings])
 
-  const lamp = useMemo(() => new THREE.SphereGeometry(0.17, 20, 14), [])
   const awning = useMemo(() => {
     // a gently curved canvas from the fascia out over the pavement
     const g = new THREE.PlaneGeometry(W + 0.1, 1.15, 1, 8)
@@ -114,6 +121,20 @@ export function Facade({ layout, m, shopName, tagline }: { layout: StoreLayout; 
     return t
   }, [W])
 
+  // each sliding door: one glass pane + one merged gold frame
+  const doorFrame = useMemo(() => {
+    const h = layout.door.height
+    const half = layout.door.width / 2
+    const frames = [0, 1].map((i) => {
+      const b = new GeoBuilder<'gold'>()
+      b.add('gold', new THREE.BoxGeometry(half, 0.04, 0.03), [0, h / 2, 0])
+      b.add('gold', new THREE.BoxGeometry(0.025, 0.5, 0.025), [(i === 0 ? 1 : -1) * (half / 2 - 0.05), 1.05, 0.03])
+      b.add('gold', new THREE.BoxGeometry(half, 0.04, 0.04), [0, h - 0.02, 0])
+      b.add('gold', new THREE.BoxGeometry(half, 0.04, 0.04), [0, 0.02, 0])
+      return b.build().gold!
+    })
+    return frames
+  }, [layout.door])
   const doorL = useRef<THREE.Group>(null)
   const doorR = useRef<THREE.Group>(null)
   const dw = layout.door.width / 2
@@ -163,44 +184,15 @@ export function Facade({ layout, m, shopName, tagline }: { layout: StoreLayout; 
           <meshStandardMaterial map={valanceTexture()} transparent alphaTest={0.5} side={THREE.DoubleSide} roughness={0.9} />
         </mesh>
       </group>
-      {/* glazing */}
-      {openings.slice(1).map((o, i) => (
-        <mesh key={i} position={[(o.x0 + o.x1) / 2, (o.y0 + o.y1) / 2, Z * 0.5]} material={m.glass}>
-          <planeGeometry args={[o.x1 - o.x0, o.y1 - o.y0]} />
-        </mesh>
-      ))}
       {/* sliding doors */}
       {[doorL, doorR].map((ref, i) => (
         <group key={i} ref={ref} position={[i === 0 ? -dw / 2 : dw / 2, 0, Z * 0.35]}>
           <mesh position-y={layout.door.height / 2} material={m.glass}>
             <planeGeometry args={[dw, layout.door.height]} />
           </mesh>
-          <mesh position={[0, layout.door.height / 2, 0]} material={m.gold}>
-            <boxGeometry args={[dw, 0.04, 0.03]} />
-          </mesh>
-          <mesh position={[(i === 0 ? 1 : -1) * (dw / 2 - 0.05), 1.05, 0.03]} material={m.gold}>
-            <boxGeometry args={[0.025, 0.5, 0.025]} />
-          </mesh>
-          <mesh position={[0, layout.door.height - 0.02, 0]} material={m.gold}>
-            <boxGeometry args={[dw, 0.04, 0.04]} />
-          </mesh>
-          <mesh position={[0, 0.02, 0]} material={m.gold}>
-            <boxGeometry args={[dw, 0.04, 0.04]} />
-          </mesh>
+          <mesh geometry={doorFrame[i]} material={m.gold} />
         </group>
       ))}
-      {/* sconces either side of the door, the street lamp */}
-      {[-1, 1].map((side) => (
-        <group key={side} position={[side * (W / 2 + 0.02), 2.25, Z + 0.2]}>
-          <mesh material={m.gold}>
-            <boxGeometry args={[0.04, 0.04, 0.2]} />
-          </mesh>
-          <mesh position={[0, -0.06, 0.1]} material={m.bulb}>
-            <sphereGeometry args={[0.07, 16, 12]} />
-          </mesh>
-        </group>
-      ))}
-      <mesh geometry={lamp} position={[W / 2 + 2.6, 3.72, 3.72]} material={m.bulb} />
       {/* pavement, street and sky */}
       <mesh rotation-x={-Math.PI / 2} position={[0, 0.001, Z + 2.15]} material={m.pavement}>
         <planeGeometry args={[ext * 2 + 12, 4.3]} />
