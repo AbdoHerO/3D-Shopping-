@@ -3,7 +3,8 @@
 > **How to use this file.** Everything below the line is the prompt. Give it to Claude Code (or a
 > developer) **one phase at a time** (see §14). Before you start, fill in the `{{PLACEHOLDERS}}`
 > in §1, or leave them for now: the app reads them from a settings table you can edit later.
-> Reference video breakdown: [`VIDEO_ANALYSIS.md`](VIDEO_ANALYSIS.md).
+> Reference video breakdown: [`VIDEO_ANALYSIS.md`](VIDEO_ANALYSIS.md). Library versions, skills
+> and the reasons behind each choice: [`RESEARCH.md`](RESEARCH.md).
 
 ---
 
@@ -96,6 +97,16 @@ uses **my shop's brand**. The store is a small, elegant beauty boutique, not a s
   ACES and the output is sRGB.
 - **Style.** Stylized and clean, like the reference: simple geometry, crisp textures, and no
   heavy post-processing. It must look good on a mid-range Android phone.
+- **Quality routes** (details in `RESEARCH.md` §4):
+  - **A (default):** procedural fixtures with CC0 PBR textures and an HDRI from Poly Haven
+    (`marble_01` or `herringbone_parquet` floor, `clay_plaster` walls), drei `Lightformer`
+    softboxes, and shadows baked once.
+  - **B (polish):** a headless Blender (`bpy`) script builds the room from the same layout file,
+    bakes Cycles lightmaps, and exports a compressed GLB.
+  - **C (optional, later):** a Gaussian-splat scan of the real shop rendered with Spark, with the
+    interactive layer on top.
+- **Device tiers.** On high-tier devices only: SMAA, N8AO ambient occlusion, and a subtle bloom
+  on the backlit perfume wall. Low tiers turn all of these off automatically.
 
 ## 4. Products in 3D
 
@@ -163,6 +174,24 @@ uses **my shop's brand**. The store is a small, elegant beauty boutique, not a s
    there", "Tap a product to see it".
 8. **Loading screen.** A progress bar, the logo, and an **Enter the boutique** button.
 
+## 6b. Motion design (GSAP for sequences, Motion for UI, maath for continuous damping)
+
+- **Intro.** The shop door slides open and the camera dollies in from the street (a GSAP timeline
+  driving `CameraControls`, about 2.5 s, `power3.inOut`). The visitor can skip it with a tap.
+  Only shown on the first visit.
+- **Landing headline.** GSAP SplitText with a masked, staggered reveal.
+- **Zone arrival.** A smooth camera glide, then the zone sign fades in and the zone's spotlights
+  "warm up" (intensity rises from 0.6 to 1.0).
+- **Product hover.** The product lifts 1 cm, scales to 1.04, and gets a rim highlight, all damped
+  with `maath/easing`.
+- **Add to basket.** A copy of the product flies along an arc from the shelf into the basket
+  (about 600 ms). The basket wobbles, the header badge pops, and a toast slides in.
+- **Overlay UI.** Motion `AnimatePresence` and layout animations for the product sheet, drawer
+  and toasts. Spring physics for the mobile bottom sheet.
+- **Idle life.** A soft breathing glow on the perfume wall and a gentle basket sway.
+- **Reduced motion.** Everything above becomes instant cuts and fades when
+  `prefers-reduced-motion` is on.
+
 ## 7. Cart
 
 - **State.** Store it in `zustand` with `persist` (localStorage). Each line holds `productId`,
@@ -185,16 +214,25 @@ uses **my shop's brand**. The store is a small, elegant beauty boutique, not a s
    - payment method (**Cash on delivery**; online payment hidden until configured)
    - consent checkbox
    - a hidden honeypot field against bots
-2. **`POST /api/orders`** (server only). It must:
-   - validate the payload
-   - **recompute every price, promo and delivery fee from the database**, never trusting the client
-   - check stock
-   - rate-limit by IP and phone
-   - create `orders` and `order_items` in one transaction
-   - generate an order number such as `{{SHOP_PREFIX}}-000123`
-   - decrement stock
-   - notify the owner by email (Resend) and/or a **Telegram bot** message with the full summary
-   - return `{ orderNumber, whatsappUrl }`
+2. **Placing the order.** There is no custom server: a Postgres function on Supabase does the
+   work.
+   - **The function.** `place_order(payload jsonb)` is marked `SECURITY DEFINER` and called with
+     `supabase.rpc`. It must:
+     - validate the payload
+     - **recompute every price, promo and delivery fee from the tables**, never trusting the client
+     - check stock
+     - create `orders` and `order_items` in one transaction and decrement stock
+     - generate an order number such as `{{SHOP_PREFIX}}-000123`
+     - return `{ order_number, total }`
+   - **Permissions.** Anonymous users may only `EXECUTE` this function. They have no direct insert
+     rights on any table.
+   - **Abuse limits.** A per-phone throttle inside the function (for example, at most 5 orders
+     per hour), plus the honeypot field.
+   - **Owner alerts.** A database webhook on `orders` insert calls a Supabase Edge Function. The
+     function sends the owner a **Telegram bot** message and/or an email (Resend) with the full
+     summary.
+   - **Demo mode** (no Supabase configured): skip the database and generate a local order number.
+     The WhatsApp message becomes the order itself.
 3. **Confirmation page** `/order/[number]`: a thank-you message, the order summary, the expected
    delivery time, and a big **"Send my order on WhatsApp"** button. The button opens
    `https://wa.me/{{WHATSAPP_NUMBER}}?text=<url-encoded message>`, built in `lib/whatsapp.ts`
@@ -234,17 +272,18 @@ uses **my shop's brand**. The store is a small, elegant beauty boutique, not a s
 
 ## 10. Other pages (SEO and fallback)
 
-- **`/catalog`.** A server-rendered 2D grid of all products, with zone filters, search, sorting
-  and add-to-basket. It is the fallback for devices without WebGL and the "List view" toggle
-  inside the 3D store.
-- **`/p/[slug]`.** A server-rendered product page with Open Graph tags (image, price) and a
-  "See it in the boutique" button that deep-links into 3D.
+- **`/catalog`.** A 2D grid of all products, with zone filters, search, sorting and
+  add-to-basket. It is the fallback for devices without WebGL and the "List view" toggle inside
+  the 3D store.
+- **`/p/:slug`.** A product page with a "See it in the boutique" button that deep-links into 3D.
+  Link previews on WhatsApp and Instagram need Open Graph tags. A build step pre-renders static
+  `/p/<slug>.html` files carrying those tags (image, name, price).
 - **`/`.** A landing page with the hero and an **Enter the boutique** button. Detect WebGL and
   low-end devices, and offer the catalog instead when needed.
 
 ## 11. Internationalization and accessibility
 
-- **i18n.** Use `next-intl` with **FR (default), AR, EN**. Arabic switches the overlay UI to
+- **i18n.** Use `i18next` + `react-i18next` with **FR (default), AR, EN**. Arabic switches the overlay UI to
   **RTL**. 3D signs re-render in the current language (drei `Text` with a font that supports
   Arabic).
 - **Accessibility.**
@@ -256,31 +295,47 @@ uses **my shop's brand**. The store is a small, elegant beauty boutique, not a s
 
 ## 12. Tech stack and project structure
 
-- **Next.js (App Router) + TypeScript (strict)** and Tailwind CSS
-- **@react-three/fiber + @react-three/drei** (`CameraControls`, `Html`, `Text`, `useGLTF`,
-  `Instances`, `ContactShadows`, `PerformanceMonitor`, `KeyboardControls`)
-- **zustand** for client state, **zod** for validation, **react-hook-form** for forms
-- **Supabase** (Postgres, Auth, Storage) with Row Level Security. **Resend** and/or the
-  **Telegram Bot API** for notifications.
-- **Vitest** for unit tests and **Playwright** for end-to-end tests. Deploy on **Vercel**. All
-  secrets live in environment variables (`.env.example` provided).
+Use the versions verified in `RESEARCH.md` §2. Pin exact versions released at least two weeks
+before the start date, and commit the lockfile.
+
+- **App:**
+  - **Vite + React 19 + TypeScript (strict)**, built as a static single-page app
+  - **Tailwind CSS 4** and **react-router**
+  - **zustand** for client state, **zod** for validation, **react-hook-form** for forms
+- **3D:**
+  - **three 0.186.x**, **@react-three/fiber 9**, **@react-three/drei 10** (`CameraControls`,
+    `Html`, `Text`, `useGLTF`, `Instances`, `Environment`, `Lightformer`, `ContactShadows`,
+    `PerformanceMonitor`, `KeyboardControls`, `Outlines`)
+  - **@react-three/postprocessing**, **three-mesh-bvh** and **maath**
+- **Motion:** **gsap** with `@gsap/react`, and **motion**.
+- **Backend:** **Supabase** (Postgres, Auth, Storage, Edge Functions) with Row Level Security.
+  The Telegram Bot API and/or Resend send notifications.
+- **Two run modes:**
+  - **Demo** is the default: catalog from `public/data/*.json`, orders by WhatsApp only, no
+    accounts needed.
+  - **Live** is on when `VITE_SUPABASE_URL` and `VITE_SUPABASE_ANON_KEY` are set
+    (`.env.example` provided).
+- **Testing and hosting:** **Vitest** for unit tests, **Playwright** for end-to-end tests and
+  screenshots. Deploy as static files to Vercel or Netlify (with branch preview links), Cloudflare
+  Pages, or GitHub Pages.
+- **Dev only:** `leva` and `r3f-perf`.
 
 ```
-app/[locale]/page.tsx              landing
-app/[locale]/store/page.tsx        3D boutique (client-only, dynamic import, ssr:false)
-app/[locale]/catalog/page.tsx      2D catalog
-app/[locale]/p/[slug]/page.tsx     product page
-app/[locale]/checkout/page.tsx
-app/[locale]/order/[number]/page.tsx
-app/admin/…                        dashboard, orders, products, placement, settings
-app/api/orders/route.ts
-components/three/                  Boutique, Room, Lighting, CameraRig, Basket, MiniMap3D,
+src/main.tsx, src/App.tsx          router: /, /store, /catalog, /p/:slug, /checkout, /order/:number, /admin/*
+src/pages/                         Landing, Store, Catalog, Product, Checkout, OrderConfirmation, admin/*
+src/three/                         Boutique, Room, Lighting, CameraRig, IntroSequence, Basket, FlyToBasket
   fixtures/                        WallShelf, NailPolishRack, PerfumeWall, Island, Counter, VanityMirror, Sign, Door
-  products/                        ProductInstances, ProductHotspot
-components/ui/                     Header, ZoneBar, ProductSheet, ProductDetails, CartDrawer, Toasts, MiniMap, Onboarding, LoadingScreen
-lib/                               store-layout.ts, shelf-layout.ts, cart-store.ts, ui-store.ts, pricing.ts, whatsapp.ts, money.ts, supabase/, i18n/
-supabase/migrations/               SQL schema + RLS
-scripts/                           seed.ts (demo data), optimize-images.ts
+  products/                        ProductInstances, ProductShapes, ProductHotspot
+src/ui/                            Header, ZoneBar, ProductSheet, ProductDetails, CartDrawer, Toasts, MiniMap, Onboarding, LoadingScreen
+src/lib/                           store-layout.ts, shelf-layout.ts, cart-store.ts, ui-store.ts, pricing.ts, whatsapp.ts,
+                                   money.ts, data-source.ts (demo JSON | Supabase), i18n/
+public/data/                       demo catalog JSON + product images
+public/textures, public/models     optimized CC0 textures, HDRI, GLB
+supabase/migrations/               SQL schema, RLS, place_order()
+supabase/functions/notify-order/   Edge Function: Telegram / email alert
+scripts/                           seed.ts, cutout-products.py (rembg + BiRefNet), optimize-assets.ts (gltf-transform + sharp),
+                                   blender/build_and_bake.py (Route B), prerender-og.ts
+.claude/skills/                    installed Claude Code skills (Phase 0)
 ```
 
 ## 13. Database schema (Supabase / Postgres)
@@ -335,30 +390,43 @@ create table events (id bigserial primary key, type text, product_id uuid, zone 
 
 **RLS rules:**
 - Anyone may read active products, zones, variants, delivery zones and settings.
-- Only the server route, using the service role, may insert orders.
+- Nobody inserts into `orders` or `order_items` directly. Anonymous users may only
+  `EXECUTE place_order(jsonb)`, a `SECURITY DEFINER` function that prices, validates and inserts.
 - Only admins may read or update orders and edit the catalog.
 
 ## 14. Phases (build and demo each one before moving on)
 
+After every phase, take Playwright screenshots of each viewpoint at desktop 1440×900 and phone
+390×844 so the owner can review the look.
+
+0. **Tooling.**
+   - Install and review the Claude Code skills from `RESEARCH.md` §1: `cloudai-x/threejs-skills`,
+     plus `frontend-design` and `webapp-testing` from `anthropics/skills`.
+   - Scaffold Vite, React, TypeScript, Tailwind, R3F, ESLint/Prettier and Vitest/Playwright.
+   - Add a CI workflow that runs lint, typecheck, tests and the build.
 1. **Foundation.**
-   - Scaffold Next.js, Tailwind, R3F and Supabase.
    - Add `store-layout.ts` and the procedural room: walls, floor, ceiling, door, windows,
      fixtures and signs.
-   - Lighting, loading screen, and the guided camera with viewpoints, zone bar and mini-map.
+   - Lighting with Poly Haven textures and HDRI, the loading screen, and the guided camera with
+     viewpoints, zone bar and mini-map.
+   - Runs in demo mode.
 2. **Products.**
-   - Migrations and seed data: **40 demo products** across all zones, with generic names (no
-     real brand logos) and placeholder transparent images.
-   - Shelf auto-layout, instanced products, hover/tap, the product card with variants, and the
-     details modal.
-3. **Cart and orders.**
-   - The cart store and drawer, and the first-person basket.
-   - Checkout, `POST /api/orders` with server-side pricing, the confirmation page, the WhatsApp
-     link, and email/Telegram notification to the owner.
-4. **Admin.** Auth, orders, products and variants, the placement editor, and settings.
+   - Demo catalog: **40 products** across all zones, with generic names (no real brand logos) and
+     placeholder cutout images.
+   - Shelf auto-layout, product shape meshes, instancing, hover/tap, the product card with
+     variants, and the details modal.
+3. **Cart, orders and motion.**
+   - The cart store and drawer, the first-person basket, and fly-to-basket.
+   - Checkout and the WhatsApp order, which already works in demo mode.
+   - The intro sequence, zone-arrival effects, and the UI motion from §6b.
+4. **Live backend and admin.**
+   - Supabase migrations and RLS, `place_order()`, and the owner-alert Edge Function.
+   - Admin: auth, orders, products and variants, the placement editor, and settings.
 5. **Polish and launch.**
-   - Mobile controls and portrait layout, i18n and RTL, the catalog and product pages, and SEO/OG.
-   - Analytics events, the performance pass, accessibility, Playwright end-to-end tests, and
-     deployment.
+   - Mobile controls and portrait layout, i18n and RTL, the catalog and product pages, and the
+     pre-rendered link previews.
+   - Analytics events, the performance and accessibility pass, Route B baked lighting, and
+     deployment with preview links.
 
 ## 15. Performance budget (test on a mid-range Android phone)
 
@@ -372,6 +440,8 @@ create table events (id bigserial primary key, type text, product_id uuid, zone 
 
 ## 16. Acceptance criteria
 
+- [ ] `npm install && npm run dev` runs the full boutique in **demo mode** with no accounts. A
+      WhatsApp order can be sent from it.
 - [ ] On a phone, I can enter the boutique, jump to every zone from the zone bar or the mini-map,
       and pan along each wall.
 - [ ] Every active product appears on its shelf at its real size and can be opened. Its variants
@@ -412,5 +482,5 @@ create table events (id bigserial primary key, type text, product_id uuid, zone 
 4. **Branding.** Logo, colors, shop name, Instagram.
 5. **Selling details.** The WhatsApp number that receives orders, delivery cities with fees and
    delays, and the payment method.
-6. **Accounts.** Free **Supabase** and **Vercel** accounts, a domain name, and optionally a
-   Telegram bot for order alerts.
+6. **Accounts.** None are needed for demo mode. For live mode: free **Supabase** and **Vercel**
+   (or Netlify) accounts, a domain name, and optionally a Telegram bot for order alerts.
