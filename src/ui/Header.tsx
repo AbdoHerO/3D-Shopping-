@@ -29,7 +29,7 @@ export function Monogram({ name, size = 36 }: { name: string; size?: number }) {
 export function LanguageSelect({ className = '' }: { className?: string }) {
   const { t, locale } = useLocale()
   return (
-    <label className={`relative inline-flex items-center ${className}`}>
+    <label className={`relative items-center ${className || 'inline-flex'}`}>
       <span className="sr-only">{t('lang.label')}</span>
       <Icon name="globe" size={18} className="pointer-events-none absolute start-3 text-garnet" />
       <select

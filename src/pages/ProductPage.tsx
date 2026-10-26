@@ -46,8 +46,8 @@ export default function ProductPage() {
         </Link>
       </nav>
       <article className="mt-4 grid gap-8 md:grid-cols-2">
-        <div className="grid aspect-square place-items-center rounded-[28px] bg-gradient-to-b from-white via-blush to-rosewater">
-          <img src={assetUrl(productImage(product, variant))} alt={text(product.name)} className="max-h-[78%] max-w-[60%] object-contain drop-shadow-xl" />
+        <div className="relative aspect-square rounded-[28px] bg-gradient-to-b from-white via-blush to-rosewater">
+          <img src={assetUrl(productImage(product, variant))} alt={text(product.name)} className="absolute inset-0 m-auto max-h-[78%] max-w-[60%] object-contain drop-shadow-xl" />
         </div>
         <div className="flex flex-col gap-4">
           <p className="text-sm text-mist">

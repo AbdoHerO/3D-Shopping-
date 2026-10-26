@@ -50,7 +50,7 @@ export function PageShell({ children }: { children: ReactNode }) {
             <div>
               <p className="font-medium">{t('footer.hours')}</p>
               <p>{text(settings.openingHours)}</p>
-              <LanguageSelect className="mt-3 sm:hidden" />
+              <LanguageSelect className="mt-3 inline-flex sm:hidden" />
             </div>
           </div>
         </footer>

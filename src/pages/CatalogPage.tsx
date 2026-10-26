@@ -32,8 +32,8 @@ export function ProductCard({ p }: { p: Product }) {
   }
   return (
     <li className="group flex flex-col rounded-[22px] bg-white p-3 ring-1 ring-ink/5 transition hover:shadow-soft" data-testid="catalog-card">
-      <button onClick={open} className="relative grid aspect-[4/5] place-items-center overflow-hidden rounded-2xl bg-gradient-to-b from-blush/60 to-rosewater/70">
-        <img src={assetUrl(p.image)} alt={text(p.name)} loading="lazy" className="max-h-[80%] max-w-[70%] object-contain drop-shadow-lg transition duration-500 group-hover:-translate-y-1 group-hover:scale-[1.03]" />
+      <button onClick={open} className="relative aspect-[4/5] overflow-hidden rounded-2xl bg-gradient-to-b from-blush/60 to-rosewater/70">
+        <img src={assetUrl(p.image)} alt={text(p.name)} loading="lazy" className="absolute inset-0 m-auto max-h-[78%] max-w-[68%] object-contain drop-shadow-lg transition duration-500 group-hover:-translate-y-1 group-hover:scale-[1.03]" />
         <span className="absolute start-2 top-2">
           <Badges product={p} variant={variant} />
         </span>
