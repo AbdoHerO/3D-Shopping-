@@ -17,6 +17,7 @@ export async function enterBoutique(page: Page, tier: 'low' | 'medium' | 'high' 
   await page.getByTestId('enter').click()
   await expect(page.getByTestId('zone-entrance')).toBeVisible()
   await page.waitForFunction(() => (window as unknown as { __boutique?: Hooks }).__boutique?.rig.mode === 'guided')
+  await settle(page)
 }
 
 /**

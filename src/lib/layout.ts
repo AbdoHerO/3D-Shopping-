@@ -115,7 +115,7 @@ export const SHOP = {
   backBase: 0.9,
   backLevels: [0.9, 1.18, 1.46, 1.74, 2.02, 2.3],
   /** Glass-topped counter parallel to the right wall (all estimates). */
-  counter: { start: 1.3, length: 2.2, depth: 0.55, height: 0.95, staffGap: 0.7, vitrineShelf: 0.5 },
+  counter: { start: 1.3, length: 2.2, depth: 0.55, height: 0.95, staffGap: 0.6, vitrineShelf: 0.5 },
   /** Freestanding nail-polish stand near the entrance (estimate from the photos). */
   nailStand: { width: 0.7, depth: 0.5, height: 1.72, z: 1.0, tiers: 7 },
   /** Display cases inside the shop windows, facing the street (estimate). */
@@ -130,6 +130,11 @@ export const SHOP = {
 } as const
 
 export const DEFAULT_DIMS: StoreDims = { width: 3.5, depth: 6.5, ceiling: 3.0 }
+
+/** Furniture standing in the room rather than against a wall: customers walk around it. */
+const FREESTANDING = ['stand-nails', 'counter', 'counter-return']
+/** Narrowest passage left between freestanding pieces on either side of the aisle. */
+const MIN_PASSAGE = 0.75
 
 const VIEW_DISTANCE = 1.3
 
@@ -261,10 +266,23 @@ export function createLayout(dims: StoreDims = DEFAULT_DIMS): StoreLayout {
     bays: makeBays(backRun.length, backLevels),
   })
 
-  // Glass-topped counter parallel to the right wall; its front faces the aisle.
+  // Freestanding nail-polish stand by the entrance, angled towards the aisle (placed below).
+  const n = SHOP.nailStand
+  const standYaw = 0.85
+  const standCentre: [number, number] = [-W / 2 + sd + 0.12 + n.depth / 2 + 0.1, -n.z]
+  const standHalf: [number, number] = [
+    (n.width / 2) * Math.abs(Math.cos(standYaw)) + (n.depth / 2) * Math.abs(Math.sin(standYaw)),
+    (n.width / 2) * Math.abs(Math.sin(standYaw)) + (n.depth / 2) * Math.abs(Math.cos(standYaw)),
+  ]
+
+  // Glass-topped counter parallel to the right wall; its front faces the aisle. In a narrow shop it
+  // starts further back, so a comfortable passage stays open between it and the stand.
   const c = SHOP.counter
   const counterBack = W / 2 - sd - c.staffGap
-  const counterLength = Math.min(c.length, Math.max(1, D - c.start - 2.2))
+  const passage = MIN_PASSAGE + 0.05
+  const sideGap = counterBack - c.depth - (standCentre[0] + standHalf[0])
+  const counterStart = sideGap >= passage ? c.start : Math.max(c.start, n.z + standHalf[1] + Math.sqrt(passage ** 2 - Math.max(0, sideGap) ** 2))
+  const counterLength = Math.min(c.length, Math.max(1, D - counterStart - 2.2))
   fixtures.push({
     id: 'counter',
     kind: 'counter',
@@ -279,17 +297,13 @@ export function createLayout(dims: StoreDims = DEFAULT_DIMS): StoreLayout {
       { u0: 0.06, u1: round(counterLength - 0.06), levels: [0], style: 'vitrine' },
       { u0: round(Math.min(0.85, counterLength * 0.4)), u1: round(counterLength - 0.08), levels: [1], style: 'counterTop' },
     ],
-    position: [round(counterBack), 0, -round(c.start + counterLength)],
+    position: [round(counterBack), 0, -round(counterStart + counterLength)],
     rotationY: -Math.PI / 2,
     wall: null,
     stock: 'shelf',
     browsable: true,
   })
 
-  // Freestanding nail-polish stand by the entrance, angled towards the aisle.
-  const n = SHOP.nailStand
-  const standYaw = 0.85
-  const standCentre: [number, number] = [-W / 2 + sd + 0.12 + n.depth / 2 + 0.1, -n.z]
   const tiers = Array.from({ length: n.tiers }, (_, i) => round(0.4 + i * 0.15))
   const standTransform = (() => {
     // place the local origin (back-left corner) so the stand's centre lands on standCentre
@@ -350,20 +364,27 @@ export function createLayout(dims: StoreDims = DEFAULT_DIMS): StoreLayout {
   // Colliders: one per fixture (same order), plus the counter's return towards the wall.
   const colliders: Aabb[] = fixtures.map((f) => footprint(f, f.id))
   const counter = fixtures.find((f) => f.id === 'counter')!
-  const counterFront = counter.position[0] - counter.depth
   colliders.push({
     id: 'counter-return',
-    min: [round(counter.position[0]), round(-(c.start + 0.5))],
-    max: [round(W / 2 - sd - 0.05), round(-c.start)],
+    min: [round(counter.position[0]), round(-(counterStart + 0.5))],
+    max: [round(W / 2 - sd - 0.05), round(-counterStart)],
   })
 
-  // The walking corridor between the left shelving / nail stand and the counter / right shelving.
-  const stand = colliders[fixtures.findIndex((f) => f.id === 'stand-nails')]
-  const aisle = [
-    { x0: round(stand.max[0]), x1: round(W / 2 - sd), z0: -SHOP.sideStart, z1: round(stand.min[1]) },
-    { x0: round(-W / 2 + sd), x1: round(counterFront), z0: round(stand.min[1]), z1: round(counter.position[2]) },
-    { x0: round(-W / 2 + sd), x1: round(W / 2 - sd), z0: round(counter.position[2]), z1: round(-D + sd) },
-  ]
+  // The walking corridor, stretch by stretch from the door to the back shelving: between the left
+  // shelving or the nail stand, and the right shelving or the counter.
+  const blockers = colliders.filter((b) => FREESTANDING.includes(b.id))
+  const front = -SHOP.sideStart
+  const back = round(-D + sd)
+  const cuts = [...new Set([front, back, ...blockers.flatMap((b) => [round(b.min[1]), round(b.max[1])])])]
+    .filter((z) => z <= front && z >= back)
+    .sort((a, b) => b - a)
+  const aisle = cuts.slice(0, -1).map((z0, i) => {
+    const z1 = cuts[i + 1]
+    const here = blockers.filter((b) => b.max[1] > z1 + 1e-6 && b.min[1] < z0 - 1e-6)
+    const left = here.filter((b) => b.min[0] + b.max[0] < 0).map((b) => b.max[0])
+    const right = here.filter((b) => b.min[0] + b.max[0] >= 0).map((b) => b.min[0])
+    return { x0: round(Math.max(-W / 2 + sd, ...left)), x1: round(Math.min(W / 2 - sd, ...right)), z0, z1 }
+  })
   const aisleAt = (z: number) => aisle.find((a) => z <= a.z0 + 1e-6 && z >= a.z1 - 1e-6) ?? aisle[aisle.length - 1]
 
   const viewpoints: Record<string, Viewpoint> = {
@@ -455,7 +476,17 @@ export function validateLayout(layout: StoreLayout): string[] {
     })
   })
   for (const a of layout.aisle) {
-    if (a.x1 - a.x0 < 0.75) problems.push(`The aisle is only ${Math.round((a.x1 - a.x0) * 100)} cm wide between z ${a.z0} and ${a.z1}.`)
+    if (a.x1 - a.x0 < MIN_PASSAGE) problems.push(`The aisle is only ${Math.round((a.x1 - a.x0) * 100)} cm wide between z ${a.z0} and ${a.z1}.`)
+  }
+  // a diagonal squeeze between freestanding furniture on either side of the aisle
+  const free = layout.colliders.filter((b) => FREESTANDING.includes(b.id))
+  for (const a of free.filter((b) => b.min[0] + b.max[0] < 0)) {
+    for (const b of free.filter((o) => o.min[0] + o.max[0] >= 0)) {
+      const dx = Math.max(0, a.min[0] - b.max[0], b.min[0] - a.max[0])
+      const dz = Math.max(0, a.min[1] - b.max[1], b.min[1] - a.max[1])
+      const gap = Math.hypot(dx, dz)
+      if (gap < MIN_PASSAGE - 1e-6) problems.push(`Only ${Math.round(gap * 100)} cm to walk between ${a.id} and ${b.id}.`)
+    }
   }
   return problems
 }

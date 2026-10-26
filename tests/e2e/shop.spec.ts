@@ -53,6 +53,7 @@ test('a shared product link opens it on its shelf, with sizes', async ({ page })
 test('free walking moves the camera and keeps it inside the shop', async ({ page }) => {
   await enterBoutique(page)
   await page.getByTestId('walk-toggle').click()
+  await page.waitForFunction(() => (window as unknown as { __boutique: { rig: { mode: string } } }).__boutique.rig.mode === 'walk')
   const before = await page.evaluate(() => (window as unknown as { __boutique: { rig: { pos: { z: number } } } }).__boutique.rig.pos.z)
   await page.keyboard.down('ArrowUp')
   await page.waitForTimeout(2500)

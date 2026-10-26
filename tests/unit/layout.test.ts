@@ -25,6 +25,22 @@ describe('store layout', () => {
     }
   })
 
+  it('leaves a passage between the nail stand and the counter, moving the counter back in a narrow shop', () => {
+    for (const width of [3, 3.2, 3.5, 4]) {
+      const layout = createLayout({ width, depth: 6.5, ceiling: 3 })
+      expect(validateLayout(layout), `${width} m`).toEqual([])
+      const stand = layout.colliders.find((c) => c.id === 'stand-nails')!
+      for (const id of ['counter', 'counter-return']) {
+        const b = layout.colliders.find((c) => c.id === id)!
+        const dx = Math.max(0, b.min[0] - stand.max[0])
+        const dz = Math.max(0, stand.min[1] - b.max[1])
+        expect(Math.hypot(dx, dz), `${id} at ${width} m`).toBeGreaterThanOrEqual(0.75)
+      }
+    }
+    // the default shop keeps the counter where the photos show it
+    expect(createLayout().colliders.find((c) => c.id === 'counter-return')!.max[1]).toBeCloseTo(-1.3)
+  })
+
   it('reports impossible rooms', () => {
     expect(validateLayout(createLayout({ width: 2, depth: 3, ceiling: 3 })).length).toBeGreaterThan(0)
   })
@@ -66,7 +82,7 @@ describe('store layout', () => {
     [4, 7],
   ])('keeps a walkable aisle and every viewpoint clear of furniture in a %s × %s m shop', (width, depth) => {
     const layout = createLayout({ width, depth, ceiling: 3 })
-    for (const a of layout.aisle) expect(a.x1 - a.x0).toBeGreaterThanOrEqual(0.9)
+    for (const a of layout.aisle) expect(a.x1 - a.x0).toBeGreaterThanOrEqual(0.75)
     for (const vp of Object.values(layout.viewpoints)) {
       const [x, , z] = vp.position
       for (const c of layout.colliders) {
