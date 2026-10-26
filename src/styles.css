@@ -43,6 +43,9 @@
     font-feature-settings: 'kern', 'liga';
     -webkit-font-smoothing: antialiased;
   }
+  .font-display {
+    font-variant-numeric: lining-nums;
+  }
   html[dir='rtl'] body {
     font-family: 'Tajawal', var(--font-sans);
   }

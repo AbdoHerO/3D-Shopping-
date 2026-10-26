@@ -1,0 +1,6 @@
+# Minimal Supabase CLI config (supabase link / db push / functions deploy).
+project_id = "beauty-boutique-3d"
+
+[functions.notify-order]
+# called by a Database Webhook with a shared secret header, not by browsers
+verify_jwt = false
