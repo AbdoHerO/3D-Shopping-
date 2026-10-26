@@ -1,0 +1,4654 @@
+{
+ "settings": {
+  "shopName": "Maison Lumière",
+  "tagline": {
+   "fr": "Beauté & parfums",
+   "en": "Beauty & fragrance",
+   "ar": "جمال وعطور"
+  },
+  "logoUrl": null,
+  "primaryColor": "#6B1F3D",
+  "accentColor": "#C9A46A",
+  "whatsappNumber": "212600000000",
+  "currency": "MAD",
+  "currencyLabel": {
+   "fr": "DH",
+   "en": "MAD",
+   "ar": "د.م."
+  },
+  "defaultLocale": "fr",
+  "orderPrefix": "ML",
+  "address": {
+   "fr": "12 rue des Orangers, Casablanca",
+   "en": "12 Orange Tree Street, Casablanca",
+   "ar": "12 زنقة أشجار البرتقال، الدار البيضاء"
+  },
+  "openingHours": {
+   "fr": "Lun–sam 10h–20h · dim 11h–18h",
+   "en": "Mon–Sat 10am–8pm · Sun 11am–6pm",
+   "ar": "الإثنين–السبت 10–20 · الأحد 11–18"
+  },
+  "instagramUrl": null,
+  "freeDeliveryThreshold": 500,
+  "store": {
+   "width": 3.5,
+   "depth": 6.5,
+   "ceiling": 3
+  },
+  "fixtureLabels": {
+   "counter": {
+    "fr": "Caisse",
+    "en": "Checkout",
+    "ar": "الصندوق"
+   },
+   "wall-hair": {
+    "fr": "Cheveux",
+    "en": "Hair care",
+    "ar": "العناية بالشعر"
+   },
+   "wall-skin": {
+    "fr": "Soins visage",
+    "en": "Skincare",
+    "ar": "العناية بالبشرة"
+   },
+   "wall-nails": {
+    "fr": "Mains & ongles",
+    "en": "Hands & nails",
+    "ar": "اليدين والأظافر"
+   },
+   "wall-makeup": {
+    "fr": "Maquillage",
+    "en": "Makeup",
+    "ar": "المكياج"
+   },
+   "wall-perfume": {
+    "fr": "Parfums",
+    "en": "Fragrance",
+    "ar": "العطور"
+   },
+   "island": {
+    "fr": "Promos & corps",
+    "en": "Offers & body",
+    "ar": "العروض والجسم"
+   }
+  }
+ },
+ "categories": [
+  {
+   "id": "hair",
+   "slug": "cheveux",
+   "name": {
+    "fr": "Cheveux",
+    "en": "Hair care",
+    "ar": "الشعر"
+   },
+   "sort": 1
+  },
+  {
+   "id": "skin",
+   "slug": "soins-visage",
+   "name": {
+    "fr": "Soins visage",
+    "en": "Skincare",
+    "ar": "البشرة"
+   },
+   "sort": 2
+  },
+  {
+   "id": "nails",
+   "slug": "mains-ongles",
+   "name": {
+    "fr": "Mains & ongles",
+    "en": "Hands & nails",
+    "ar": "اليدين والأظافر"
+   },
+   "sort": 3
+  },
+  {
+   "id": "makeup",
+   "slug": "maquillage",
+   "name": {
+    "fr": "Maquillage",
+    "en": "Makeup",
+    "ar": "المكياج"
+   },
+   "sort": 4
+  },
+  {
+   "id": "perfume",
+   "slug": "parfums",
+   "name": {
+    "fr": "Parfums",
+    "en": "Fragrance",
+    "ar": "العطور"
+   },
+   "sort": 5
+  },
+  {
+   "id": "body",
+   "slug": "corps-bain",
+   "name": {
+    "fr": "Corps & bain",
+    "en": "Body & bath",
+    "ar": "الجسم والحمام"
+   },
+   "sort": 6
+  },
+  {
+   "id": "accessories",
+   "slug": "accessoires",
+   "name": {
+    "fr": "Accessoires",
+    "en": "Accessories",
+    "ar": "الإكسسوارات"
+   },
+   "sort": 7
+  }
+ ],
+ "products": [
+  {
+   "id": "shampooing-aloe-vera",
+   "slug": "shampooing-aloe-vera",
+   "categoryId": "hair",
+   "brand": "Atlas Botanica",
+   "name": {
+    "fr": "Shampooing hydratant aloe vera",
+    "en": "Aloe vera moisturising shampoo",
+    "ar": "شامبو مرطب بالصبار"
+   },
+   "description": {
+    "fr": "Une base lavante douce à l’aloe vera qui hydrate les longueurs sans les alourdir. Pour un usage quotidien.",
+    "en": "A gentle aloe vera wash that hydrates the lengths without weighing them down. For everyday use.",
+    "ar": "تركيبة لطيفة بالصبار ترطب الشعر دون أن تثقله. مناسب للاستعمال اليومي."
+   },
+   "howToUse": {
+    "fr": "Appliquer sur cheveux mouillés ou secs selon le produit, masser doucement puis rincer si nécessaire.",
+    "en": "Apply to wet or dry hair depending on the product, massage gently, then rinse if needed.",
+    "ar": "يوضع على الشعر المبلل أو الجاف حسب المنتج، يدلك بلطف ثم يشطف عند الحاجة."
+   },
+   "ingredients": null,
+   "sizeLabel": "400 ml",
+   "price": 75,
+   "promoPrice": null,
+   "stock": 28,
+   "isActive": true,
+   "isFeatured": false,
+   "isNew": false,
+   "shape": "pump",
+   "widthCm": 7.5,
+   "heightCm": 23,
+   "depthCm": 7.5,
+   "image": "products/shampooing-aloe-vera.webp",
+   "gallery": [],
+   "placement": {
+    "fixtureId": "wall-hair",
+    "level": 0,
+    "slot": 0,
+    "facings": 2
+   },
+   "variants": [],
+   "displayVariants": false
+  },
+  {
+   "id": "ghassoul-sept-plantes",
+   "slug": "ghassoul-sept-plantes",
+   "categoryId": "hair",
+   "brand": "Atlas Botanica",
+   "name": {
+    "fr": "Ghassoul aux sept plantes",
+    "en": "Seven-herb ghassoul clay",
+    "ar": "غاسول بسبعة أعشاب"
+   },
+   "description": {
+    "fr": "Argile du Moyen Atlas mélangée à sept plantes séchées. Nettoie le cuir chevelu et la peau en douceur.",
+    "en": "Middle Atlas clay blended with seven dried herbs. Gently cleanses the scalp and skin.",
+    "ar": "طين الأطلس المتوسط ممزوج بسبعة أعشاب مجففة. ينظف فروة الرأس والبشرة بلطف."
+   },
+   "howToUse": {
+    "fr": "Appliquer sur cheveux mouillés ou secs selon le produit, masser doucement puis rincer si nécessaire.",
+    "en": "Apply to wet or dry hair depending on the product, massage gently, then rinse if needed.",
+    "ar": "يوضع على الشعر المبلل أو الجاف حسب المنتج، يدلك بلطف ثم يشطف عند الحاجة."
+   },
+   "ingredients": null,
+   "sizeLabel": "250 g",
+   "price": 59,
+   "promoPrice": null,
+   "stock": 29,
+   "isActive": true,
+   "isFeatured": false,
+   "isNew": false,
+   "shape": "jar",
+   "widthCm": 9,
+   "heightCm": 8,
+   "depthCm": 9,
+   "image": "products/ghassoul-sept-plantes.webp",
+   "gallery": [],
+   "placement": {
+    "fixtureId": "wall-hair",
+    "level": 0,
+    "slot": 1,
+    "facings": 2
+   },
+   "variants": [],
+   "displayVariants": false
+  },
+  {
+   "id": "henne-naturel",
+   "slug": "henne-naturel",
+   "categoryId": "hair",
+   "brand": "Atlas Botanica",
+   "name": {
+    "fr": "Henné naturel du Sud",
+    "en": "Natural southern henna",
+    "ar": "حناء طبيعية من الجنوب"
+   },
+   "description": {
+    "fr": "Poudre de henné pure, tamisée finement, pour des reflets cuivrés et une fibre gainée.",
+    "en": "Pure, finely sifted henna powder for copper highlights and stronger strands.",
+    "ar": "مسحوق حناء نقي ومنخول بعناية لانعكاسات نحاسية وشعر أقوى."
+   },
+   "howToUse": {
+    "fr": "Appliquer sur cheveux mouillés ou secs selon le produit, masser doucement puis rincer si nécessaire.",
+    "en": "Apply to wet or dry hair depending on the product, massage gently, then rinse if needed.",
+    "ar": "يوضع على الشعر المبلل أو الجاف حسب المنتج، يدلك بلطف ثم يشطف عند الحاجة."
+   },
+   "ingredients": null,
+   "sizeLabel": "200 g",
+   "price": 45,
+   "promoPrice": null,
+   "stock": 22,
+   "isActive": true,
+   "isFeatured": false,
+   "isNew": false,
+   "shape": "box",
+   "widthCm": 11,
+   "heightCm": 16,
+   "depthCm": 4,
+   "image": "products/henne-naturel.webp",
+   "gallery": [],
+   "placement": {
+    "fixtureId": "wall-hair",
+    "level": 0,
+    "slot": 2,
+    "facings": 2
+   },
+   "variants": [],
+   "displayVariants": false
+  },
+  {
+   "id": "shampooing-argan",
+   "slug": "shampooing-argan",
+   "categoryId": "hair",
+   "brand": "Argania",
+   "name": {
+    "fr": "Shampooing nourrissant à l’argan",
+    "en": "Nourishing argan shampoo",
+    "ar": "شامبو مغذي بالأركان"
+   },
+   "description": {
+    "fr": "Enrichi en huile d’argan bio, il nourrit les cheveux secs et leur rend leur souplesse.",
+    "en": "Enriched with organic argan oil to nourish dry hair and bring back its softness.",
+    "ar": "غني بزيت الأركان العضوي، يغذي الشعر الجاف ويعيد إليه نعومته."
+   },
+   "howToUse": {
+    "fr": "Appliquer sur cheveux mouillés ou secs selon le produit, masser doucement puis rincer si nécessaire.",
+    "en": "Apply to wet or dry hair depending on the product, massage gently, then rinse if needed.",
+    "ar": "يوضع على الشعر المبلل أو الجاف حسب المنتج، يدلك بلطف ثم يشطف عند الحاجة."
+   },
+   "ingredients": null,
+   "sizeLabel": "300 ml",
+   "price": 89,
+   "promoPrice": null,
+   "stock": 19,
+   "isActive": true,
+   "isFeatured": true,
+   "isNew": false,
+   "shape": "bottle",
+   "widthCm": 7,
+   "heightCm": 21,
+   "depthCm": 4.5,
+   "image": "products/shampooing-argan.webp",
+   "gallery": [],
+   "placement": {
+    "fixtureId": "wall-hair",
+    "level": 1,
+    "slot": 0,
+    "facings": 3
+   },
+   "variants": [],
+   "displayVariants": false
+  },
+  {
+   "id": "apres-shampooing-argan",
+   "slug": "apres-shampooing-argan",
+   "categoryId": "hair",
+   "brand": "Argania",
+   "name": {
+    "fr": "Après-shampooing démêlant à l’argan",
+    "en": "Argan detangling conditioner",
+    "ar": "بلسم مفكك بالأركان"
+   },
+   "description": {
+    "fr": "Démêle instantanément et laisse les cheveux brillants, sans effet gras.",
+    "en": "Detangles instantly and leaves hair shiny without any greasy feel.",
+    "ar": "يفك تشابك الشعر فوراً ويتركه لامعاً دون ملمس دهني."
+   },
+   "howToUse": {
+    "fr": "Appliquer sur cheveux mouillés ou secs selon le produit, masser doucement puis rincer si nécessaire.",
+    "en": "Apply to wet or dry hair depending on the product, massage gently, then rinse if needed.",
+    "ar": "يوضع على الشعر المبلل أو الجاف حسب المنتج، يدلك بلطف ثم يشطف عند الحاجة."
+   },
+   "ingredients": null,
+   "sizeLabel": "250 ml",
+   "price": 89,
+   "promoPrice": null,
+   "stock": 13,
+   "isActive": true,
+   "isFeatured": false,
+   "isNew": false,
+   "shape": "bottle",
+   "widthCm": 7,
+   "heightCm": 20,
+   "depthCm": 4.5,
+   "image": "products/apres-shampooing-argan.webp",
+   "gallery": [],
+   "placement": {
+    "fixtureId": "wall-hair",
+    "level": 1,
+    "slot": 1,
+    "facings": 3
+   },
+   "variants": [],
+   "displayVariants": false
+  },
+  {
+   "id": "shampooing-romarin",
+   "slug": "shampooing-romarin",
+   "categoryId": "hair",
+   "brand": "Atlas Botanica",
+   "name": {
+    "fr": "Shampooing purifiant au romarin",
+    "en": "Purifying rosemary shampoo",
+    "ar": "شامبو منقي بإكليل الجبل"
+   },
+   "description": {
+    "fr": "Le romarin assainit le cuir chevelu et limite les pellicules. Cheveux légers et frais.",
+    "en": "Rosemary soothes the scalp and keeps flakes away. Hair feels light and fresh.",
+    "ar": "إكليل الجبل ينقي فروة الرأس ويحد من القشرة. شعر خفيف ومنعش."
+   },
+   "howToUse": {
+    "fr": "Appliquer sur cheveux mouillés ou secs selon le produit, masser doucement puis rincer si nécessaire.",
+    "en": "Apply to wet or dry hair depending on the product, massage gently, then rinse if needed.",
+    "ar": "يوضع على الشعر المبلل أو الجاف حسب المنتج، يدلك بلطف ثم يشطف عند الحاجة."
+   },
+   "ingredients": null,
+   "sizeLabel": "250 ml",
+   "price": 69,
+   "promoPrice": null,
+   "stock": 6,
+   "isActive": true,
+   "isFeatured": false,
+   "isNew": false,
+   "shape": "bottle",
+   "widthCm": 6.5,
+   "heightCm": 19,
+   "depthCm": 4.2,
+   "image": "products/shampooing-romarin.webp",
+   "gallery": [],
+   "placement": {
+    "fixtureId": "wall-hair",
+    "level": 1,
+    "slot": 2,
+    "facings": 3
+   },
+   "variants": [],
+   "displayVariants": false
+  },
+  {
+   "id": "huile-argan-cheveux",
+   "slug": "huile-argan-cheveux",
+   "categoryId": "hair",
+   "brand": "Argania",
+   "name": {
+    "fr": "Huile d’argan sublimatrice",
+    "en": "Argan hair oil",
+    "ar": "زيت الأركان للشعر"
+   },
+   "description": {
+    "fr": "Quelques gouttes sur les pointes pour nourrir, discipliner et faire briller. 100 % argan bio du Souss.",
+    "en": "A few drops on the ends to nourish, tame and add shine. 100% organic argan from the Souss.",
+    "ar": "بضع قطرات على الأطراف للتغذية والترويض واللمعان. أركان عضوي من سوس 100٪."
+   },
+   "howToUse": {
+    "fr": "Appliquer sur cheveux mouillés ou secs selon le produit, masser doucement puis rincer si nécessaire.",
+    "en": "Apply to wet or dry hair depending on the product, massage gently, then rinse if needed.",
+    "ar": "يوضع على الشعر المبلل أو الجاف حسب المنتج، يدلك بلطف ثم يشطف عند الحاجة."
+   },
+   "ingredients": null,
+   "sizeLabel": "100 ml",
+   "price": 149,
+   "promoPrice": null,
+   "stock": 14,
+   "isActive": true,
+   "isFeatured": true,
+   "isNew": false,
+   "shape": "dropper",
+   "widthCm": 5,
+   "heightCm": 14,
+   "depthCm": 5,
+   "image": "products/huile-argan-cheveux.webp",
+   "gallery": [],
+   "placement": {
+    "fixtureId": "wall-hair",
+    "level": 2,
+    "slot": 0,
+    "facings": 3
+   },
+   "variants": [],
+   "displayVariants": false
+  },
+  {
+   "id": "huile-ricin",
+   "slug": "huile-ricin",
+   "categoryId": "hair",
+   "brand": "Argania",
+   "name": {
+    "fr": "Huile de ricin fortifiante",
+    "en": "Strengthening castor oil",
+    "ar": "زيت الخروع المقوي"
+   },
+   "description": {
+    "fr": "Un soin traditionnel pour fortifier les cheveux, les cils et les sourcils.",
+    "en": "A traditional treatment to strengthen hair, lashes and brows.",
+    "ar": "علاج تقليدي لتقوية الشعر والرموش والحواجب."
+   },
+   "howToUse": {
+    "fr": "Appliquer sur cheveux mouillés ou secs selon le produit, masser doucement puis rincer si nécessaire.",
+    "en": "Apply to wet or dry hair depending on the product, massage gently, then rinse if needed.",
+    "ar": "يوضع على الشعر المبلل أو الجاف حسب المنتج، يدلك بلطف ثم يشطف عند الحاجة."
+   },
+   "ingredients": null,
+   "sizeLabel": "100 ml",
+   "price": 69,
+   "promoPrice": null,
+   "stock": 35,
+   "isActive": true,
+   "isFeatured": false,
+   "isNew": false,
+   "shape": "dropper",
+   "widthCm": 4.5,
+   "heightCm": 13,
+   "depthCm": 4.5,
+   "image": "products/huile-ricin.webp",
+   "gallery": [],
+   "placement": {
+    "fixtureId": "wall-hair",
+    "level": 2,
+    "slot": 1,
+    "facings": 2
+   },
+   "variants": [],
+   "displayVariants": false
+  },
+  {
+   "id": "serum-soyeux",
+   "slug": "serum-soyeux",
+   "categoryId": "hair",
+   "brand": "Lys & Lune",
+   "name": {
+    "fr": "Sérum soyeux anti-frisottis",
+    "en": "Silky anti-frizz serum",
+    "ar": "سيروم ناعم ضد التجعد"
+   },
+   "description": {
+    "fr": "Lisse la fibre et protège de l’humidité pour des cheveux disciplinés toute la journée.",
+    "en": "Smooths strands and shields them from humidity so hair stays sleek all day.",
+    "ar": "ينعّم الشعر ويحميه من الرطوبة ليبقى مرتباً طوال اليوم."
+   },
+   "howToUse": {
+    "fr": "Appliquer sur cheveux mouillés ou secs selon le produit, masser doucement puis rincer si nécessaire.",
+    "en": "Apply to wet or dry hair depending on the product, massage gently, then rinse if needed.",
+    "ar": "يوضع على الشعر المبلل أو الجاف حسب المنتج، يدلك بلطف ثم يشطف عند الحاجة."
+   },
+   "ingredients": null,
+   "sizeLabel": "50 ml",
+   "price": 119,
+   "promoPrice": null,
+   "stock": 34,
+   "isActive": true,
+   "isFeatured": false,
+   "isNew": true,
+   "shape": "pump",
+   "widthCm": 4.5,
+   "heightCm": 13,
+   "depthCm": 4.5,
+   "image": "products/serum-soyeux.webp",
+   "gallery": [],
+   "placement": {
+    "fixtureId": "wall-hair",
+    "level": 2,
+    "slot": 2,
+    "facings": 3
+   },
+   "variants": [],
+   "displayVariants": false
+  },
+  {
+   "id": "masque-keratine",
+   "slug": "masque-keratine",
+   "categoryId": "hair",
+   "brand": "Lys & Lune",
+   "name": {
+    "fr": "Masque réparateur à la kératine",
+    "en": "Keratin repair mask",
+    "ar": "ماسك مرمم بالكيراتين"
+   },
+   "description": {
+    "fr": "Un masque crémeux qui répare les cheveux abîmés en cinq minutes de pose.",
+    "en": "A creamy mask that repairs damaged hair in five minutes.",
+    "ar": "ماسك كريمي يرمم الشعر التالف في خمس دقائق."
+   },
+   "howToUse": {
+    "fr": "Appliquer sur cheveux mouillés ou secs selon le produit, masser doucement puis rincer si nécessaire.",
+    "en": "Apply to wet or dry hair depending on the product, massage gently, then rinse if needed.",
+    "ar": "يوضع على الشعر المبلل أو الجاف حسب المنتج، يدلك بلطف ثم يشطف عند الحاجة."
+   },
+   "ingredients": null,
+   "sizeLabel": "250 ml",
+   "price": 129,
+   "promoPrice": null,
+   "stock": 6,
+   "isActive": true,
+   "isFeatured": false,
+   "isNew": false,
+   "shape": "jar",
+   "widthCm": 9,
+   "heightCm": 7.5,
+   "depthCm": 9,
+   "image": "products/masque-keratine.webp",
+   "gallery": [],
+   "placement": {
+    "fixtureId": "wall-hair",
+    "level": 3,
+    "slot": 0,
+    "facings": 2
+   },
+   "variants": [],
+   "displayVariants": false
+  },
+  {
+   "id": "creme-boucles",
+   "slug": "creme-boucles",
+   "categoryId": "hair",
+   "brand": "Velours",
+   "name": {
+    "fr": "Crème sans rinçage pour boucles",
+    "en": "Leave-in curl cream",
+    "ar": "كريم بدون شطف للشعر المجعد"
+   },
+   "description": {
+    "fr": "Définit les boucles et les hydrate sans effet carton. Convient aux cheveux bouclés à crépus.",
+    "en": "Defines and hydrates curls with no crunch. For curly to coily hair.",
+    "ar": "يحدد التموجات ويرطبها دون تيبس. مناسب للشعر المجعد والكثيف."
+   },
+   "howToUse": {
+    "fr": "Appliquer sur cheveux mouillés ou secs selon le produit, masser doucement puis rincer si nécessaire.",
+    "en": "Apply to wet or dry hair depending on the product, massage gently, then rinse if needed.",
+    "ar": "يوضع على الشعر المبلل أو الجاف حسب المنتج، يدلك بلطف ثم يشطف عند الحاجة."
+   },
+   "ingredients": null,
+   "sizeLabel": "200 ml",
+   "price": 99,
+   "promoPrice": null,
+   "stock": 28,
+   "isActive": true,
+   "isFeatured": false,
+   "isNew": false,
+   "shape": "tube",
+   "widthCm": 5.5,
+   "heightCm": 18,
+   "depthCm": 3.5,
+   "image": "products/creme-boucles.webp",
+   "gallery": [],
+   "placement": {
+    "fixtureId": "wall-hair",
+    "level": 3,
+    "slot": 1,
+    "facings": 3
+   },
+   "variants": [],
+   "displayVariants": false
+  },
+  {
+   "id": "creme-coiffante",
+   "slug": "creme-coiffante",
+   "categoryId": "hair",
+   "brand": "Velours",
+   "name": {
+    "fr": "Crème coiffante définition",
+    "en": "Defining styling cream",
+    "ar": "كريم تصفيف محدد"
+   },
+   "description": {
+    "fr": "Texture souple pour sculpter les mèches avec une tenue naturelle.",
+    "en": "A flexible texture that shapes strands with a natural hold.",
+    "ar": "قوام مرن لتشكيل الخصلات بثبات طبيعي."
+   },
+   "howToUse": {
+    "fr": "Appliquer sur cheveux mouillés ou secs selon le produit, masser doucement puis rincer si nécessaire.",
+    "en": "Apply to wet or dry hair depending on the product, massage gently, then rinse if needed.",
+    "ar": "يوضع على الشعر المبلل أو الجاف حسب المنتج، يدلك بلطف ثم يشطف عند الحاجة."
+   },
+   "ingredients": null,
+   "sizeLabel": "150 ml",
+   "price": 79,
+   "promoPrice": null,
+   "stock": 12,
+   "isActive": true,
+   "isFeatured": false,
+   "isNew": false,
+   "shape": "jar",
+   "widthCm": 8,
+   "heightCm": 6,
+   "depthCm": 8,
+   "image": "products/creme-coiffante.webp",
+   "gallery": [],
+   "placement": {
+    "fixtureId": "wall-hair",
+    "level": 3,
+    "slot": 2,
+    "facings": 2
+   },
+   "variants": [],
+   "displayVariants": false
+  },
+  {
+   "id": "spray-thermo",
+   "slug": "spray-thermo",
+   "categoryId": "hair",
+   "brand": "Velours",
+   "name": {
+    "fr": "Spray thermo-protecteur",
+    "en": "Heat protection spray",
+    "ar": "بخاخ الحماية من الحرارة"
+   },
+   "description": {
+    "fr": "Protège jusqu’à 230 °C avant le lisseur ou le sèche-cheveux.",
+    "en": "Protects up to 230 °C before straightening or blow-drying.",
+    "ar": "يحمي حتى 230 درجة قبل المكواة أو مجفف الشعر."
+   },
+   "howToUse": {
+    "fr": "Appliquer sur cheveux mouillés ou secs selon le produit, masser doucement puis rincer si nécessaire.",
+    "en": "Apply to wet or dry hair depending on the product, massage gently, then rinse if needed.",
+    "ar": "يوضع على الشعر المبلل أو الجاف حسب المنتج، يدلك بلطف ثم يشطف عند الحاجة."
+   },
+   "ingredients": null,
+   "sizeLabel": "150 ml",
+   "price": 109,
+   "promoPrice": null,
+   "stock": 7,
+   "isActive": true,
+   "isFeatured": false,
+   "isNew": false,
+   "shape": "spray",
+   "widthCm": 5,
+   "heightCm": 19,
+   "depthCm": 5,
+   "image": "products/spray-thermo.webp",
+   "gallery": [],
+   "placement": {
+    "fixtureId": "wall-hair",
+    "level": 4,
+    "slot": 0,
+    "facings": 3
+   },
+   "variants": [],
+   "displayVariants": false
+  },
+  {
+   "id": "brume-cheveux",
+   "slug": "brume-cheveux",
+   "categoryId": "hair",
+   "brand": "Maison Rosée",
+   "name": {
+    "fr": "Brume parfumée pour cheveux",
+    "en": "Scented hair mist",
+    "ar": "رذاذ معطر للشعر"
+   },
+   "description": {
+    "fr": "Un voile léger à la rose et au musc blanc qui parfume la chevelure toute la journée.",
+    "en": "A light veil of rose and white musk that scents your hair all day.",
+    "ar": "رذاذ خفيف بالورد والمسك الأبيض يعطر الشعر طوال اليوم."
+   },
+   "howToUse": {
+    "fr": "Appliquer sur cheveux mouillés ou secs selon le produit, masser doucement puis rincer si nécessaire.",
+    "en": "Apply to wet or dry hair depending on the product, massage gently, then rinse if needed.",
+    "ar": "يوضع على الشعر المبلل أو الجاف حسب المنتج، يدلك بلطف ثم يشطف عند الحاجة."
+   },
+   "ingredients": null,
+   "sizeLabel": "50 ml",
+   "price": 139,
+   "promoPrice": null,
+   "stock": 32,
+   "isActive": true,
+   "isFeatured": false,
+   "isNew": false,
+   "shape": "spray",
+   "widthCm": 4,
+   "heightCm": 13,
+   "depthCm": 4,
+   "image": "products/brume-cheveux.webp",
+   "gallery": [],
+   "placement": {
+    "fixtureId": "wall-hair",
+    "level": 4,
+    "slot": 1,
+    "facings": 3
+   },
+   "variants": [],
+   "displayVariants": false
+  },
+  {
+   "id": "eau-micellaire-rose",
+   "slug": "eau-micellaire-rose",
+   "categoryId": "skin",
+   "brand": "Maison Rosée",
+   "name": {
+    "fr": "Eau micellaire à la rose",
+    "en": "Rose micellar water",
+    "ar": "ماء ميسيلار بالورد"
+   },
+   "description": {
+    "fr": "Démaquille et apaise en un geste, sans rinçage. Idéale pour les peaux sensibles.",
+    "en": "Removes makeup and soothes in one step, no rinsing. Ideal for sensitive skin.",
+    "ar": "يزيل المكياج ويهدئ البشرة بخطوة واحدة دون شطف. مثالي للبشرة الحساسة."
+   },
+   "howToUse": {
+    "fr": "Appliquer matin et/ou soir sur une peau propre, en évitant le contour des yeux.",
+    "en": "Apply morning and/or evening to clean skin, avoiding the eye area.",
+    "ar": "يوضع صباحاً و/أو مساءً على بشرة نظيفة مع تجنب محيط العين."
+   },
+   "ingredients": null,
+   "sizeLabel": "400 ml",
+   "price": 85,
+   "promoPrice": null,
+   "stock": 9,
+   "isActive": true,
+   "isFeatured": false,
+   "isNew": false,
+   "shape": "bottle",
+   "widthCm": 7,
+   "heightCm": 22,
+   "depthCm": 5,
+   "image": "products/eau-micellaire-rose.webp",
+   "gallery": [],
+   "placement": {
+    "fixtureId": "wall-skin",
+    "level": 0,
+    "slot": 0,
+    "facings": 3
+   },
+   "variants": [],
+   "displayVariants": false
+  },
+  {
+   "id": "gel-nettoyant",
+   "slug": "gel-nettoyant",
+   "categoryId": "skin",
+   "brand": "Nacre",
+   "name": {
+    "fr": "Gel nettoyant doux",
+    "en": "Gentle cleansing gel",
+    "ar": "جل منظف لطيف"
+   },
+   "description": {
+    "fr": "Un gel frais qui nettoie sans tirailler et respecte le film hydrolipidique.",
+    "en": "A fresh gel that cleanses without tightness and respects the skin barrier.",
+    "ar": "جل منعش ينظف دون شد ويحافظ على حاجز البشرة."
+   },
+   "howToUse": {
+    "fr": "Appliquer matin et/ou soir sur une peau propre, en évitant le contour des yeux.",
+    "en": "Apply morning and/or evening to clean skin, avoiding the eye area.",
+    "ar": "يوضع صباحاً و/أو مساءً على بشرة نظيفة مع تجنب محيط العين."
+   },
+   "ingredients": null,
+   "sizeLabel": "200 ml",
+   "price": 99,
+   "promoPrice": null,
+   "stock": 21,
+   "isActive": true,
+   "isFeatured": false,
+   "isNew": false,
+   "shape": "pump",
+   "widthCm": 6,
+   "heightCm": 18,
+   "depthCm": 6,
+   "image": "products/gel-nettoyant.webp",
+   "gallery": [],
+   "placement": {
+    "fixtureId": "wall-skin",
+    "level": 0,
+    "slot": 1,
+    "facings": 3
+   },
+   "variants": [],
+   "displayVariants": false
+  },
+  {
+   "id": "lotion-eau-de-rose",
+   "slug": "lotion-eau-de-rose",
+   "categoryId": "skin",
+   "brand": "Maison Rosée",
+   "name": {
+    "fr": "Lotion tonique à l’eau de rose",
+    "en": "Rose water toner",
+    "ar": "تونر ماء الورد"
+   },
+   "description": {
+    "fr": "Eau de rose distillée de la vallée du Dadès. Tonifie et resserre les pores.",
+    "en": "Rose water distilled in the Dades valley. Tones and refines pores.",
+    "ar": "ماء ورد مقطر من وادي دادس. ينعش البشرة ويضيق المسام."
+   },
+   "howToUse": {
+    "fr": "Appliquer matin et/ou soir sur une peau propre, en évitant le contour des yeux.",
+    "en": "Apply morning and/or evening to clean skin, avoiding the eye area.",
+    "ar": "يوضع صباحاً و/أو مساءً على بشرة نظيفة مع تجنب محيط العين."
+   },
+   "ingredients": null,
+   "sizeLabel": "200 ml",
+   "price": 69,
+   "promoPrice": null,
+   "stock": 23,
+   "isActive": true,
+   "isFeatured": false,
+   "isNew": false,
+   "shape": "bottle",
+   "widthCm": 5.5,
+   "heightCm": 17,
+   "depthCm": 5.5,
+   "image": "products/lotion-eau-de-rose.webp",
+   "gallery": [],
+   "placement": {
+    "fixtureId": "wall-skin",
+    "level": 1,
+    "slot": 0,
+    "facings": 3
+   },
+   "variants": [],
+   "displayVariants": false
+  },
+  {
+   "id": "masque-argile-rose",
+   "slug": "masque-argile-rose",
+   "categoryId": "skin",
+   "brand": "Atlas Botanica",
+   "name": {
+    "fr": "Masque purifiant à l’argile rose",
+    "en": "Pink clay purifying mask",
+    "ar": "ماسك منقي بالطين الوردي"
+   },
+   "description": {
+    "fr": "Absorbe l’excès de sébum et unifie le teint en dix minutes.",
+    "en": "Absorbs excess oil and evens the complexion in ten minutes.",
+    "ar": "يمتص الزيوت الزائدة ويوحد لون البشرة في عشر دقائق."
+   },
+   "howToUse": {
+    "fr": "Appliquer matin et/ou soir sur une peau propre, en évitant le contour des yeux.",
+    "en": "Apply morning and/or evening to clean skin, avoiding the eye area.",
+    "ar": "يوضع صباحاً و/أو مساءً على بشرة نظيفة مع تجنب محيط العين."
+   },
+   "ingredients": null,
+   "sizeLabel": "75 ml",
+   "price": 89,
+   "promoPrice": null,
+   "stock": 27,
+   "isActive": true,
+   "isFeatured": false,
+   "isNew": false,
+   "shape": "jar",
+   "widthCm": 7.5,
+   "heightCm": 6,
+   "depthCm": 7.5,
+   "image": "products/masque-argile-rose.webp",
+   "gallery": [],
+   "placement": {
+    "fixtureId": "wall-skin",
+    "level": 1,
+    "slot": 1,
+    "facings": 2
+   },
+   "variants": [],
+   "displayVariants": false
+  },
+  {
+   "id": "masques-tissu",
+   "slug": "masques-tissu",
+   "categoryId": "skin",
+   "brand": "Aube",
+   "name": {
+    "fr": "Masques tissu hydratants (lot de 5)",
+    "en": "Hydrating sheet masks (set of 5)",
+    "ar": "أقنعة قماشية مرطبة (5 قطع)"
+   },
+   "description": {
+    "fr": "Cinq masques imbibés de sérum à l’acide hyaluronique pour un coup d’éclat immédiat.",
+    "en": "Five masks soaked in hyaluronic serum for an instant glow.",
+    "ar": "خمسة أقنعة مشبعة بسيروم الهيالورونيك لإشراقة فورية."
+   },
+   "howToUse": {
+    "fr": "Appliquer matin et/ou soir sur une peau propre, en évitant le contour des yeux.",
+    "en": "Apply morning and/or evening to clean skin, avoiding the eye area.",
+    "ar": "يوضع صباحاً و/أو مساءً على بشرة نظيفة مع تجنب محيط العين."
+   },
+   "ingredients": null,
+   "sizeLabel": "5 × 25 ml",
+   "price": 99,
+   "promoPrice": null,
+   "stock": 28,
+   "isActive": true,
+   "isFeatured": false,
+   "isNew": false,
+   "shape": "box",
+   "widthCm": 12,
+   "heightCm": 17,
+   "depthCm": 2,
+   "image": "products/masques-tissu.webp",
+   "gallery": [],
+   "placement": {
+    "fixtureId": "wall-skin",
+    "level": 1,
+    "slot": 2,
+    "facings": 2
+   },
+   "variants": [],
+   "displayVariants": false
+  },
+  {
+   "id": "serum-vitamine-c",
+   "slug": "serum-vitamine-c",
+   "categoryId": "skin",
+   "brand": "Nacre",
+   "name": {
+    "fr": "Sérum éclat vitamine C",
+    "en": "Vitamin C glow serum",
+    "ar": "سيروم الإشراقة بفيتامين سي"
+   },
+   "description": {
+    "fr": "15 % de vitamine C stabilisée pour estomper les taches et raviver l’éclat.",
+    "en": "15% stabilised vitamin C to fade dark spots and revive radiance.",
+    "ar": "15٪ فيتامين سي مستقر لتفتيح البقع وإعادة الإشراقة."
+   },
+   "howToUse": {
+    "fr": "Appliquer matin et/ou soir sur une peau propre, en évitant le contour des yeux.",
+    "en": "Apply morning and/or evening to clean skin, avoiding the eye area.",
+    "ar": "يوضع صباحاً و/أو مساءً على بشرة نظيفة مع تجنب محيط العين."
+   },
+   "ingredients": null,
+   "sizeLabel": "30 ml",
+   "price": 189,
+   "promoPrice": 159,
+   "stock": 24,
+   "isActive": true,
+   "isFeatured": true,
+   "isNew": false,
+   "shape": "dropper",
+   "widthCm": 3.6,
+   "heightCm": 10.5,
+   "depthCm": 3.6,
+   "image": "products/serum-vitamine-c.webp",
+   "gallery": [],
+   "placement": {
+    "fixtureId": "wall-skin",
+    "level": 2,
+    "slot": 0,
+    "facings": 3
+   },
+   "variants": [],
+   "displayVariants": false
+  },
+  {
+   "id": "serum-hyaluronique",
+   "slug": "serum-hyaluronique",
+   "categoryId": "skin",
+   "brand": "Nacre",
+   "name": {
+    "fr": "Sérum hydratant acide hyaluronique",
+    "en": "Hyaluronic acid serum",
+    "ar": "سيروم حمض الهيالورونيك"
+   },
+   "description": {
+    "fr": "Repulpe et hydrate en profondeur grâce à trois poids d’acide hyaluronique.",
+    "en": "Plumps and deeply hydrates with three weights of hyaluronic acid.",
+    "ar": "يملأ البشرة ويرطبها بعمق بثلاثة أوزان من حمض الهيالورونيك."
+   },
+   "howToUse": {
+    "fr": "Appliquer matin et/ou soir sur une peau propre, en évitant le contour des yeux.",
+    "en": "Apply morning and/or evening to clean skin, avoiding the eye area.",
+    "ar": "يوضع صباحاً و/أو مساءً على بشرة نظيفة مع تجنب محيط العين."
+   },
+   "ingredients": null,
+   "sizeLabel": "30 ml",
+   "price": 179,
+   "promoPrice": null,
+   "stock": 11,
+   "isActive": true,
+   "isFeatured": false,
+   "isNew": false,
+   "shape": "dropper",
+   "widthCm": 3.6,
+   "heightCm": 10.5,
+   "depthCm": 3.6,
+   "image": "products/serum-hyaluronique.webp",
+   "gallery": [],
+   "placement": {
+    "fixtureId": "wall-skin",
+    "level": 2,
+    "slot": 1,
+    "facings": 3
+   },
+   "variants": [],
+   "displayVariants": false
+  },
+  {
+   "id": "huile-visage-argan",
+   "slug": "huile-visage-argan",
+   "categoryId": "skin",
+   "brand": "Argania",
+   "name": {
+    "fr": "Huile visage argan pure",
+    "en": "Pure argan face oil",
+    "ar": "زيت الأركان النقي للوجه"
+   },
+   "description": {
+    "fr": "Pressée à froid, elle nourrit, assouplit et protège la peau du dessèchement.",
+    "en": "Cold-pressed to nourish, soften and protect skin from dryness.",
+    "ar": "معصور على البارد، يغذي البشرة ويليّنها ويحميها من الجفاف."
+   },
+   "howToUse": {
+    "fr": "Appliquer matin et/ou soir sur une peau propre, en évitant le contour des yeux.",
+    "en": "Apply morning and/or evening to clean skin, avoiding the eye area.",
+    "ar": "يوضع صباحاً و/أو مساءً على بشرة نظيفة مع تجنب محيط العين."
+   },
+   "ingredients": null,
+   "sizeLabel": "30 ml",
+   "price": 159,
+   "promoPrice": null,
+   "stock": 13,
+   "isActive": true,
+   "isFeatured": false,
+   "isNew": false,
+   "shape": "dropper",
+   "widthCm": 3.6,
+   "heightCm": 10.5,
+   "depthCm": 3.6,
+   "image": "products/huile-visage-argan.webp",
+   "gallery": [],
+   "placement": {
+    "fixtureId": "wall-skin",
+    "level": 2,
+    "slot": 2,
+    "facings": 2
+   },
+   "variants": [],
+   "displayVariants": false
+  },
+  {
+   "id": "creme-de-jour",
+   "slug": "creme-de-jour",
+   "categoryId": "skin",
+   "brand": "Aube",
+   "name": {
+    "fr": "Crème de jour hydratante",
+    "en": "Moisturising day cream",
+    "ar": "كريم النهار المرطب"
+   },
+   "description": {
+    "fr": "Hydrate 24 h et prépare la peau au maquillage. Fini velouté, non gras.",
+    "en": "Hydrates for 24 hours and preps skin for makeup. Velvety, non-greasy finish.",
+    "ar": "يرطب لمدة 24 ساعة ويهيئ البشرة للمكياج. ملمس مخملي غير دهني."
+   },
+   "howToUse": {
+    "fr": "Appliquer matin et/ou soir sur une peau propre, en évitant le contour des yeux.",
+    "en": "Apply morning and/or evening to clean skin, avoiding the eye area.",
+    "ar": "يوضع صباحاً و/أو مساءً على بشرة نظيفة مع تجنب محيط العين."
+   },
+   "ingredients": null,
+   "sizeLabel": "50 ml",
+   "price": 159,
+   "promoPrice": null,
+   "stock": 15,
+   "isActive": true,
+   "isFeatured": false,
+   "isNew": false,
+   "shape": "jar",
+   "widthCm": 6.5,
+   "heightCm": 5,
+   "depthCm": 6.5,
+   "image": "products/creme-de-jour.webp",
+   "gallery": [],
+   "placement": {
+    "fixtureId": "wall-skin",
+    "level": 3,
+    "slot": 0,
+    "facings": 2
+   },
+   "variants": [],
+   "displayVariants": false
+  },
+  {
+   "id": "creme-de-nuit",
+   "slug": "creme-de-nuit",
+   "categoryId": "skin",
+   "brand": "Aube",
+   "name": {
+    "fr": "Crème de nuit régénérante",
+    "en": "Regenerating night cream",
+    "ar": "كريم الليل المجدد"
+   },
+   "description": {
+    "fr": "Agit pendant le sommeil pour lisser les traits et réveiller une peau reposée.",
+    "en": "Works overnight to smooth features so you wake up to rested skin.",
+    "ar": "يعمل أثناء النوم لتنعيم الملامح والاستيقاظ ببشرة مرتاحة."
+   },
+   "howToUse": {
+    "fr": "Appliquer matin et/ou soir sur une peau propre, en évitant le contour des yeux.",
+    "en": "Apply morning and/or evening to clean skin, avoiding the eye area.",
+    "ar": "يوضع صباحاً و/أو مساءً على بشرة نظيفة مع تجنب محيط العين."
+   },
+   "ingredients": null,
+   "sizeLabel": "50 ml",
+   "price": 179,
+   "promoPrice": null,
+   "stock": 33,
+   "isActive": true,
+   "isFeatured": false,
+   "isNew": false,
+   "shape": "jar",
+   "widthCm": 6.5,
+   "heightCm": 5,
+   "depthCm": 6.5,
+   "image": "products/creme-de-nuit.webp",
+   "gallery": [],
+   "placement": {
+    "fixtureId": "wall-skin",
+    "level": 3,
+    "slot": 1,
+    "facings": 2
+   },
+   "variants": [],
+   "displayVariants": false
+  },
+  {
+   "id": "contour-yeux",
+   "slug": "contour-yeux",
+   "categoryId": "skin",
+   "brand": "Aube",
+   "name": {
+    "fr": "Contour des yeux défatigant",
+    "en": "Refreshing eye cream",
+    "ar": "كريم محيط العين المنعش"
+   },
+   "description": {
+    "fr": "Embout métal froid pour décongestionner les poches et atténuer les cernes.",
+    "en": "A cool metal tip to depuff and soften dark circles.",
+    "ar": "رأس معدني بارد لتخفيف الانتفاخ والهالات السوداء."
+   },
+   "howToUse": {
+    "fr": "Appliquer matin et/ou soir sur une peau propre, en évitant le contour des yeux.",
+    "en": "Apply morning and/or evening to clean skin, avoiding the eye area.",
+    "ar": "يوضع صباحاً و/أو مساءً على بشرة نظيفة مع تجنب محيط العين."
+   },
+   "ingredients": null,
+   "sizeLabel": "15 ml",
+   "price": 139,
+   "promoPrice": null,
+   "stock": 20,
+   "isActive": true,
+   "isFeatured": false,
+   "isNew": false,
+   "shape": "tube",
+   "widthCm": 3,
+   "heightCm": 11,
+   "depthCm": 2,
+   "image": "products/contour-yeux.webp",
+   "gallery": [],
+   "placement": {
+    "fixtureId": "wall-skin",
+    "level": 3,
+    "slot": 2,
+    "facings": 3
+   },
+   "variants": [],
+   "displayVariants": false
+  },
+  {
+   "id": "fluide-solaire",
+   "slug": "fluide-solaire",
+   "categoryId": "skin",
+   "brand": "Saphir",
+   "name": {
+    "fr": "Fluide solaire SPF 50+",
+    "en": "SPF 50+ sun fluid",
+    "ar": "سائل واقي من الشمس SPF 50+"
+   },
+   "description": {
+    "fr": "Très haute protection, texture invisible et sans traces blanches.",
+    "en": "Very high protection with an invisible texture and no white cast.",
+    "ar": "حماية عالية جداً بقوام غير مرئي ودون آثار بيضاء."
+   },
+   "howToUse": {
+    "fr": "Appliquer matin et/ou soir sur une peau propre, en évitant le contour des yeux.",
+    "en": "Apply morning and/or evening to clean skin, avoiding the eye area.",
+    "ar": "يوضع صباحاً و/أو مساءً على بشرة نظيفة مع تجنب محيط العين."
+   },
+   "ingredients": null,
+   "sizeLabel": "50 ml",
+   "price": 149,
+   "promoPrice": null,
+   "stock": 9,
+   "isActive": true,
+   "isFeatured": false,
+   "isNew": false,
+   "shape": "tube",
+   "widthCm": 5,
+   "heightCm": 14,
+   "depthCm": 3,
+   "image": "products/fluide-solaire.webp",
+   "gallery": [],
+   "placement": {
+    "fixtureId": "wall-skin",
+    "level": 4,
+    "slot": 0,
+    "facings": 3
+   },
+   "variants": [],
+   "displayVariants": false
+  },
+  {
+   "id": "baume-levres",
+   "slug": "baume-levres",
+   "categoryId": "skin",
+   "brand": "Nacre",
+   "name": {
+    "fr": "Baume à lèvres karité",
+    "en": "Shea lip balm",
+    "ar": "مرطب الشفاه بالشيا"
+   },
+   "description": {
+    "fr": "Répare et protège les lèvres sèches. Au beurre de karité et à la cire d’abeille.",
+    "en": "Repairs and protects dry lips with shea butter and beeswax.",
+    "ar": "يرمم الشفاه الجافة ويحميها بزبدة الشيا وشمع العسل."
+   },
+   "howToUse": {
+    "fr": "Appliquer matin et/ou soir sur une peau propre, en évitant le contour des yeux.",
+    "en": "Apply morning and/or evening to clean skin, avoiding the eye area.",
+    "ar": "يوضع صباحاً و/أو مساءً على بشرة نظيفة مع تجنب محيط العين."
+   },
+   "ingredients": null,
+   "sizeLabel": "4,5 g",
+   "price": 39,
+   "promoPrice": null,
+   "stock": 22,
+   "isActive": true,
+   "isFeatured": false,
+   "isNew": false,
+   "shape": "lipstick",
+   "widthCm": 2,
+   "heightCm": 7.5,
+   "depthCm": 2,
+   "image": "products/baume-levres.webp",
+   "gallery": [],
+   "placement": {
+    "fixtureId": "wall-skin",
+    "level": 4,
+    "slot": 1,
+    "facings": 4
+   },
+   "variants": [],
+   "displayVariants": false
+  },
+  {
+   "id": "dissolvant-doux",
+   "slug": "dissolvant-doux",
+   "categoryId": "nails",
+   "brand": "Nacre",
+   "name": {
+    "fr": "Dissolvant doux sans acétone",
+    "en": "Gentle acetone-free remover",
+    "ar": "مزيل طلاء لطيف بدون أسيتون"
+   },
+   "description": {
+    "fr": "Retire le vernis sans dessécher l’ongle, à l’huile d’amande douce.",
+    "en": "Removes polish without drying nails, with sweet almond oil.",
+    "ar": "يزيل الطلاء دون تجفيف الأظافر بزيت اللوز الحلو."
+   },
+   "howToUse": {
+    "fr": "Appliquer sur des mains et des ongles propres. Laisser sécher entre deux couches.",
+    "en": "Apply to clean hands and nails. Let dry between coats.",
+    "ar": "يوضع على يدين وأظافر نظيفة. يترك ليجف بين الطبقتين."
+   },
+   "ingredients": null,
+   "sizeLabel": "125 ml",
+   "price": 39,
+   "promoPrice": null,
+   "stock": 20,
+   "isActive": true,
+   "isFeatured": false,
+   "isNew": false,
+   "shape": "bottle",
+   "widthCm": 5.5,
+   "heightCm": 14,
+   "depthCm": 5.5,
+   "image": "products/dissolvant-doux.webp",
+   "gallery": [],
+   "placement": {
+    "fixtureId": "wall-nails",
+    "level": 0,
+    "slot": 0,
+    "facings": 3
+   },
+   "variants": [],
+   "displayVariants": false
+  },
+  {
+   "id": "trousse-manucure",
+   "slug": "trousse-manucure",
+   "categoryId": "nails",
+   "brand": "Saphir",
+   "name": {
+    "fr": "Trousse manucure 7 pièces",
+    "en": "7-piece manicure kit",
+    "ar": "طقم مانيكير 7 قطع"
+   },
+   "description": {
+    "fr": "Ciseaux, coupe-ongles, repousse-cuticules et lime dans un étui en simili cuir.",
+    "en": "Scissors, clippers, cuticle pusher and file in a faux-leather case.",
+    "ar": "مقص وقصّافة ودافع الجلد ومبرد في حافظة من الجلد الصناعي."
+   },
+   "howToUse": {
+    "fr": "Appliquer sur des mains et des ongles propres. Laisser sécher entre deux couches.",
+    "en": "Apply to clean hands and nails. Let dry between coats.",
+    "ar": "يوضع على يدين وأظافر نظيفة. يترك ليجف بين الطبقتين."
+   },
+   "ingredients": null,
+   "sizeLabel": "7 pièces",
+   "price": 89,
+   "promoPrice": null,
+   "stock": 12,
+   "isActive": true,
+   "isFeatured": false,
+   "isNew": false,
+   "shape": "pouch",
+   "widthCm": 10,
+   "heightCm": 15,
+   "depthCm": 3,
+   "image": "products/trousse-manucure.webp",
+   "gallery": [],
+   "placement": {
+    "fixtureId": "wall-nails",
+    "level": 0,
+    "slot": 1,
+    "facings": 2
+   },
+   "variants": [],
+   "displayVariants": false
+  },
+  {
+   "id": "creme-mains-rose",
+   "slug": "creme-mains-rose",
+   "categoryId": "nails",
+   "brand": "Maison Rosée",
+   "name": {
+    "fr": "Crème mains à la rose",
+    "en": "Rose hand cream",
+    "ar": "كريم اليدين بالورد"
+   },
+   "description": {
+    "fr": "Nourrit et parfume délicatement les mains. Pénètre en quelques secondes.",
+    "en": "Nourishes and delicately scents hands. Absorbs in seconds.",
+    "ar": "يغذي اليدين ويعطرهما برقة. يمتص في ثوان."
+   },
+   "howToUse": {
+    "fr": "Appliquer sur des mains et des ongles propres. Laisser sécher entre deux couches.",
+    "en": "Apply to clean hands and nails. Let dry between coats.",
+    "ar": "يوضع على يدين وأظافر نظيفة. يترك ليجف بين الطبقتين."
+   },
+   "ingredients": null,
+   "sizeLabel": "75 ml",
+   "price": 49,
+   "promoPrice": null,
+   "stock": 31,
+   "isActive": true,
+   "isFeatured": true,
+   "isNew": false,
+   "shape": "tube",
+   "widthCm": 4.5,
+   "heightCm": 15,
+   "depthCm": 2.8,
+   "image": "products/creme-mains-rose.webp",
+   "gallery": [],
+   "placement": {
+    "fixtureId": "wall-nails",
+    "level": 1,
+    "slot": 0,
+    "facings": 3
+   },
+   "variants": [],
+   "displayVariants": false
+  },
+  {
+   "id": "creme-mains-argan",
+   "slug": "creme-mains-argan",
+   "categoryId": "nails",
+   "brand": "Argania",
+   "name": {
+    "fr": "Crème mains réparatrice à l’argan",
+    "en": "Argan repair hand cream",
+    "ar": "كريم مرمم لليدين بالأركان"
+   },
+   "description": {
+    "fr": "Pour les mains très sèches et abîmées. Effet seconde peau.",
+    "en": "For very dry, damaged hands. A second-skin feel.",
+    "ar": "لليدين الجافتين جداً والمتضررتين. إحساس بطبقة ثانية من الجلد."
+   },
+   "howToUse": {
+    "fr": "Appliquer sur des mains et des ongles propres. Laisser sécher entre deux couches.",
+    "en": "Apply to clean hands and nails. Let dry between coats.",
+    "ar": "يوضع على يدين وأظافر نظيفة. يترك ليجف بين الطبقتين."
+   },
+   "ingredients": null,
+   "sizeLabel": "75 ml",
+   "price": 55,
+   "promoPrice": null,
+   "stock": 21,
+   "isActive": true,
+   "isFeatured": false,
+   "isNew": false,
+   "shape": "tube",
+   "widthCm": 4.5,
+   "heightCm": 15,
+   "depthCm": 2.8,
+   "image": "products/creme-mains-argan.webp",
+   "gallery": [],
+   "placement": {
+    "fixtureId": "wall-nails",
+    "level": 1,
+    "slot": 1,
+    "facings": 3
+   },
+   "variants": [],
+   "displayVariants": false
+  },
+  {
+   "id": "creme-mains-karite",
+   "slug": "creme-mains-karite",
+   "categoryId": "nails",
+   "brand": "Atlas Botanica",
+   "name": {
+    "fr": "Crème mains karité intense",
+    "en": "Intense shea hand cream",
+    "ar": "كريم اليدين المكثف بالشيا"
+   },
+   "description": {
+    "fr": "20 % de beurre de karité pour protéger les mains du froid et des lavages répétés.",
+    "en": "20% shea butter to protect hands from cold and frequent washing.",
+    "ar": "20٪ زبدة الشيا لحماية اليدين من البرد والغسل المتكرر."
+   },
+   "howToUse": {
+    "fr": "Appliquer sur des mains et des ongles propres. Laisser sécher entre deux couches.",
+    "en": "Apply to clean hands and nails. Let dry between coats.",
+    "ar": "يوضع على يدين وأظافر نظيفة. يترك ليجف بين الطبقتين."
+   },
+   "ingredients": null,
+   "sizeLabel": "100 ml",
+   "price": 59,
+   "promoPrice": null,
+   "stock": 18,
+   "isActive": true,
+   "isFeatured": false,
+   "isNew": false,
+   "shape": "tube",
+   "widthCm": 5,
+   "heightCm": 16,
+   "depthCm": 3,
+   "image": "products/creme-mains-karite.webp",
+   "gallery": [],
+   "placement": {
+    "fixtureId": "wall-nails",
+    "level": 1,
+    "slot": 2,
+    "facings": 3
+   },
+   "variants": [],
+   "displayVariants": false
+  },
+  {
+   "id": "gommage-mains",
+   "slug": "gommage-mains",
+   "categoryId": "nails",
+   "brand": "Lys & Lune",
+   "name": {
+    "fr": "Gommage mains fleur d’oranger",
+    "en": "Orange blossom hand scrub",
+    "ar": "مقشر اليدين بزهر البرتقال"
+   },
+   "description": {
+    "fr": "Sucre fin et fleur d’oranger pour des mains douces et lumineuses.",
+    "en": "Fine sugar and orange blossom for soft, luminous hands.",
+    "ar": "سكر ناعم وزهر البرتقال ليدين ناعمتين ومشرقتين."
+   },
+   "howToUse": {
+    "fr": "Appliquer sur des mains et des ongles propres. Laisser sécher entre deux couches.",
+    "en": "Apply to clean hands and nails. Let dry between coats.",
+    "ar": "يوضع على يدين وأظافر نظيفة. يترك ليجف بين الطبقتين."
+   },
+   "ingredients": null,
+   "sizeLabel": "100 ml",
+   "price": 69,
+   "promoPrice": null,
+   "stock": 8,
+   "isActive": true,
+   "isFeatured": false,
+   "isNew": false,
+   "shape": "jar",
+   "widthCm": 7,
+   "heightCm": 6,
+   "depthCm": 7,
+   "image": "products/gommage-mains.webp",
+   "gallery": [],
+   "placement": {
+    "fixtureId": "wall-nails",
+    "level": 2,
+    "slot": 0,
+    "facings": 2
+   },
+   "variants": [],
+   "displayVariants": false
+  },
+  {
+   "id": "huile-cuticules",
+   "slug": "huile-cuticules",
+   "categoryId": "nails",
+   "brand": "Lys & Lune",
+   "name": {
+    "fr": "Huile cuticules amande",
+    "en": "Almond cuticle oil",
+    "ar": "زيت الجلد المحيط بالأظافر باللوز"
+   },
+   "description": {
+    "fr": "Pinceau précis pour nourrir les cuticules et renforcer l’ongle.",
+    "en": "A precise brush to nourish cuticles and strengthen nails.",
+    "ar": "فرشاة دقيقة لتغذية الجلد المحيط وتقوية الأظافر."
+   },
+   "howToUse": {
+    "fr": "Appliquer sur des mains et des ongles propres. Laisser sécher entre deux couches.",
+    "en": "Apply to clean hands and nails. Let dry between coats.",
+    "ar": "يوضع على يدين وأظافر نظيفة. يترك ليجف بين الطبقتين."
+   },
+   "ingredients": null,
+   "sizeLabel": "15 ml",
+   "price": 55,
+   "promoPrice": null,
+   "stock": 13,
+   "isActive": true,
+   "isFeatured": false,
+   "isNew": false,
+   "shape": "polish",
+   "widthCm": 3.2,
+   "heightCm": 8.5,
+   "depthCm": 3.2,
+   "image": "products/huile-cuticules.webp",
+   "gallery": [],
+   "placement": {
+    "fixtureId": "wall-nails",
+    "level": 7,
+    "slot": 2,
+    "facings": 2
+   },
+   "variants": [],
+   "displayVariants": false
+  },
+  {
+   "id": "lime-verre",
+   "slug": "lime-verre",
+   "categoryId": "nails",
+   "brand": "Saphir",
+   "name": {
+    "fr": "Lime à ongles en verre",
+    "en": "Glass nail file",
+    "ar": "مبرد أظافر زجاجي"
+   },
+   "description": {
+    "fr": "Verre trempé qui lime sans effriter. Se nettoie à l’eau, dure des années.",
+    "en": "Tempered glass that files without splitting. Rinse clean, lasts for years.",
+    "ar": "زجاج مقوى يبرد دون تقشير. يغسل بالماء ويدوم سنوات."
+   },
+   "howToUse": {
+    "fr": "Appliquer sur des mains et des ongles propres. Laisser sécher entre deux couches.",
+    "en": "Apply to clean hands and nails. Let dry between coats.",
+    "ar": "يوضع على يدين وأظافر نظيفة. يترك ليجف بين الطبقتين."
+   },
+   "ingredients": null,
+   "sizeLabel": "14 cm",
+   "price": 35,
+   "promoPrice": null,
+   "stock": 6,
+   "isActive": true,
+   "isFeatured": false,
+   "isNew": false,
+   "shape": "box",
+   "widthCm": 5,
+   "heightCm": 18,
+   "depthCm": 1,
+   "image": "products/lime-verre.webp",
+   "gallery": [],
+   "placement": {
+    "fixtureId": "wall-nails",
+    "level": 2,
+    "slot": 1,
+    "facings": 2
+   },
+   "variants": [],
+   "displayVariants": false
+  },
+  {
+   "id": "base-fortifiante",
+   "slug": "base-fortifiante",
+   "categoryId": "nails",
+   "brand": "Velours",
+   "name": {
+    "fr": "Base fortifiante",
+    "en": "Strengthening base coat",
+    "ar": "طبقة أساس مقوية"
+   },
+   "description": {
+    "fr": "Prépare l’ongle, renforce les ongles cassants et prolonge la tenue du vernis.",
+    "en": "Preps nails, strengthens brittle ones and makes polish last longer.",
+    "ar": "تهيئ الأظافر وتقوي الهشة منها وتطيل ثبات الطلاء."
+   },
+   "howToUse": {
+    "fr": "Appliquer sur des mains et des ongles propres. Laisser sécher entre deux couches.",
+    "en": "Apply to clean hands and nails. Let dry between coats.",
+    "ar": "يوضع على يدين وأظافر نظيفة. يترك ليجف بين الطبقتين."
+   },
+   "ingredients": null,
+   "sizeLabel": "10 ml",
+   "price": 45,
+   "promoPrice": null,
+   "stock": 13,
+   "isActive": true,
+   "isFeatured": false,
+   "isNew": false,
+   "shape": "polish",
+   "widthCm": 3.5,
+   "heightCm": 8,
+   "depthCm": 3.5,
+   "image": "products/base-fortifiante.webp",
+   "gallery": [],
+   "placement": {
+    "fixtureId": "wall-nails",
+    "level": 7,
+    "slot": 0,
+    "facings": 2
+   },
+   "variants": [],
+   "displayVariants": false
+  },
+  {
+   "id": "top-coat",
+   "slug": "top-coat",
+   "categoryId": "nails",
+   "brand": "Velours",
+   "name": {
+    "fr": "Top coat ultra-brillant",
+    "en": "High-shine top coat",
+    "ar": "طبقة لمعان نهائية"
+   },
+   "description": {
+    "fr": "Un fini miroir et une protection anti-éclats jusqu’à sept jours.",
+    "en": "A mirror finish and chip protection for up to seven days.",
+    "ar": "لمعان كالمرآة وحماية من التقشر حتى سبعة أيام."
+   },
+   "howToUse": {
+    "fr": "Appliquer sur des mains et des ongles propres. Laisser sécher entre deux couches.",
+    "en": "Apply to clean hands and nails. Let dry between coats.",
+    "ar": "يوضع على يدين وأظافر نظيفة. يترك ليجف بين الطبقتين."
+   },
+   "ingredients": null,
+   "sizeLabel": "10 ml",
+   "price": 45,
+   "promoPrice": null,
+   "stock": 15,
+   "isActive": true,
+   "isFeatured": false,
+   "isNew": false,
+   "shape": "polish",
+   "widthCm": 3.5,
+   "heightCm": 8,
+   "depthCm": 3.5,
+   "image": "products/top-coat.webp",
+   "gallery": [],
+   "placement": {
+    "fixtureId": "wall-nails",
+    "level": 7,
+    "slot": 1,
+    "facings": 2
+   },
+   "variants": [],
+   "displayVariants": false
+  },
+  {
+   "id": "vernis-brillance",
+   "slug": "vernis-brillance",
+   "categoryId": "nails",
+   "brand": "Velours",
+   "name": {
+    "fr": "Vernis à ongles Brillance",
+    "en": "Shine nail polish",
+    "ar": "طلاء أظافر لامع"
+   },
+   "description": {
+    "fr": "Pinceau large et couleur intense en une couche. Séchage rapide.",
+    "en": "A wide brush and intense colour in one coat. Quick drying.",
+    "ar": "فرشاة عريضة ولون مكثف من طبقة واحدة. يجف بسرعة."
+   },
+   "howToUse": {
+    "fr": "Appliquer sur des mains et des ongles propres. Laisser sécher entre deux couches.",
+    "en": "Apply to clean hands and nails. Let dry between coats.",
+    "ar": "يوضع على يدين وأظافر نظيفة. يترك ليجف بين الطبقتين."
+   },
+   "ingredients": null,
+   "sizeLabel": "10 ml",
+   "price": 35,
+   "promoPrice": null,
+   "stock": 36,
+   "isActive": true,
+   "isFeatured": true,
+   "isNew": false,
+   "shape": "polish",
+   "widthCm": 3.5,
+   "heightCm": 8,
+   "depthCm": 3.5,
+   "image": "products/vernis-brillance.webp",
+   "gallery": [],
+   "placement": {
+    "fixtureId": "wall-nails",
+    "level": 3,
+    "slot": 0,
+    "facings": 2
+   },
+   "variants": [
+    {
+     "id": "rose-poudre",
+     "name": {
+      "fr": "Rose poudré",
+      "en": "Powder rose",
+      "ar": "وردي بودري"
+     },
+     "colorHex": "#E7A3AE",
+     "price": null,
+     "promoPrice": null,
+     "stock": 25,
+     "image": "products/vernis-brillance--rose-poudre.webp"
+    },
+    {
+     "id": "rouge-cerise",
+     "name": {
+      "fr": "Rouge cerise",
+      "en": "Cherry red",
+      "ar": "أحمر كرزي"
+     },
+     "colorHex": "#B3122E",
+     "price": null,
+     "promoPrice": null,
+     "stock": 26,
+     "image": "products/vernis-brillance--rouge-cerise.webp"
+    },
+    {
+     "id": "nude-sable",
+     "name": {
+      "fr": "Nude sable",
+      "en": "Sand nude",
+      "ar": "نود رملي"
+     },
+     "colorHex": "#D9B49A",
+     "price": null,
+     "promoPrice": null,
+     "stock": 30,
+     "image": "products/vernis-brillance--nude-sable.webp"
+    },
+    {
+     "id": "corail",
+     "name": {
+      "fr": "Corail",
+      "en": "Coral",
+      "ar": "مرجاني"
+     },
+     "colorHex": "#F0645A",
+     "price": null,
+     "promoPrice": null,
+     "stock": 20,
+     "image": "products/vernis-brillance--corail.webp"
+    },
+    {
+     "id": "bordeaux",
+     "name": {
+      "fr": "Bordeaux",
+      "en": "Burgundy",
+      "ar": "عنابي"
+     },
+     "colorHex": "#6A0F24",
+     "price": null,
+     "promoPrice": null,
+     "stock": 12,
+     "image": "products/vernis-brillance--bordeaux.webp"
+    },
+    {
+     "id": "lilas",
+     "name": {
+      "fr": "Lilas",
+      "en": "Lilac",
+      "ar": "ليلكي"
+     },
+     "colorHex": "#B79BD1",
+     "price": null,
+     "promoPrice": null,
+     "stock": 39,
+     "image": "products/vernis-brillance--lilas.webp"
+    },
+    {
+     "id": "bleu-nuit",
+     "name": {
+      "fr": "Bleu nuit",
+      "en": "Midnight blue",
+      "ar": "أزرق ليلي"
+     },
+     "colorHex": "#1D2A55",
+     "price": null,
+     "promoPrice": null,
+     "stock": 31,
+     "image": "products/vernis-brillance--bleu-nuit.webp"
+    },
+    {
+     "id": "vert-sauge",
+     "name": {
+      "fr": "Vert sauge",
+      "en": "Sage green",
+      "ar": "أخضر مريمي"
+     },
+     "colorHex": "#8FA88A",
+     "price": null,
+     "promoPrice": null,
+     "stock": 13,
+     "image": "products/vernis-brillance--vert-sauge.webp"
+    },
+    {
+     "id": "prune",
+     "name": {
+      "fr": "Prune",
+      "en": "Plum",
+      "ar": "برقوقي"
+     },
+     "colorHex": "#5A2147",
+     "price": null,
+     "promoPrice": null,
+     "stock": 12,
+     "image": "products/vernis-brillance--prune.webp"
+    },
+    {
+     "id": "peche",
+     "name": {
+      "fr": "Pêche",
+      "en": "Peach",
+      "ar": "خوخي"
+     },
+     "colorHex": "#F6B48F",
+     "price": null,
+     "promoPrice": null,
+     "stock": 15,
+     "image": "products/vernis-brillance--peche.webp"
+    },
+    {
+     "id": "dore",
+     "name": {
+      "fr": "Doré",
+      "en": "Gold",
+      "ar": "ذهبي"
+     },
+     "colorHex": "#C9A04E",
+     "price": null,
+     "promoPrice": null,
+     "stock": 14,
+     "image": "products/vernis-brillance--dore.webp"
+    },
+    {
+     "id": "blanc-lait",
+     "name": {
+      "fr": "Blanc lait",
+      "en": "Milk white",
+      "ar": "أبيض حليبي"
+     },
+     "colorHex": "#F3EEE8",
+     "price": null,
+     "promoPrice": null,
+     "stock": 27,
+     "image": "products/vernis-brillance--blanc-lait.webp"
+    }
+   ],
+   "displayVariants": true
+  },
+  {
+   "id": "vernis-effet-gel",
+   "slug": "vernis-effet-gel",
+   "categoryId": "nails",
+   "brand": "Velours",
+   "name": {
+    "fr": "Vernis effet gel",
+    "en": "Gel-effect nail polish",
+    "ar": "طلاء أظافر بتأثير الجل"
+   },
+   "description": {
+    "fr": "L’éclat et l’épaisseur d’un gel, sans lampe UV. Tient jusqu’à dix jours.",
+    "en": "The shine and plumpness of gel, no UV lamp. Lasts up to ten days.",
+    "ar": "لمعان وسماكة الجل دون مصباح أشعة. يدوم حتى عشرة أيام."
+   },
+   "howToUse": {
+    "fr": "Appliquer sur des mains et des ongles propres. Laisser sécher entre deux couches.",
+    "en": "Apply to clean hands and nails. Let dry between coats.",
+    "ar": "يوضع على يدين وأظافر نظيفة. يترك ليجف بين الطبقتين."
+   },
+   "ingredients": null,
+   "sizeLabel": "12 ml",
+   "price": 49,
+   "promoPrice": null,
+   "stock": 11,
+   "isActive": true,
+   "isFeatured": false,
+   "isNew": false,
+   "shape": "polish",
+   "widthCm": 3.8,
+   "heightCm": 8.5,
+   "depthCm": 3.8,
+   "image": "products/vernis-effet-gel.webp",
+   "gallery": [],
+   "placement": {
+    "fixtureId": "wall-nails",
+    "level": 4,
+    "slot": 0,
+    "facings": 2
+   },
+   "variants": [
+    {
+     "id": "fuchsia",
+     "name": {
+      "fr": "Fuchsia",
+      "en": "Fuchsia",
+      "ar": "فوشيا"
+     },
+     "colorHex": "#C8246E",
+     "price": null,
+     "promoPrice": null,
+     "stock": 20,
+     "image": "products/vernis-effet-gel--fuchsia.webp"
+    },
+    {
+     "id": "rouge-marrakech",
+     "name": {
+      "fr": "Rouge Marrakech",
+      "en": "Marrakech red",
+      "ar": "أحمر مراكش"
+     },
+     "colorHex": "#A3271F",
+     "price": null,
+     "promoPrice": null,
+     "stock": 36,
+     "image": "products/vernis-effet-gel--rouge-marrakech.webp"
+    },
+    {
+     "id": "nude-rose",
+     "name": {
+      "fr": "Nude rosé",
+      "en": "Rosy nude",
+      "ar": "نود وردي"
+     },
+     "colorHex": "#DDA7A0",
+     "price": null,
+     "promoPrice": null,
+     "stock": 13,
+     "image": "products/vernis-effet-gel--nude-rose.webp"
+    },
+    {
+     "id": "caramel",
+     "name": {
+      "fr": "Caramel",
+      "en": "Caramel",
+      "ar": "كراميل"
+     },
+     "colorHex": "#A86A3D",
+     "price": null,
+     "promoPrice": null,
+     "stock": 38,
+     "image": "products/vernis-effet-gel--caramel.webp"
+    },
+    {
+     "id": "cerise-noire",
+     "name": {
+      "fr": "Cerise noire",
+      "en": "Black cherry",
+      "ar": "كرز داكن"
+     },
+     "colorHex": "#3E0B1A",
+     "price": null,
+     "promoPrice": null,
+     "stock": 6,
+     "image": "products/vernis-effet-gel--cerise-noire.webp"
+    },
+    {
+     "id": "lavande",
+     "name": {
+      "fr": "Lavande",
+      "en": "Lavender",
+      "ar": "خزامى"
+     },
+     "colorHex": "#9C8BC4",
+     "price": null,
+     "promoPrice": null,
+     "stock": 24,
+     "image": "products/vernis-effet-gel--lavande.webp"
+    },
+    {
+     "id": "turquoise",
+     "name": {
+      "fr": "Turquoise",
+      "en": "Turquoise",
+      "ar": "فيروزي"
+     },
+     "colorHex": "#2BA3A0",
+     "price": null,
+     "promoPrice": null,
+     "stock": 28,
+     "image": "products/vernis-effet-gel--turquoise.webp"
+    },
+    {
+     "id": "olive",
+     "name": {
+      "fr": "Olive",
+      "en": "Olive",
+      "ar": "زيتوني"
+     },
+     "colorHex": "#6F7444",
+     "price": null,
+     "promoPrice": null,
+     "stock": 14,
+     "image": "products/vernis-effet-gel--olive.webp"
+    },
+    {
+     "id": "mauve",
+     "name": {
+      "fr": "Mauve",
+      "en": "Mauve",
+      "ar": "موف"
+     },
+     "colorHex": "#9E6B88",
+     "price": null,
+     "promoPrice": null,
+     "stock": 19,
+     "image": "products/vernis-effet-gel--mauve.webp"
+    },
+    {
+     "id": "abricot",
+     "name": {
+      "fr": "Abricot",
+      "en": "Apricot",
+      "ar": "مشمشي"
+     },
+     "colorHex": "#F29A62",
+     "price": null,
+     "promoPrice": null,
+     "stock": 15,
+     "image": "products/vernis-effet-gel--abricot.webp"
+    },
+    {
+     "id": "chocolat",
+     "name": {
+      "fr": "Chocolat",
+      "en": "Chocolate",
+      "ar": "شوكولاتة"
+     },
+     "colorHex": "#4E2C22",
+     "price": null,
+     "promoPrice": null,
+     "stock": 10,
+     "image": "products/vernis-effet-gel--chocolat.webp"
+    },
+    {
+     "id": "noir",
+     "name": {
+      "fr": "Noir",
+      "en": "Black",
+      "ar": "أسود"
+     },
+     "colorHex": "#17141A",
+     "price": null,
+     "promoPrice": null,
+     "stock": 9,
+     "image": "products/vernis-effet-gel--noir.webp"
+    }
+   ],
+   "displayVariants": true
+  },
+  {
+   "id": "vernis-pastel",
+   "slug": "vernis-pastel",
+   "categoryId": "nails",
+   "brand": "Velours",
+   "name": {
+    "fr": "Vernis Collection pastel",
+    "en": "Pastel collection polish",
+    "ar": "طلاء أظافر مجموعة الباستيل"
+   },
+   "description": {
+    "fr": "Des teintes douces et crémeuses pour un manucure frais toute l’année.",
+    "en": "Soft, creamy shades for a fresh manicure all year round.",
+    "ar": "ألوان ناعمة وكريمية لمانيكير منعش طوال السنة."
+   },
+   "howToUse": {
+    "fr": "Appliquer sur des mains et des ongles propres. Laisser sécher entre deux couches.",
+    "en": "Apply to clean hands and nails. Let dry between coats.",
+    "ar": "يوضع على يدين وأظافر نظيفة. يترك ليجف بين الطبقتين."
+   },
+   "ingredients": null,
+   "sizeLabel": "10 ml",
+   "price": 35,
+   "promoPrice": null,
+   "stock": 23,
+   "isActive": true,
+   "isFeatured": false,
+   "isNew": true,
+   "shape": "polish",
+   "widthCm": 3.5,
+   "heightCm": 8,
+   "depthCm": 3.5,
+   "image": "products/vernis-pastel.webp",
+   "gallery": [],
+   "placement": {
+    "fixtureId": "wall-nails",
+    "level": 5,
+    "slot": 0,
+    "facings": 2
+   },
+   "variants": [
+    {
+     "id": "menthe",
+     "name": {
+      "fr": "Menthe",
+      "en": "Mint",
+      "ar": "نعناعي"
+     },
+     "colorHex": "#B6E2CF",
+     "price": null,
+     "promoPrice": null,
+     "stock": 16,
+     "image": "products/vernis-pastel--menthe.webp"
+    },
+    {
+     "id": "ciel",
+     "name": {
+      "fr": "Ciel",
+      "en": "Sky",
+      "ar": "سماوي"
+     },
+     "colorHex": "#A9CFF0",
+     "price": null,
+     "promoPrice": null,
+     "stock": 34,
+     "image": "products/vernis-pastel--ciel.webp"
+    },
+    {
+     "id": "vanille",
+     "name": {
+      "fr": "Vanille",
+      "en": "Vanilla",
+      "ar": "فانيلا"
+     },
+     "colorHex": "#F6E7B3",
+     "price": null,
+     "promoPrice": null,
+     "stock": 10,
+     "image": "products/vernis-pastel--vanille.webp"
+    },
+    {
+     "id": "dragee",
+     "name": {
+      "fr": "Dragée",
+      "en": "Sugared almond",
+      "ar": "وردي فاتح"
+     },
+     "colorHex": "#F7C6D3",
+     "price": null,
+     "promoPrice": null,
+     "stock": 31,
+     "image": "products/vernis-pastel--dragee.webp"
+    },
+    {
+     "id": "glycine",
+     "name": {
+      "fr": "Glycine",
+      "en": "Wisteria",
+      "ar": "بنفسجي فاتح"
+     },
+     "colorHex": "#CDB8E8",
+     "price": null,
+     "promoPrice": null,
+     "stock": 22,
+     "image": "products/vernis-pastel--glycine.webp"
+    },
+    {
+     "id": "pistache",
+     "name": {
+      "fr": "Pistache",
+      "en": "Pistachio",
+      "ar": "فستقي"
+     },
+     "colorHex": "#CFE3A6",
+     "price": null,
+     "promoPrice": null,
+     "stock": 20,
+     "image": "products/vernis-pastel--pistache.webp"
+    },
+    {
+     "id": "melon",
+     "name": {
+      "fr": "Melon",
+      "en": "Melon",
+      "ar": "شمامي"
+     },
+     "colorHex": "#FCC9A4",
+     "price": null,
+     "promoPrice": null,
+     "stock": 16,
+     "image": "products/vernis-pastel--melon.webp"
+    },
+    {
+     "id": "nuage",
+     "name": {
+      "fr": "Nuage",
+      "en": "Cloud",
+      "ar": "رمادي فاتح"
+     },
+     "colorHex": "#E3E1E6",
+     "price": null,
+     "promoPrice": null,
+     "stock": 23,
+     "image": "products/vernis-pastel--nuage.webp"
+    }
+   ],
+   "displayVariants": true
+  },
+  {
+   "id": "vernis-paillete",
+   "slug": "vernis-paillete",
+   "categoryId": "nails",
+   "brand": "Velours",
+   "name": {
+    "fr": "Vernis pailleté",
+    "en": "Glitter nail polish",
+    "ar": "طلاء أظافر لامع بالبريق"
+   },
+   "description": {
+    "fr": "Des micro-paillettes qui captent la lumière. Seul ou en top coat.",
+    "en": "Micro-glitter that catches the light. Wear alone or as a top coat.",
+    "ar": "بريق دقيق يلتقط الضوء. يستعمل وحده أو كطبقة نهائية."
+   },
+   "howToUse": {
+    "fr": "Appliquer sur des mains et des ongles propres. Laisser sécher entre deux couches.",
+    "en": "Apply to clean hands and nails. Let dry between coats.",
+    "ar": "يوضع على يدين وأظافر نظيفة. يترك ليجف بين الطبقتين."
+   },
+   "ingredients": null,
+   "sizeLabel": "10 ml",
+   "price": 39,
+   "promoPrice": null,
+   "stock": 20,
+   "isActive": true,
+   "isFeatured": false,
+   "isNew": false,
+   "shape": "polish",
+   "widthCm": 3.5,
+   "heightCm": 8,
+   "depthCm": 3.5,
+   "image": "products/vernis-paillete.webp",
+   "gallery": [],
+   "placement": {
+    "fixtureId": "wall-nails",
+    "level": 6,
+    "slot": 0,
+    "facings": 2
+   },
+   "variants": [
+    {
+     "id": "or-rose",
+     "name": {
+      "fr": "Or rose",
+      "en": "Rose gold",
+      "ar": "ذهبي وردي"
+     },
+     "colorHex": "#E2A497",
+     "price": null,
+     "promoPrice": null,
+     "stock": 17,
+     "image": "products/vernis-paillete--or-rose.webp"
+    },
+    {
+     "id": "argent",
+     "name": {
+      "fr": "Argent",
+      "en": "Silver",
+      "ar": "فضي"
+     },
+     "colorHex": "#C9CCD3",
+     "price": null,
+     "promoPrice": null,
+     "stock": 33,
+     "image": "products/vernis-paillete--argent.webp"
+    },
+    {
+     "id": "champagne",
+     "name": {
+      "fr": "Champagne",
+      "en": "Champagne",
+      "ar": "شمبانيا"
+     },
+     "colorHex": "#E8CF9C",
+     "price": null,
+     "promoPrice": null,
+     "stock": 26,
+     "image": "products/vernis-paillete--champagne.webp"
+    },
+    {
+     "id": "rubis",
+     "name": {
+      "fr": "Rubis",
+      "en": "Ruby",
+      "ar": "ياقوتي"
+     },
+     "colorHex": "#9B1B30",
+     "price": null,
+     "promoPrice": null,
+     "stock": 19,
+     "image": "products/vernis-paillete--rubis.webp"
+    },
+    {
+     "id": "saphir",
+     "name": {
+      "fr": "Saphir",
+      "en": "Sapphire",
+      "ar": "زفيري"
+     },
+     "colorHex": "#2F4BA0",
+     "price": null,
+     "promoPrice": null,
+     "stock": 29,
+     "image": "products/vernis-paillete--saphir.webp"
+    },
+    {
+     "id": "emeraude",
+     "name": {
+      "fr": "Émeraude",
+      "en": "Emerald",
+      "ar": "زمردي"
+     },
+     "colorHex": "#1F7A5A",
+     "price": null,
+     "promoPrice": null,
+     "stock": 20,
+     "image": "products/vernis-paillete--emeraude.webp"
+    }
+   ],
+   "displayVariants": true
+  },
+  {
+   "id": "spray-fixateur",
+   "slug": "spray-fixateur",
+   "categoryId": "makeup",
+   "brand": "Saphir",
+   "name": {
+    "fr": "Spray fixateur de maquillage",
+    "en": "Makeup setting spray",
+    "ar": "بخاخ تثبيت المكياج"
+   },
+   "description": {
+    "fr": "Fixe le maquillage jusqu’à 16 h avec un fini frais et naturel.",
+    "en": "Locks makeup in place for up to 16 hours with a fresh, natural finish.",
+    "ar": "يثبت المكياج حتى 16 ساعة بلمسة طبيعية منعشة."
+   },
+   "howToUse": {
+    "fr": "Appliquer du bout des doigts, au pinceau ou à l’éponge, puis estomper.",
+    "en": "Apply with fingertips, a brush or a sponge, then blend.",
+    "ar": "يوضع بأطراف الأصابع أو بالفرشاة أو الإسفنجة ثم يدمج."
+   },
+   "ingredients": null,
+   "sizeLabel": "100 ml",
+   "price": 119,
+   "promoPrice": null,
+   "stock": 8,
+   "isActive": true,
+   "isFeatured": false,
+   "isNew": false,
+   "shape": "spray",
+   "widthCm": 4.5,
+   "heightCm": 15,
+   "depthCm": 4.5,
+   "image": "products/spray-fixateur.webp",
+   "gallery": [],
+   "placement": {
+    "fixtureId": "wall-makeup",
+    "level": 0,
+    "slot": 0,
+    "facings": 3
+   },
+   "variants": [],
+   "displayVariants": false
+  },
+  {
+   "id": "fond-de-teint",
+   "slug": "fond-de-teint",
+   "categoryId": "makeup",
+   "brand": "Nacre",
+   "name": {
+    "fr": "Fond de teint fluide",
+    "en": "Liquid foundation",
+    "ar": "كريم أساس سائل"
+   },
+   "description": {
+    "fr": "Couvrance modulable, fini satiné, tenue 24 h. Six teintes pour toutes les carnations.",
+    "en": "Buildable coverage, satin finish, 24-hour wear. Six shades for every skin tone.",
+    "ar": "تغطية قابلة للتدرج ولمسة ساتان وثبات 24 ساعة. ستة ألوان لكل البشرات."
+   },
+   "howToUse": {
+    "fr": "Appliquer du bout des doigts, au pinceau ou à l’éponge, puis estomper.",
+    "en": "Apply with fingertips, a brush or a sponge, then blend.",
+    "ar": "يوضع بأطراف الأصابع أو بالفرشاة أو الإسفنجة ثم يدمج."
+   },
+   "ingredients": null,
+   "sizeLabel": "30 ml",
+   "price": 179,
+   "promoPrice": null,
+   "stock": 14,
+   "isActive": true,
+   "isFeatured": false,
+   "isNew": false,
+   "shape": "pump",
+   "widthCm": 4.5,
+   "heightCm": 12,
+   "depthCm": 3,
+   "image": "products/fond-de-teint.webp",
+   "gallery": [],
+   "placement": {
+    "fixtureId": "wall-makeup",
+    "level": 1,
+    "slot": 0,
+    "facings": 3
+   },
+   "variants": [
+    {
+     "id": "01",
+     "name": {
+      "fr": "01 Porcelaine",
+      "en": "01 Porcelain",
+      "ar": "01 بورسلين"
+     },
+     "colorHex": "#F1D6C3",
+     "price": null,
+     "promoPrice": null,
+     "stock": 29,
+     "image": "products/fond-de-teint--01.webp"
+    },
+    {
+     "id": "02",
+     "name": {
+      "fr": "02 Ivoire",
+      "en": "02 Ivory",
+      "ar": "02 عاجي"
+     },
+     "colorHex": "#E9C7AC",
+     "price": null,
+     "promoPrice": null,
+     "stock": 30,
+     "image": "products/fond-de-teint--02.webp"
+    },
+    {
+     "id": "03",
+     "name": {
+      "fr": "03 Beige clair",
+      "en": "03 Light beige",
+      "ar": "03 بيج فاتح"
+     },
+     "colorHex": "#DDB391",
+     "price": null,
+     "promoPrice": null,
+     "stock": 31,
+     "image": "products/fond-de-teint--03.webp"
+    },
+    {
+     "id": "04",
+     "name": {
+      "fr": "04 Beige doré",
+      "en": "04 Golden beige",
+      "ar": "04 بيج ذهبي"
+     },
+     "colorHex": "#CF9E78",
+     "price": null,
+     "promoPrice": null,
+     "stock": 32,
+     "image": "products/fond-de-teint--04.webp"
+    },
+    {
+     "id": "05",
+     "name": {
+      "fr": "05 Miel",
+      "en": "05 Honey",
+      "ar": "05 عسلي"
+     },
+     "colorHex": "#B98256",
+     "price": null,
+     "promoPrice": null,
+     "stock": 33,
+     "image": "products/fond-de-teint--05.webp"
+    },
+    {
+     "id": "06",
+     "name": {
+      "fr": "06 Caramel",
+      "en": "06 Caramel",
+      "ar": "06 كراميل"
+     },
+     "colorHex": "#96623F",
+     "price": null,
+     "promoPrice": null,
+     "stock": 34,
+     "image": "products/fond-de-teint--06.webp"
+    }
+   ],
+   "displayVariants": false
+  },
+  {
+   "id": "correcteur",
+   "slug": "correcteur",
+   "categoryId": "makeup",
+   "brand": "Nacre",
+   "name": {
+    "fr": "Correcteur haute couvrance",
+    "en": "Full-coverage concealer",
+    "ar": "كونسيلر عالي التغطية"
+   },
+   "description": {
+    "fr": "Camoufle cernes et imperfections sans marquer les ridules.",
+    "en": "Covers dark circles and blemishes without settling into fine lines.",
+    "ar": "يخفي الهالات والعيوب دون أن يبرز الخطوط الدقيقة."
+   },
+   "howToUse": {
+    "fr": "Appliquer du bout des doigts, au pinceau ou à l’éponge, puis estomper.",
+    "en": "Apply with fingertips, a brush or a sponge, then blend.",
+    "ar": "يوضع بأطراف الأصابع أو بالفرشاة أو الإسفنجة ثم يدمج."
+   },
+   "ingredients": null,
+   "sizeLabel": "6 ml",
+   "price": 89,
+   "promoPrice": null,
+   "stock": 18,
+   "isActive": true,
+   "isFeatured": false,
+   "isNew": false,
+   "shape": "gloss",
+   "widthCm": 2.2,
+   "heightCm": 10,
+   "depthCm": 2.2,
+   "image": "products/correcteur.webp",
+   "gallery": [],
+   "placement": {
+    "fixtureId": "wall-makeup",
+    "level": 1,
+    "slot": 1,
+    "facings": 4
+   },
+   "variants": [
+    {
+     "id": "clair",
+     "name": {
+      "fr": "Clair",
+      "en": "Light",
+      "ar": "فاتح"
+     },
+     "colorHex": "#EDCDB2",
+     "price": null,
+     "promoPrice": null,
+     "stock": 15,
+     "image": "products/correcteur--clair.webp"
+    },
+    {
+     "id": "medium",
+     "name": {
+      "fr": "Médium",
+      "en": "Medium",
+      "ar": "متوسط"
+     },
+     "colorHex": "#D7A983",
+     "price": null,
+     "promoPrice": null,
+     "stock": 7,
+     "image": "products/correcteur--medium.webp"
+    },
+    {
+     "id": "fonce",
+     "name": {
+      "fr": "Foncé",
+      "en": "Deep",
+      "ar": "داكن"
+     },
+     "colorHex": "#A9714B",
+     "price": null,
+     "promoPrice": null,
+     "stock": 27,
+     "image": "products/correcteur--fonce.webp"
+    },
+    {
+     "id": "peche",
+     "name": {
+      "fr": "Correcteur pêche",
+      "en": "Peach corrector",
+      "ar": "مصحح خوخي"
+     },
+     "colorHex": "#F0A984",
+     "price": null,
+     "promoPrice": null,
+     "stock": 7,
+     "image": "products/correcteur--peche.webp"
+    }
+   ],
+   "displayVariants": false
+  },
+  {
+   "id": "poudre-compacte",
+   "slug": "poudre-compacte",
+   "categoryId": "makeup",
+   "brand": "Nacre",
+   "name": {
+    "fr": "Poudre compacte matifiante",
+    "en": "Mattifying pressed powder",
+    "ar": "بودرة مضغوطة مطفية"
+   },
+   "description": {
+    "fr": "Matifie sans effet plâtre et floute les pores. Miroir intégré.",
+    "en": "Mattifies without a cakey look and blurs pores. Built-in mirror.",
+    "ar": "تطفئ اللمعان دون تكتل وتخفي المسام. مع مرآة مدمجة."
+   },
+   "howToUse": {
+    "fr": "Appliquer du bout des doigts, au pinceau ou à l’éponge, puis estomper.",
+    "en": "Apply with fingertips, a brush or a sponge, then blend.",
+    "ar": "يوضع بأطراف الأصابع أو بالفرشاة أو الإسفنجة ثم يدمج."
+   },
+   "ingredients": null,
+   "sizeLabel": "9 g",
+   "price": 129,
+   "promoPrice": null,
+   "stock": 10,
+   "isActive": true,
+   "isFeatured": false,
+   "isNew": false,
+   "shape": "compact",
+   "widthCm": 7,
+   "heightCm": 7,
+   "depthCm": 1.5,
+   "image": "products/poudre-compacte.webp",
+   "gallery": [],
+   "placement": {
+    "fixtureId": "wall-makeup",
+    "level": 2,
+    "slot": 0,
+    "facings": 2
+   },
+   "variants": [
+    {
+     "id": "clair",
+     "name": {
+      "fr": "Clair",
+      "en": "Light",
+      "ar": "فاتح"
+     },
+     "colorHex": "#EBCDB7",
+     "price": null,
+     "promoPrice": null,
+     "stock": 37,
+     "image": "products/poudre-compacte--clair.webp"
+    },
+    {
+     "id": "medium",
+     "name": {
+      "fr": "Médium",
+      "en": "Medium",
+      "ar": "متوسط"
+     },
+     "colorHex": "#D3A784",
+     "price": null,
+     "promoPrice": null,
+     "stock": 19,
+     "image": "products/poudre-compacte--medium.webp"
+    },
+    {
+     "id": "dore",
+     "name": {
+      "fr": "Doré",
+      "en": "Golden",
+      "ar": "ذهبي"
+     },
+     "colorHex": "#BC895F",
+     "price": null,
+     "promoPrice": null,
+     "stock": 10,
+     "image": "products/poudre-compacte--dore.webp"
+    }
+   ],
+   "displayVariants": false
+  },
+  {
+   "id": "rouge-a-levres-satin",
+   "slug": "rouge-a-levres-satin",
+   "categoryId": "makeup",
+   "brand": "Velours",
+   "name": {
+    "fr": "Rouge à lèvres satiné",
+    "en": "Satin lipstick",
+    "ar": "أحمر شفاه ساتان"
+   },
+   "description": {
+    "fr": "Couleur intense et confort longue durée grâce à l’huile de jojoba.",
+    "en": "Intense colour and lasting comfort thanks to jojoba oil.",
+    "ar": "لون مكثف وراحة تدوم طويلاً بفضل زيت الجوجوبا."
+   },
+   "howToUse": {
+    "fr": "Appliquer du bout des doigts, au pinceau ou à l’éponge, puis estomper.",
+    "en": "Apply with fingertips, a brush or a sponge, then blend.",
+    "ar": "يوضع بأطراف الأصابع أو بالفرشاة أو الإسفنجة ثم يدمج."
+   },
+   "ingredients": null,
+   "sizeLabel": "3,5 g",
+   "price": 89,
+   "promoPrice": null,
+   "stock": 22,
+   "isActive": true,
+   "isFeatured": true,
+   "isNew": false,
+   "shape": "lipstick",
+   "widthCm": 2.1,
+   "heightCm": 8.5,
+   "depthCm": 2.1,
+   "image": "products/rouge-a-levres-satin.webp",
+   "gallery": [],
+   "placement": {
+    "fixtureId": "wall-makeup",
+    "level": 2,
+    "slot": 1,
+    "facings": 2
+   },
+   "variants": [
+    {
+     "id": "rouge-marrakech",
+     "name": {
+      "fr": "Rouge Marrakech",
+      "en": "Marrakech red",
+      "ar": "أحمر مراكش"
+     },
+     "colorHex": "#A41E22",
+     "price": null,
+     "promoPrice": null,
+     "stock": 19,
+     "image": "products/rouge-a-levres-satin--rouge-marrakech.webp"
+    },
+    {
+     "id": "rose-ancien",
+     "name": {
+      "fr": "Rose ancien",
+      "en": "Antique rose",
+      "ar": "وردي عتيق"
+     },
+     "colorHex": "#B86A73",
+     "price": null,
+     "promoPrice": null,
+     "stock": 20,
+     "image": "products/rouge-a-levres-satin--rose-ancien.webp"
+    },
+    {
+     "id": "nude-caramel",
+     "name": {
+      "fr": "Nude caramel",
+      "en": "Caramel nude",
+      "ar": "نود كراميل"
+     },
+     "colorHex": "#B07656",
+     "price": null,
+     "promoPrice": null,
+     "stock": 6,
+     "image": "products/rouge-a-levres-satin--nude-caramel.webp"
+    },
+    {
+     "id": "framboise",
+     "name": {
+      "fr": "Framboise",
+      "en": "Raspberry",
+      "ar": "توتي"
+     },
+     "colorHex": "#B0245A",
+     "price": null,
+     "promoPrice": null,
+     "stock": 30,
+     "image": "products/rouge-a-levres-satin--framboise.webp"
+    },
+    {
+     "id": "terre-cuite",
+     "name": {
+      "fr": "Terre cuite",
+      "en": "Baked clay",
+      "ar": "طيني"
+     },
+     "colorHex": "#B5543A",
+     "price": null,
+     "promoPrice": null,
+     "stock": 29,
+     "image": "products/rouge-a-levres-satin--terre-cuite.webp"
+    },
+    {
+     "id": "prune",
+     "name": {
+      "fr": "Prune",
+      "en": "Plum",
+      "ar": "برقوقي"
+     },
+     "colorHex": "#5C1F3C",
+     "price": null,
+     "promoPrice": null,
+     "stock": 32,
+     "image": "products/rouge-a-levres-satin--prune.webp"
+    },
+    {
+     "id": "corail",
+     "name": {
+      "fr": "Corail",
+      "en": "Coral",
+      "ar": "مرجاني"
+     },
+     "colorHex": "#E25C4F",
+     "price": null,
+     "promoPrice": null,
+     "stock": 32,
+     "image": "products/rouge-a-levres-satin--corail.webp"
+    },
+    {
+     "id": "mauve",
+     "name": {
+      "fr": "Mauve",
+      "en": "Mauve",
+      "ar": "موف"
+     },
+     "colorHex": "#93607A",
+     "price": null,
+     "promoPrice": null,
+     "stock": 20,
+     "image": "products/rouge-a-levres-satin--mauve.webp"
+    }
+   ],
+   "displayVariants": true
+  },
+  {
+   "id": "gloss-repulpant",
+   "slug": "gloss-repulpant",
+   "categoryId": "makeup",
+   "brand": "Velours",
+   "name": {
+    "fr": "Gloss repulpant",
+    "en": "Plumping lip gloss",
+    "ar": "ملمع شفاه منفخ"
+   },
+   "description": {
+    "fr": "Un fini miroir et un léger effet repulpant, sans coller.",
+    "en": "A mirror shine and a gentle plumping effect, never sticky.",
+    "ar": "لمعان كالمرآة وتأثير منفخ خفيف دون التصاق."
+   },
+   "howToUse": {
+    "fr": "Appliquer du bout des doigts, au pinceau ou à l’éponge, puis estomper.",
+    "en": "Apply with fingertips, a brush or a sponge, then blend.",
+    "ar": "يوضع بأطراف الأصابع أو بالفرشاة أو الإسفنجة ثم يدمج."
+   },
+   "ingredients": null,
+   "sizeLabel": "6 ml",
+   "price": 69,
+   "promoPrice": null,
+   "stock": 36,
+   "isActive": true,
+   "isFeatured": false,
+   "isNew": false,
+   "shape": "gloss",
+   "widthCm": 2.2,
+   "heightCm": 10,
+   "depthCm": 2.2,
+   "image": "products/gloss-repulpant.webp",
+   "gallery": [],
+   "placement": {
+    "fixtureId": "wall-makeup",
+    "level": 2,
+    "slot": 2,
+    "facings": 2
+   },
+   "variants": [
+    {
+     "id": "cristal",
+     "name": {
+      "fr": "Cristal",
+      "en": "Crystal",
+      "ar": "شفاف"
+     },
+     "colorHex": "#F2DCE0",
+     "price": null,
+     "promoPrice": null,
+     "stock": 26,
+     "image": "products/gloss-repulpant--cristal.webp"
+    },
+    {
+     "id": "rose-nacre",
+     "name": {
+      "fr": "Rose nacré",
+      "en": "Pearly pink",
+      "ar": "وردي لؤلؤي"
+     },
+     "colorHex": "#E59AAE",
+     "price": null,
+     "promoPrice": null,
+     "stock": 39,
+     "image": "products/gloss-repulpant--rose-nacre.webp"
+    },
+    {
+     "id": "peche",
+     "name": {
+      "fr": "Pêche",
+      "en": "Peach",
+      "ar": "خوخي"
+     },
+     "colorHex": "#F0A07E",
+     "price": null,
+     "promoPrice": null,
+     "stock": 31,
+     "image": "products/gloss-repulpant--peche.webp"
+    },
+    {
+     "id": "baie",
+     "name": {
+      "fr": "Baie",
+      "en": "Berry",
+      "ar": "توتي"
+     },
+     "colorHex": "#9A2549",
+     "price": null,
+     "promoPrice": null,
+     "stock": 9,
+     "image": "products/gloss-repulpant--baie.webp"
+    },
+    {
+     "id": "brun-dore",
+     "name": {
+      "fr": "Brun doré",
+      "en": "Golden brown",
+      "ar": "بني ذهبي"
+     },
+     "colorHex": "#9C6440",
+     "price": null,
+     "promoPrice": null,
+     "stock": 22,
+     "image": "products/gloss-repulpant--brun-dore.webp"
+    }
+   ],
+   "displayVariants": true
+  },
+  {
+   "id": "palette-nude",
+   "slug": "palette-nude",
+   "categoryId": "makeup",
+   "brand": "Lys & Lune",
+   "name": {
+    "fr": "Palette fards à paupières Nude",
+    "en": "Nude eyeshadow palette",
+    "ar": "باليت ظلال العيون نود"
+   },
+   "description": {
+    "fr": "Douze teintes mates et irisées pour des looks du jour au soir.",
+    "en": "Twelve matte and shimmer shades for day-to-night looks.",
+    "ar": "اثنا عشر لوناً مطفياً ولامعاً لإطلالات من النهار إلى المساء."
+   },
+   "howToUse": {
+    "fr": "Appliquer du bout des doigts, au pinceau ou à l’éponge, puis estomper.",
+    "en": "Apply with fingertips, a brush or a sponge, then blend.",
+    "ar": "يوضع بأطراف الأصابع أو بالفرشاة أو الإسفنجة ثم يدمج."
+   },
+   "ingredients": null,
+   "sizeLabel": "12 × 1,2 g",
+   "price": 189,
+   "promoPrice": null,
+   "stock": 10,
+   "isActive": true,
+   "isFeatured": true,
+   "isNew": false,
+   "shape": "palette",
+   "widthCm": 14,
+   "heightCm": 10,
+   "depthCm": 1.4,
+   "image": "products/palette-nude.webp",
+   "gallery": [],
+   "placement": {
+    "fixtureId": "wall-makeup",
+    "level": 3,
+    "slot": 0,
+    "facings": 1
+   },
+   "variants": [],
+   "displayVariants": false
+  },
+  {
+   "id": "palette-rose-gold",
+   "slug": "palette-rose-gold",
+   "categoryId": "makeup",
+   "brand": "Lys & Lune",
+   "name": {
+    "fr": "Palette Rose Gold",
+    "en": "Rose Gold palette",
+    "ar": "باليت روز غولد"
+   },
+   "description": {
+    "fr": "Des roses, cuivres et bronzes lumineux pour un regard chaleureux.",
+    "en": "Luminous pinks, coppers and bronzes for a warm gaze.",
+    "ar": "ألوان وردية ونحاسية وبرونزية مضيئة لنظرة دافئة."
+   },
+   "howToUse": {
+    "fr": "Appliquer du bout des doigts, au pinceau ou à l’éponge, puis estomper.",
+    "en": "Apply with fingertips, a brush or a sponge, then blend.",
+    "ar": "يوضع بأطراف الأصابع أو بالفرشاة أو الإسفنجة ثم يدمج."
+   },
+   "ingredients": null,
+   "sizeLabel": "12 × 1,2 g",
+   "price": 189,
+   "promoPrice": null,
+   "stock": 16,
+   "isActive": true,
+   "isFeatured": false,
+   "isNew": true,
+   "shape": "palette",
+   "widthCm": 14,
+   "heightCm": 10,
+   "depthCm": 1.4,
+   "image": "products/palette-rose-gold.webp",
+   "gallery": [],
+   "placement": {
+    "fixtureId": "wall-makeup",
+    "level": 3,
+    "slot": 1,
+    "facings": 1
+   },
+   "variants": [],
+   "displayVariants": false
+  },
+  {
+   "id": "blush-poudre",
+   "slug": "blush-poudre",
+   "categoryId": "makeup",
+   "brand": "Velours",
+   "name": {
+    "fr": "Blush poudre",
+    "en": "Powder blush",
+    "ar": "أحمر خدود بودرة"
+   },
+   "description": {
+    "fr": "Une poudre soyeuse qui se fond dans la peau pour un teint frais.",
+    "en": "A silky powder that melts into skin for a fresh glow.",
+    "ar": "بودرة حريرية تندمج مع البشرة لإطلالة منعشة."
+   },
+   "howToUse": {
+    "fr": "Appliquer du bout des doigts, au pinceau ou à l’éponge, puis estomper.",
+    "en": "Apply with fingertips, a brush or a sponge, then blend.",
+    "ar": "يوضع بأطراف الأصابع أو بالفرشاة أو الإسفنجة ثم يدمج."
+   },
+   "ingredients": null,
+   "sizeLabel": "6 g",
+   "price": 99,
+   "promoPrice": null,
+   "stock": 22,
+   "isActive": true,
+   "isFeatured": false,
+   "isNew": false,
+   "shape": "compact",
+   "widthCm": 6,
+   "heightCm": 6,
+   "depthCm": 1.4,
+   "image": "products/blush-poudre.webp",
+   "gallery": [],
+   "placement": {
+    "fixtureId": "wall-makeup",
+    "level": 3,
+    "slot": 2,
+    "facings": 2
+   },
+   "variants": [
+    {
+     "id": "petale",
+     "name": {
+      "fr": "Pétale",
+      "en": "Petal",
+      "ar": "بتلة"
+     },
+     "colorHex": "#E79AA2",
+     "price": null,
+     "promoPrice": null,
+     "stock": 39,
+     "image": "products/blush-poudre--petale.webp"
+    },
+    {
+     "id": "abricot",
+     "name": {
+      "fr": "Abricot",
+      "en": "Apricot",
+      "ar": "مشمشي"
+     },
+     "colorHex": "#E98E6C",
+     "price": null,
+     "promoPrice": null,
+     "stock": 34,
+     "image": "products/blush-poudre--abricot.webp"
+    },
+    {
+     "id": "baie",
+     "name": {
+      "fr": "Baie",
+      "en": "Berry",
+      "ar": "توتي"
+     },
+     "colorHex": "#B54865",
+     "price": null,
+     "promoPrice": null,
+     "stock": 7,
+     "image": "products/blush-poudre--baie.webp"
+    }
+   ],
+   "displayVariants": false
+  },
+  {
+   "id": "enlumineur",
+   "slug": "enlumineur",
+   "categoryId": "makeup",
+   "brand": "Velours",
+   "name": {
+    "fr": "Enlumineur nacré",
+    "en": "Pearly highlighter",
+    "ar": "هايلايتر لؤلؤي"
+   },
+   "description": {
+    "fr": "Un reflet de lumière sur les pommettes, l’arête du nez et l’arc de Cupidon.",
+    "en": "A touch of light on cheekbones, the bridge of the nose and the Cupid’s bow.",
+    "ar": "لمسة ضوء على الوجنتين وعظمة الأنف وقوس الشفة."
+   },
+   "howToUse": {
+    "fr": "Appliquer du bout des doigts, au pinceau ou à l’éponge, puis estomper.",
+    "en": "Apply with fingertips, a brush or a sponge, then blend.",
+    "ar": "يوضع بأطراف الأصابع أو بالفرشاة أو الإسفنجة ثم يدمج."
+   },
+   "ingredients": null,
+   "sizeLabel": "8 g",
+   "price": 109,
+   "promoPrice": null,
+   "stock": 8,
+   "isActive": true,
+   "isFeatured": false,
+   "isNew": false,
+   "shape": "compact",
+   "widthCm": 6,
+   "heightCm": 6,
+   "depthCm": 1.4,
+   "image": "products/enlumineur.webp",
+   "gallery": [],
+   "placement": {
+    "fixtureId": "wall-makeup",
+    "level": 3,
+    "slot": 3,
+    "facings": 2
+   },
+   "variants": [],
+   "displayVariants": false
+  },
+  {
+   "id": "mascara-volume",
+   "slug": "mascara-volume",
+   "categoryId": "makeup",
+   "brand": "Saphir",
+   "name": {
+    "fr": "Mascara volume intense",
+    "en": "Intense volume mascara",
+    "ar": "ماسكارا كثافة مكثفة"
+   },
+   "description": {
+    "fr": "Brosse fibre pour des cils plus épais et recourbés, sans paquets.",
+    "en": "A fibre brush for thicker, curled lashes without clumps.",
+    "ar": "فرشاة ألياف لرموش أكثف ومقوسة دون تكتل."
+   },
+   "howToUse": {
+    "fr": "Appliquer du bout des doigts, au pinceau ou à l’éponge, puis estomper.",
+    "en": "Apply with fingertips, a brush or a sponge, then blend.",
+    "ar": "يوضع بأطراف الأصابع أو بالفرشاة أو الإسفنجة ثم يدمج."
+   },
+   "ingredients": null,
+   "sizeLabel": "10 ml",
+   "price": 99,
+   "promoPrice": null,
+   "stock": 15,
+   "isActive": true,
+   "isFeatured": false,
+   "isNew": false,
+   "shape": "pen",
+   "widthCm": 2.2,
+   "heightCm": 13,
+   "depthCm": 2.2,
+   "image": "products/mascara-volume.webp",
+   "gallery": [],
+   "placement": {
+    "fixtureId": "wall-makeup",
+    "level": 4,
+    "slot": 0,
+    "facings": 4
+   },
+   "variants": [],
+   "displayVariants": false
+  },
+  {
+   "id": "eyeliner-feutre",
+   "slug": "eyeliner-feutre",
+   "categoryId": "makeup",
+   "brand": "Saphir",
+   "name": {
+    "fr": "Eyeliner feutre noir",
+    "en": "Black felt-tip eyeliner",
+    "ar": "آيلاينر قلم أسود"
+   },
+   "description": {
+    "fr": "Pointe fine pour un trait précis, du filet discret au cat-eye.",
+    "en": "A fine tip for a precise line, from subtle to cat-eye.",
+    "ar": "رأس رفيع لخط دقيق من الخفيف إلى عين القطة."
+   },
+   "howToUse": {
+    "fr": "Appliquer du bout des doigts, au pinceau ou à l’éponge, puis estomper.",
+    "en": "Apply with fingertips, a brush or a sponge, then blend.",
+    "ar": "يوضع بأطراف الأصابع أو بالفرشاة أو الإسفنجة ثم يدمج."
+   },
+   "ingredients": null,
+   "sizeLabel": "1 ml",
+   "price": 59,
+   "promoPrice": null,
+   "stock": 39,
+   "isActive": true,
+   "isFeatured": false,
+   "isNew": false,
+   "shape": "pen",
+   "widthCm": 1.4,
+   "heightCm": 14,
+   "depthCm": 1.4,
+   "image": "products/eyeliner-feutre.webp",
+   "gallery": [],
+   "placement": {
+    "fixtureId": "wall-makeup",
+    "level": 4,
+    "slot": 1,
+    "facings": 4
+   },
+   "variants": [],
+   "displayVariants": false
+  },
+  {
+   "id": "khol-noir",
+   "slug": "khol-noir",
+   "categoryId": "makeup",
+   "brand": "Saphir",
+   "name": {
+    "fr": "Khôl noir intense",
+    "en": "Intense black kohl",
+    "ar": "كحل أسود مكثف"
+   },
+   "description": {
+    "fr": "Le khôl traditionnel en crayon crémeux, pour intensifier le regard.",
+    "en": "Traditional kohl in a creamy pencil to deepen the gaze.",
+    "ar": "الكحل التقليدي في قلم كريمي لتعميق النظرة."
+   },
+   "howToUse": {
+    "fr": "Appliquer du bout des doigts, au pinceau ou à l’éponge, puis estomper.",
+    "en": "Apply with fingertips, a brush or a sponge, then blend.",
+    "ar": "يوضع بأطراف الأصابع أو بالفرشاة أو الإسفنجة ثم يدمج."
+   },
+   "ingredients": null,
+   "sizeLabel": "1,2 g",
+   "price": 49,
+   "promoPrice": null,
+   "stock": 37,
+   "isActive": true,
+   "isFeatured": false,
+   "isNew": false,
+   "shape": "pen",
+   "widthCm": 1.2,
+   "heightCm": 15,
+   "depthCm": 1.2,
+   "image": "products/khol-noir.webp",
+   "gallery": [],
+   "placement": {
+    "fixtureId": "wall-makeup",
+    "level": 4,
+    "slot": 2,
+    "facings": 4
+   },
+   "variants": [],
+   "displayVariants": false
+  },
+  {
+   "id": "coffret-decouverte",
+   "slug": "coffret-decouverte",
+   "categoryId": "perfume",
+   "brand": "Maison Rosée",
+   "name": {
+    "fr": "Coffret découverte 5 parfums",
+    "en": "Fragrance discovery set",
+    "ar": "مجموعة اكتشاف 5 عطور"
+   },
+   "description": {
+    "fr": "Cinq flacons de 10 ml pour trouver votre signature olfactive.",
+    "en": "Five 10 ml bottles to find your signature scent.",
+    "ar": "خمس قارورات 10 مل لاكتشاف عطرك المميز."
+   },
+   "howToUse": {
+    "fr": "Vaporiser sur les points de pulsation : poignets, cou et derrière les oreilles.",
+    "en": "Spray on pulse points: wrists, neck and behind the ears.",
+    "ar": "يرش على نقاط النبض: المعصمين والرقبة وخلف الأذنين."
+   },
+   "ingredients": null,
+   "sizeLabel": "5 × 10 ml",
+   "price": 299,
+   "promoPrice": null,
+   "stock": 30,
+   "isActive": true,
+   "isFeatured": false,
+   "isNew": false,
+   "shape": "box",
+   "widthCm": 16,
+   "heightCm": 11,
+   "depthCm": 4,
+   "image": "products/coffret-decouverte.webp",
+   "gallery": [],
+   "placement": {
+    "fixtureId": "wall-perfume",
+    "level": 0,
+    "slot": 0,
+    "facings": 1
+   },
+   "variants": [],
+   "displayVariants": false
+  },
+  {
+   "id": "brume-pivoine",
+   "slug": "brume-pivoine",
+   "categoryId": "perfume",
+   "brand": "Maison Rosée",
+   "name": {
+    "fr": "Brume corps Pivoine",
+    "en": "Peony body mist",
+    "ar": "رذاذ الجسم بالفاوانيا"
+   },
+   "description": {
+    "fr": "Une brume fraîche et florale à vaporiser généreusement après la douche.",
+    "en": "A fresh floral mist to spray generously after showering.",
+    "ar": "رذاذ زهري منعش يرش بسخاء بعد الاستحمام."
+   },
+   "howToUse": {
+    "fr": "Vaporiser sur les points de pulsation : poignets, cou et derrière les oreilles.",
+    "en": "Spray on pulse points: wrists, neck and behind the ears.",
+    "ar": "يرش على نقاط النبض: المعصمين والرقبة وخلف الأذنين."
+   },
+   "ingredients": null,
+   "sizeLabel": "200 ml",
+   "price": 149,
+   "promoPrice": 119,
+   "stock": 38,
+   "isActive": true,
+   "isFeatured": false,
+   "isNew": false,
+   "shape": "spray",
+   "widthCm": 5,
+   "heightCm": 18,
+   "depthCm": 5,
+   "image": "products/brume-pivoine.webp",
+   "gallery": [],
+   "placement": {
+    "fixtureId": "island",
+    "level": 1,
+    "slot": 4,
+    "facings": 2
+   },
+   "variants": [],
+   "displayVariants": false
+  },
+  {
+   "id": "brume-fleur-oranger",
+   "slug": "brume-fleur-oranger",
+   "categoryId": "perfume",
+   "brand": "Lys & Lune",
+   "name": {
+    "fr": "Brume corps Fleur d’oranger",
+    "en": "Orange blossom body mist",
+    "ar": "رذاذ الجسم بزهر البرتقال"
+   },
+   "description": {
+    "fr": "Notes lumineuses de néroli et de miel, comme un jardin de riad au printemps.",
+    "en": "Bright notes of neroli and honey, like a riad garden in spring.",
+    "ar": "نفحات مشرقة من النيرولي والعسل كحديقة رياض في الربيع."
+   },
+   "howToUse": {
+    "fr": "Vaporiser sur les points de pulsation : poignets, cou et derrière les oreilles.",
+    "en": "Spray on pulse points: wrists, neck and behind the ears.",
+    "ar": "يرش على نقاط النبض: المعصمين والرقبة وخلف الأذنين."
+   },
+   "ingredients": null,
+   "sizeLabel": "200 ml",
+   "price": 149,
+   "promoPrice": null,
+   "stock": 37,
+   "isActive": true,
+   "isFeatured": false,
+   "isNew": false,
+   "shape": "spray",
+   "widthCm": 5,
+   "heightCm": 18,
+   "depthCm": 5,
+   "image": "products/brume-fleur-oranger.webp",
+   "gallery": [],
+   "placement": {
+    "fixtureId": "wall-perfume",
+    "level": 0,
+    "slot": 1,
+    "facings": 2
+   },
+   "variants": [],
+   "displayVariants": false
+  },
+  {
+   "id": "edp-rose-de-damas",
+   "slug": "edp-rose-de-damas",
+   "categoryId": "perfume",
+   "brand": "Maison Rosée",
+   "name": {
+    "fr": "Rose de Damas — Eau de parfum",
+    "en": "Damask Rose — Eau de parfum",
+    "ar": "وردة دمشق — ماء عطر"
+   },
+   "description": {
+    "fr": "Rose de Damas, litchi et musc blanc. Un floral lumineux et élégant.",
+    "en": "Damask rose, lychee and white musk. A bright, elegant floral.",
+    "ar": "وردة دمشق والليتشي والمسك الأبيض. عطر زهري مشرق وأنيق."
+   },
+   "howToUse": {
+    "fr": "Vaporiser sur les points de pulsation : poignets, cou et derrière les oreilles.",
+    "en": "Spray on pulse points: wrists, neck and behind the ears.",
+    "ar": "يرش على نقاط النبض: المعصمين والرقبة وخلف الأذنين."
+   },
+   "ingredients": null,
+   "sizeLabel": "50 / 100 ml",
+   "price": 349,
+   "promoPrice": null,
+   "stock": 18,
+   "isActive": true,
+   "isFeatured": true,
+   "isNew": false,
+   "shape": "perfume",
+   "widthCm": 7.5,
+   "heightCm": 12,
+   "depthCm": 4,
+   "image": "products/edp-rose-de-damas.webp",
+   "gallery": [],
+   "placement": {
+    "fixtureId": "wall-perfume",
+    "level": 1,
+    "slot": 0,
+    "facings": 2
+   },
+   "variants": [
+    {
+     "id": "50ml",
+     "name": {
+      "fr": "50 ml",
+      "en": "50 ml",
+      "ar": "50 مل"
+     },
+     "price": 349,
+     "promoPrice": null,
+     "stock": 14,
+     "image": null
+    },
+    {
+     "id": "100ml",
+     "name": {
+      "fr": "100 ml",
+      "en": "100 ml",
+      "ar": "100 مل"
+     },
+     "price": 549,
+     "promoPrice": null,
+     "stock": 22,
+     "image": null
+    }
+   ],
+   "displayVariants": false
+  },
+  {
+   "id": "edp-fleur-oranger",
+   "slug": "edp-fleur-oranger",
+   "categoryId": "perfume",
+   "brand": "Maison Rosée",
+   "name": {
+    "fr": "Fleur d’oranger — Eau de parfum",
+    "en": "Orange Blossom — Eau de parfum",
+    "ar": "زهر البرتقال — ماء عطر"
+   },
+   "description": {
+    "fr": "Fleur d’oranger, bergamote et bois blonds. Solaire et réconfortant.",
+    "en": "Orange blossom, bergamot and blond woods. Sunny and comforting.",
+    "ar": "زهر البرتقال والبرغموت والأخشاب الشقراء. مشمس ومريح."
+   },
+   "howToUse": {
+    "fr": "Vaporiser sur les points de pulsation : poignets, cou et derrière les oreilles.",
+    "en": "Spray on pulse points: wrists, neck and behind the ears.",
+    "ar": "يرش على نقاط النبض: المعصمين والرقبة وخلف الأذنين."
+   },
+   "ingredients": null,
+   "sizeLabel": "50 ml",
+   "price": 389,
+   "promoPrice": null,
+   "stock": 11,
+   "isActive": true,
+   "isFeatured": false,
+   "isNew": false,
+   "shape": "perfume",
+   "widthCm": 7,
+   "heightCm": 11,
+   "depthCm": 4,
+   "image": "products/edp-fleur-oranger.webp",
+   "gallery": [],
+   "placement": {
+    "fixtureId": "wall-perfume",
+    "level": 1,
+    "slot": 1,
+    "facings": 2
+   },
+   "variants": [],
+   "displayVariants": false
+  },
+  {
+   "id": "edp-musc-blanc",
+   "slug": "edp-musc-blanc",
+   "categoryId": "perfume",
+   "brand": "Maison Rosée",
+   "name": {
+    "fr": "Musc blanc — Eau de parfum",
+    "en": "White Musk — Eau de parfum",
+    "ar": "المسك الأبيض — ماء عطر"
+   },
+   "description": {
+    "fr": "Un musc propre et poudré, comme une peau sortie du hammam.",
+    "en": "A clean, powdery musk, like skin fresh from the hammam.",
+    "ar": "مسك نظيف وبودري كبشرة خارجة من الحمام."
+   },
+   "howToUse": {
+    "fr": "Vaporiser sur les points de pulsation : poignets, cou et derrière les oreilles.",
+    "en": "Spray on pulse points: wrists, neck and behind the ears.",
+    "ar": "يرش على نقاط النبض: المعصمين والرقبة وخلف الأذنين."
+   },
+   "ingredients": null,
+   "sizeLabel": "50 ml",
+   "price": 349,
+   "promoPrice": null,
+   "stock": 37,
+   "isActive": true,
+   "isFeatured": false,
+   "isNew": false,
+   "shape": "perfume",
+   "widthCm": 6.5,
+   "heightCm": 12.5,
+   "depthCm": 4,
+   "image": "products/edp-musc-blanc.webp",
+   "gallery": [],
+   "placement": {
+    "fixtureId": "wall-perfume",
+    "level": 1,
+    "slot": 2,
+    "facings": 2
+   },
+   "variants": [],
+   "displayVariants": false
+  },
+  {
+   "id": "edp-oud-ambre",
+   "slug": "edp-oud-ambre",
+   "categoryId": "perfume",
+   "brand": "Saphir",
+   "name": {
+    "fr": "Oud & ambre — Eau de parfum",
+    "en": "Oud & Amber — Eau de parfum",
+    "ar": "عود وعنبر — ماء عطر"
+   },
+   "description": {
+    "fr": "Oud fumé, ambre et rose noire. Intense et envoûtant pour le soir.",
+    "en": "Smoky oud, amber and black rose. Intense and captivating for evenings.",
+    "ar": "عود مدخن وعنبر ووردة سوداء. قوي وساحر للمساء."
+   },
+   "howToUse": {
+    "fr": "Vaporiser sur les points de pulsation : poignets, cou et derrière les oreilles.",
+    "en": "Spray on pulse points: wrists, neck and behind the ears.",
+    "ar": "يرش على نقاط النبض: المعصمين والرقبة وخلف الأذنين."
+   },
+   "ingredients": null,
+   "sizeLabel": "50 / 100 ml",
+   "price": 449,
+   "promoPrice": null,
+   "stock": 30,
+   "isActive": true,
+   "isFeatured": true,
+   "isNew": false,
+   "shape": "perfume",
+   "widthCm": 7.5,
+   "heightCm": 13,
+   "depthCm": 4.5,
+   "image": "products/edp-oud-ambre.webp",
+   "gallery": [],
+   "placement": {
+    "fixtureId": "wall-perfume",
+    "level": 2,
+    "slot": 0,
+    "facings": 2
+   },
+   "variants": [
+    {
+     "id": "50ml",
+     "name": {
+      "fr": "50 ml",
+      "en": "50 ml",
+      "ar": "50 مل"
+     },
+     "price": 449,
+     "promoPrice": null,
+     "stock": 36,
+     "image": null
+    },
+    {
+     "id": "100ml",
+     "name": {
+      "fr": "100 ml",
+      "en": "100 ml",
+      "ar": "100 مل"
+     },
+     "price": 649,
+     "promoPrice": null,
+     "stock": 36,
+     "image": null
+    }
+   ],
+   "displayVariants": false
+  },
+  {
+   "id": "edp-jasmin-nuit",
+   "slug": "edp-jasmin-nuit",
+   "categoryId": "perfume",
+   "brand": "Lys & Lune",
+   "name": {
+    "fr": "Jasmin de nuit — Eau de parfum",
+    "en": "Night Jasmine — Eau de parfum",
+    "ar": "ياسمين الليل — ماء عطر"
+   },
+   "description": {
+    "fr": "Jasmin sambac, tubéreuse et vanille. Un floral blanc sensuel.",
+    "en": "Sambac jasmine, tuberose and vanilla. A sensual white floral.",
+    "ar": "ياسمين سامباك ومسك الروم والفانيليا. عطر زهري أبيض جذاب."
+   },
+   "howToUse": {
+    "fr": "Vaporiser sur les points de pulsation : poignets, cou et derrière les oreilles.",
+    "en": "Spray on pulse points: wrists, neck and behind the ears.",
+    "ar": "يرش على نقاط النبض: المعصمين والرقبة وخلف الأذنين."
+   },
+   "ingredients": null,
+   "sizeLabel": "75 ml",
+   "price": 459,
+   "promoPrice": null,
+   "stock": 17,
+   "isActive": true,
+   "isFeatured": false,
+   "isNew": false,
+   "shape": "perfume",
+   "widthCm": 7,
+   "heightCm": 12,
+   "depthCm": 4.5,
+   "image": "products/edp-jasmin-nuit.webp",
+   "gallery": [],
+   "placement": {
+    "fixtureId": "wall-perfume",
+    "level": 2,
+    "slot": 1,
+    "facings": 2
+   },
+   "variants": [],
+   "displayVariants": false
+  },
+  {
+   "id": "edp-iris-velours",
+   "slug": "edp-iris-velours",
+   "categoryId": "perfume",
+   "brand": "Velours",
+   "name": {
+    "fr": "Iris velours — Eau de parfum",
+    "en": "Velvet Iris — Eau de parfum",
+    "ar": "إيريس مخملي — ماء عطر"
+   },
+   "description": {
+    "fr": "Iris poudré, poire et patchouli. Chic et intemporel.",
+    "en": "Powdery iris, pear and patchouli. Chic and timeless.",
+    "ar": "إيريس بودري وكمثرى وباتشولي. أنيق وخالد."
+   },
+   "howToUse": {
+    "fr": "Vaporiser sur les points de pulsation : poignets, cou et derrière les oreilles.",
+    "en": "Spray on pulse points: wrists, neck and behind the ears.",
+    "ar": "يرش على نقاط النبض: المعصمين والرقبة وخلف الأذنين."
+   },
+   "ingredients": null,
+   "sizeLabel": "50 ml",
+   "price": 499,
+   "promoPrice": null,
+   "stock": 3,
+   "isActive": true,
+   "isFeatured": false,
+   "isNew": true,
+   "shape": "perfume",
+   "widthCm": 6.5,
+   "heightCm": 13,
+   "depthCm": 4,
+   "image": "products/edp-iris-velours.webp",
+   "gallery": [],
+   "placement": {
+    "fixtureId": "wall-perfume",
+    "level": 2,
+    "slot": 2,
+    "facings": 2
+   },
+   "variants": [],
+   "displayVariants": false
+  },
+  {
+   "id": "edt-vanille-poudree",
+   "slug": "edt-vanille-poudree",
+   "categoryId": "perfume",
+   "brand": "Lys & Lune",
+   "name": {
+    "fr": "Vanille poudrée — Eau de toilette",
+    "en": "Powdery Vanilla — Eau de toilette",
+    "ar": "فانيليا بودرية — ماء تواليت"
+   },
+   "description": {
+    "fr": "Vanille de Madagascar, héliotrope et fève tonka. Doux et gourmand.",
+    "en": "Madagascar vanilla, heliotrope and tonka bean. Soft and gourmand.",
+    "ar": "فانيليا مدغشقر والهليوتروب وحبوب التونكا. ناعم وشهي."
+   },
+   "howToUse": {
+    "fr": "Vaporiser sur les points de pulsation : poignets, cou et derrière les oreilles.",
+    "en": "Spray on pulse points: wrists, neck and behind the ears.",
+    "ar": "يرش على نقاط النبض: المعصمين والرقبة وخلف الأذنين."
+   },
+   "ingredients": null,
+   "sizeLabel": "100 ml",
+   "price": 399,
+   "promoPrice": null,
+   "stock": 14,
+   "isActive": true,
+   "isFeatured": false,
+   "isNew": false,
+   "shape": "perfume",
+   "widthCm": 7.5,
+   "heightCm": 12,
+   "depthCm": 4.5,
+   "image": "products/edt-vanille-poudree.webp",
+   "gallery": [],
+   "placement": {
+    "fixtureId": "wall-perfume",
+    "level": 3,
+    "slot": 0,
+    "facings": 2
+   },
+   "variants": [],
+   "displayVariants": false
+  },
+  {
+   "id": "edt-neroli-solaire",
+   "slug": "edt-neroli-solaire",
+   "categoryId": "perfume",
+   "brand": "Aube",
+   "name": {
+    "fr": "Néroli solaire — Eau de toilette",
+    "en": "Sunny Neroli — Eau de toilette",
+    "ar": "نيرولي مشمس — ماء تواليت"
+   },
+   "description": {
+    "fr": "Néroli, mandarine et fleur de sel. Une fraîcheur méditerranéenne.",
+    "en": "Neroli, mandarin and sea salt. Mediterranean freshness.",
+    "ar": "نيرولي ويوسفي وملح البحر. انتعاش متوسطي."
+   },
+   "howToUse": {
+    "fr": "Vaporiser sur les points de pulsation : poignets, cou et derrière les oreilles.",
+    "en": "Spray on pulse points: wrists, neck and behind the ears.",
+    "ar": "يرش على نقاط النبض: المعصمين والرقبة وخلف الأذنين."
+   },
+   "ingredients": null,
+   "sizeLabel": "100 ml",
+   "price": 359,
+   "promoPrice": null,
+   "stock": 19,
+   "isActive": true,
+   "isFeatured": false,
+   "isNew": false,
+   "shape": "perfume",
+   "widthCm": 7,
+   "heightCm": 12.5,
+   "depthCm": 4,
+   "image": "products/edt-neroli-solaire.webp",
+   "gallery": [],
+   "placement": {
+    "fixtureId": "wall-perfume",
+    "level": 3,
+    "slot": 1,
+    "facings": 2
+   },
+   "variants": [],
+   "displayVariants": false
+  },
+  {
+   "id": "coffret-argan-cheveux",
+   "slug": "coffret-argan-cheveux",
+   "categoryId": "hair",
+   "brand": "Argania",
+   "name": {
+    "fr": "Coffret rituel argan cheveux",
+    "en": "Argan hair ritual gift set",
+    "ar": "علبة هدية روتين الأركان للشعر"
+   },
+   "description": {
+    "fr": "Shampooing, masque et huile d’argan réunis dans un coffret à offrir.",
+    "en": "Shampoo, mask and argan oil together in a gift box.",
+    "ar": "شامبو وماسك وزيت أركان في علبة هدية."
+   },
+   "howToUse": {
+    "fr": "Appliquer sur cheveux mouillés ou secs selon le produit, masser doucement puis rincer si nécessaire.",
+    "en": "Apply to wet or dry hair depending on the product, massage gently, then rinse if needed.",
+    "ar": "يوضع على الشعر المبلل أو الجاف حسب المنتج، يدلك بلطف ثم يشطف عند الحاجة."
+   },
+   "ingredients": null,
+   "sizeLabel": "3 produits",
+   "price": 349,
+   "promoPrice": 279,
+   "stock": 16,
+   "isActive": true,
+   "isFeatured": true,
+   "isNew": false,
+   "shape": "box",
+   "widthCm": 20,
+   "heightCm": 14,
+   "depthCm": 7,
+   "image": "products/coffret-argan-cheveux.webp",
+   "gallery": [],
+   "placement": {
+    "fixtureId": "island",
+    "level": 1,
+    "slot": 0,
+    "facings": 1
+   },
+   "variants": [],
+   "displayVariants": false
+  },
+  {
+   "id": "coffret-mains-ongles",
+   "slug": "coffret-mains-ongles",
+   "categoryId": "nails",
+   "brand": "Velours",
+   "name": {
+    "fr": "Coffret mains & ongles",
+    "en": "Hands & nails gift set",
+    "ar": "علبة هدية لليدين والأظافر"
+   },
+   "description": {
+    "fr": "Crème mains, huile cuticules et deux vernis pour une manucure maison.",
+    "en": "Hand cream, cuticle oil and two polishes for an at-home manicure.",
+    "ar": "كريم اليدين وزيت الأظافر وطلاءان لمانيكير في المنزل."
+   },
+   "howToUse": {
+    "fr": "Appliquer sur des mains et des ongles propres. Laisser sécher entre deux couches.",
+    "en": "Apply to clean hands and nails. Let dry between coats.",
+    "ar": "يوضع على يدين وأظافر نظيفة. يترك ليجف بين الطبقتين."
+   },
+   "ingredients": null,
+   "sizeLabel": "4 produits",
+   "price": 199,
+   "promoPrice": 159,
+   "stock": 27,
+   "isActive": true,
+   "isFeatured": false,
+   "isNew": false,
+   "shape": "box",
+   "widthCm": 16,
+   "heightCm": 12,
+   "depthCm": 5,
+   "image": "products/coffret-mains-ongles.webp",
+   "gallery": [],
+   "placement": {
+    "fixtureId": "island",
+    "level": 1,
+    "slot": 1,
+    "facings": 1
+   },
+   "variants": [],
+   "displayVariants": false
+  },
+  {
+   "id": "duo-levres",
+   "slug": "duo-levres",
+   "categoryId": "makeup",
+   "brand": "Velours",
+   "name": {
+    "fr": "Duo lèvres Rouge Marrakech",
+    "en": "Marrakech Red lip duo",
+    "ar": "ثنائي الشفاه أحمر مراكش"
+   },
+   "description": {
+    "fr": "Le rouge à lèvres iconique et son gloss assorti dans une pochette satin.",
+    "en": "The iconic lipstick and its matching gloss in a satin pouch.",
+    "ar": "أحمر الشفاه الأيقوني مع الملمع المطابق في حقيبة ساتان."
+   },
+   "howToUse": {
+    "fr": "Appliquer du bout des doigts, au pinceau ou à l’éponge, puis estomper.",
+    "en": "Apply with fingertips, a brush or a sponge, then blend.",
+    "ar": "يوضع بأطراف الأصابع أو بالفرشاة أو الإسفنجة ثم يدمج."
+   },
+   "ingredients": null,
+   "sizeLabel": "2 produits",
+   "price": 159,
+   "promoPrice": 129,
+   "stock": 30,
+   "isActive": true,
+   "isFeatured": false,
+   "isNew": true,
+   "shape": "box",
+   "widthCm": 12,
+   "heightCm": 10,
+   "depthCm": 4,
+   "image": "products/duo-levres.webp",
+   "gallery": [],
+   "placement": {
+    "fixtureId": "island",
+    "level": 1,
+    "slot": 2,
+    "facings": 1
+   },
+   "variants": [],
+   "displayVariants": false
+  },
+  {
+   "id": "coffret-hammam",
+   "slug": "coffret-hammam",
+   "categoryId": "body",
+   "brand": "Atlas Botanica",
+   "name": {
+    "fr": "Coffret rituel hammam",
+    "en": "Hammam ritual gift set",
+    "ar": "علبة طقوس الحمام"
+   },
+   "description": {
+    "fr": "Savon noir, gant kessa et ghassoul : le hammam traditionnel à la maison.",
+    "en": "Black soap, kessa glove and ghassoul: the traditional hammam at home.",
+    "ar": "صابون بلدي وكيس وغاسول: الحمام التقليدي في المنزل."
+   },
+   "howToUse": {
+    "fr": "Appliquer sur une peau propre et humide, masser puis rincer ou laisser pénétrer.",
+    "en": "Apply to clean, damp skin, massage, then rinse or let it absorb.",
+    "ar": "يوضع على بشرة نظيفة ورطبة، يدلك ثم يشطف أو يترك ليمتص."
+   },
+   "ingredients": null,
+   "sizeLabel": "3 produits",
+   "price": 199,
+   "promoPrice": 169,
+   "stock": 37,
+   "isActive": true,
+   "isFeatured": false,
+   "isNew": false,
+   "shape": "box",
+   "widthCm": 18,
+   "heightCm": 13,
+   "depthCm": 6,
+   "image": "products/coffret-hammam.webp",
+   "gallery": [],
+   "placement": {
+    "fixtureId": "island",
+    "level": 1,
+    "slot": 3,
+    "facings": 1
+   },
+   "variants": [],
+   "displayVariants": false
+  },
+  {
+   "id": "savon-noir",
+   "slug": "savon-noir",
+   "categoryId": "body",
+   "brand": "Atlas Botanica",
+   "name": {
+    "fr": "Savon noir à l’eucalyptus",
+    "en": "Eucalyptus black soap",
+    "ar": "صابون بلدي بالأوكالبتوس"
+   },
+   "description": {
+    "fr": "Pâte d’olive noire saponifiée, à appliquer avant le gommage au gant kessa.",
+    "en": "Saponified black olive paste to apply before scrubbing with a kessa glove.",
+    "ar": "عجينة زيتون أسود مصبنة تستعمل قبل التقشير بالكيس."
+   },
+   "howToUse": {
+    "fr": "Appliquer sur une peau propre et humide, masser puis rincer ou laisser pénétrer.",
+    "en": "Apply to clean, damp skin, massage, then rinse or let it absorb.",
+    "ar": "يوضع على بشرة نظيفة ورطبة، يدلك ثم يشطف أو يترك ليمتص."
+   },
+   "ingredients": null,
+   "sizeLabel": "250 g",
+   "price": 49,
+   "promoPrice": null,
+   "stock": 12,
+   "isActive": true,
+   "isFeatured": false,
+   "isNew": false,
+   "shape": "jar",
+   "widthCm": 8,
+   "heightCm": 7,
+   "depthCm": 8,
+   "image": "products/savon-noir.webp",
+   "gallery": [],
+   "placement": {
+    "fixtureId": "island",
+    "level": 0,
+    "slot": 0,
+    "facings": 1
+   },
+   "variants": [],
+   "displayVariants": false
+  },
+  {
+   "id": "gant-kessa",
+   "slug": "gant-kessa",
+   "categoryId": "body",
+   "brand": "Atlas Botanica",
+   "name": {
+    "fr": "Gant kessa exfoliant",
+    "en": "Kessa exfoliating glove",
+    "ar": "كيس الحمام للتقشير"
+   },
+   "description": {
+    "fr": "Le gant traditionnel du hammam pour une peau nette et douce.",
+    "en": "The traditional hammam glove for clean, soft skin.",
+    "ar": "الكيس التقليدي للحمام لبشرة نظيفة وناعمة."
+   },
+   "howToUse": {
+    "fr": "Appliquer sur une peau propre et humide, masser puis rincer ou laisser pénétrer.",
+    "en": "Apply to clean, damp skin, massage, then rinse or let it absorb.",
+    "ar": "يوضع على بشرة نظيفة ورطبة، يدلك ثم يشطف أو يترك ليمتص."
+   },
+   "ingredients": null,
+   "sizeLabel": "1 gant",
+   "price": 29,
+   "promoPrice": null,
+   "stock": 12,
+   "isActive": true,
+   "isFeatured": false,
+   "isNew": false,
+   "shape": "pouch",
+   "widthCm": 12,
+   "heightCm": 17,
+   "depthCm": 1.5,
+   "image": "products/gant-kessa.webp",
+   "gallery": [],
+   "placement": {
+    "fixtureId": "island",
+    "level": 0,
+    "slot": 1,
+    "facings": 1
+   },
+   "variants": [],
+   "displayVariants": false
+  },
+  {
+   "id": "gel-douche-fleur-oranger",
+   "slug": "gel-douche-fleur-oranger",
+   "categoryId": "body",
+   "brand": "Lys & Lune",
+   "name": {
+    "fr": "Gel douche fleur d’oranger",
+    "en": "Orange blossom shower gel",
+    "ar": "جل الاستحمام بزهر البرتقال"
+   },
+   "description": {
+    "fr": "Une mousse onctueuse au parfum de fleur d’oranger.",
+    "en": "A creamy lather scented with orange blossom.",
+    "ar": "رغوة كريمية بعطر زهر البرتقال."
+   },
+   "howToUse": {
+    "fr": "Appliquer sur une peau propre et humide, masser puis rincer ou laisser pénétrer.",
+    "en": "Apply to clean, damp skin, massage, then rinse or let it absorb.",
+    "ar": "يوضع على بشرة نظيفة ورطبة، يدلك ثم يشطف أو يترك ليمتص."
+   },
+   "ingredients": null,
+   "sizeLabel": "250 ml",
+   "price": 59,
+   "promoPrice": null,
+   "stock": 7,
+   "isActive": true,
+   "isFeatured": false,
+   "isNew": false,
+   "shape": "bottle",
+   "widthCm": 6.5,
+   "heightCm": 19,
+   "depthCm": 4.2,
+   "image": "products/gel-douche-fleur-oranger.webp",
+   "gallery": [],
+   "placement": {
+    "fixtureId": "island",
+    "level": 0,
+    "slot": 2,
+    "facings": 1
+   },
+   "variants": [],
+   "displayVariants": false
+  },
+  {
+   "id": "lait-corps",
+   "slug": "lait-corps",
+   "categoryId": "body",
+   "brand": "Nacre",
+   "name": {
+    "fr": "Lait corps hydratant",
+    "en": "Moisturising body lotion",
+    "ar": "لوشن الجسم المرطب"
+   },
+   "description": {
+    "fr": "Hydrate 48 h, pénètre vite. Au beurre de karité et à l’aloe vera.",
+    "en": "Hydrates for 48 hours and absorbs fast. With shea butter and aloe vera.",
+    "ar": "يرطب 48 ساعة ويمتص بسرعة. بزبدة الشيا والصبار."
+   },
+   "howToUse": {
+    "fr": "Appliquer sur une peau propre et humide, masser puis rincer ou laisser pénétrer.",
+    "en": "Apply to clean, damp skin, massage, then rinse or let it absorb.",
+    "ar": "يوضع على بشرة نظيفة ورطبة، يدلك ثم يشطف أو يترك ليمتص."
+   },
+   "ingredients": null,
+   "sizeLabel": "400 ml",
+   "price": 99,
+   "promoPrice": null,
+   "stock": 20,
+   "isActive": true,
+   "isFeatured": false,
+   "isNew": false,
+   "shape": "pump",
+   "widthCm": 7.5,
+   "heightCm": 23,
+   "depthCm": 7.5,
+   "image": "products/lait-corps.webp",
+   "gallery": [],
+   "placement": {
+    "fixtureId": "island",
+    "level": 0,
+    "slot": 3,
+    "facings": 1
+   },
+   "variants": [],
+   "displayVariants": false
+  },
+  {
+   "id": "gommage-corps-rose",
+   "slug": "gommage-corps-rose",
+   "categoryId": "body",
+   "brand": "Maison Rosée",
+   "name": {
+    "fr": "Gommage corps sucre & rose",
+    "en": "Sugar & rose body scrub",
+    "ar": "مقشر الجسم بالسكر والورد"
+   },
+   "description": {
+    "fr": "Exfolie en douceur et laisse un parfum délicat de rose.",
+    "en": "Gently exfoliates and leaves a delicate rose scent.",
+    "ar": "يقشر بلطف ويترك عطراً رقيقاً من الورد."
+   },
+   "howToUse": {
+    "fr": "Appliquer sur une peau propre et humide, masser puis rincer ou laisser pénétrer.",
+    "en": "Apply to clean, damp skin, massage, then rinse or let it absorb.",
+    "ar": "يوضع على بشرة نظيفة ورطبة، يدلك ثم يشطف أو يترك ليمتص."
+   },
+   "ingredients": null,
+   "sizeLabel": "200 g",
+   "price": 119,
+   "promoPrice": null,
+   "stock": 21,
+   "isActive": true,
+   "isFeatured": false,
+   "isNew": false,
+   "shape": "jar",
+   "widthCm": 8.5,
+   "heightCm": 7,
+   "depthCm": 8.5,
+   "image": "products/gommage-corps-rose.webp",
+   "gallery": [],
+   "placement": {
+    "fixtureId": "island",
+    "level": 0,
+    "slot": 4,
+    "facings": 1
+   },
+   "variants": [],
+   "displayVariants": false
+  },
+  {
+   "id": "huile-seche-pailletee",
+   "slug": "huile-seche-pailletee",
+   "categoryId": "body",
+   "brand": "Argania",
+   "name": {
+    "fr": "Huile sèche pailletée",
+    "en": "Shimmering dry oil",
+    "ar": "زيت جاف لامع"
+   },
+   "description": {
+    "fr": "Nourrit et illumine la peau d’un voile doré, sans film gras.",
+    "en": "Nourishes and illuminates skin with a golden veil, no greasy film.",
+    "ar": "يغذي البشرة ويضيئها بلمسة ذهبية دون طبقة دهنية."
+   },
+   "howToUse": {
+    "fr": "Appliquer sur une peau propre et humide, masser puis rincer ou laisser pénétrer.",
+    "en": "Apply to clean, damp skin, massage, then rinse or let it absorb.",
+    "ar": "يوضع على بشرة نظيفة ورطبة، يدلك ثم يشطف أو يترك ليمتص."
+   },
+   "ingredients": null,
+   "sizeLabel": "100 ml",
+   "price": 169,
+   "promoPrice": null,
+   "stock": 24,
+   "isActive": true,
+   "isFeatured": false,
+   "isNew": false,
+   "shape": "spray",
+   "widthCm": 4.5,
+   "heightCm": 15,
+   "depthCm": 4.5,
+   "image": "products/huile-seche-pailletee.webp",
+   "gallery": [],
+   "placement": {
+    "fixtureId": "island",
+    "level": 0,
+    "slot": 5,
+    "facings": 1
+   },
+   "variants": [],
+   "displayVariants": false
+  },
+  {
+   "id": "eponge-maquillage",
+   "slug": "eponge-maquillage",
+   "categoryId": "accessories",
+   "brand": "Velours",
+   "name": {
+    "fr": "Éponge à maquillage",
+    "en": "Makeup blending sponge",
+    "ar": "إسفنجة المكياج"
+   },
+   "description": {
+    "fr": "S’utilise humide pour fondre le teint sans traces.",
+    "en": "Use damp to blend foundation without streaks.",
+    "ar": "تستعمل مبللة لدمج كريم الأساس دون آثار."
+   },
+   "howToUse": {
+    "fr": "Nettoyer régulièrement et ranger à l’abri de l’humidité.",
+    "en": "Clean regularly and store away from moisture.",
+    "ar": "ينظف بانتظام ويحفظ بعيداً عن الرطوبة."
+   },
+   "ingredients": null,
+   "sizeLabel": "1 pièce",
+   "price": 39,
+   "promoPrice": null,
+   "stock": 25,
+   "isActive": true,
+   "isFeatured": false,
+   "isNew": false,
+   "shape": "box",
+   "widthCm": 6,
+   "heightCm": 10,
+   "depthCm": 6,
+   "image": "products/eponge-maquillage.webp",
+   "gallery": [],
+   "placement": {
+    "fixtureId": "counter",
+    "level": 0,
+    "slot": 0,
+    "facings": 2
+   },
+   "variants": [],
+   "displayVariants": false
+  },
+  {
+   "id": "pinces-cheveux",
+   "slug": "pinces-cheveux",
+   "categoryId": "accessories",
+   "brand": "Lys & Lune",
+   "name": {
+    "fr": "Pinces à cheveux dorées (lot de 4)",
+    "en": "Gold hair clips (set of 4)",
+    "ar": "مشابك شعر ذهبية (4 قطع)"
+   },
+   "description": {
+    "fr": "Barrettes en métal doré et nacre pour attacher les cheveux avec élégance.",
+    "en": "Gold metal and mother-of-pearl clips to tie hair back elegantly.",
+    "ar": "مشابك من المعدن الذهبي والصدف لتسريحة أنيقة."
+   },
+   "howToUse": {
+    "fr": "Nettoyer régulièrement et ranger à l’abri de l’humidité.",
+    "en": "Clean regularly and store away from moisture.",
+    "ar": "ينظف بانتظام ويحفظ بعيداً عن الرطوبة."
+   },
+   "ingredients": null,
+   "sizeLabel": "4 pièces",
+   "price": 49,
+   "promoPrice": null,
+   "stock": 29,
+   "isActive": true,
+   "isFeatured": false,
+   "isNew": false,
+   "shape": "box",
+   "widthCm": 8,
+   "heightCm": 13,
+   "depthCm": 1,
+   "image": "products/pinces-cheveux.webp",
+   "gallery": [],
+   "placement": {
+    "fixtureId": "counter",
+    "level": 0,
+    "slot": 1,
+    "facings": 1
+   },
+   "variants": [],
+   "displayVariants": false
+  },
+  {
+   "id": "chouchous-satin",
+   "slug": "chouchous-satin",
+   "categoryId": "accessories",
+   "brand": "Lys & Lune",
+   "name": {
+    "fr": "Chouchous en satin (lot de 3)",
+    "en": "Satin scrunchies (set of 3)",
+    "ar": "ربطات شعر ساتان (3 قطع)"
+   },
+   "description": {
+    "fr": "Le satin préserve les cheveux de la casse et des marques.",
+    "en": "Satin protects hair from breakage and kinks.",
+    "ar": "الساتان يحمي الشعر من التقصف والعلامات."
+   },
+   "howToUse": {
+    "fr": "Nettoyer régulièrement et ranger à l’abri de l’humidité.",
+    "en": "Clean regularly and store away from moisture.",
+    "ar": "ينظف بانتظام ويحفظ بعيداً عن الرطوبة."
+   },
+   "ingredients": null,
+   "sizeLabel": "3 pièces",
+   "price": 45,
+   "promoPrice": null,
+   "stock": 0,
+   "isActive": true,
+   "isFeatured": false,
+   "isNew": false,
+   "shape": "pouch",
+   "widthCm": 9,
+   "heightCm": 12,
+   "depthCm": 3,
+   "image": "products/chouchous-satin.webp",
+   "gallery": [],
+   "placement": {
+    "fixtureId": "counter",
+    "level": 0,
+    "slot": 2,
+    "facings": 1
+   },
+   "variants": [],
+   "displayVariants": false
+  },
+  {
+   "id": "miroir-poche",
+   "slug": "miroir-poche",
+   "categoryId": "accessories",
+   "brand": "Saphir",
+   "name": {
+    "fr": "Miroir de poche grossissant",
+    "en": "Magnifying pocket mirror",
+    "ar": "مرآة جيب مكبرة"
+   },
+   "description": {
+    "fr": "Double face, dont une grossissante ×3, dans un boîtier doré.",
+    "en": "Double-sided with a ×3 magnifying side, in a gold case.",
+    "ar": "مرآة بوجهين أحدهما مكبر ×3 في علبة ذهبية."
+   },
+   "howToUse": {
+    "fr": "Nettoyer régulièrement et ranger à l’abri de l’humidité.",
+    "en": "Clean regularly and store away from moisture.",
+    "ar": "ينظف بانتظام ويحفظ بعيداً عن الرطوبة."
+   },
+   "ingredients": null,
+   "sizeLabel": "Ø 7 cm",
+   "price": 59,
+   "promoPrice": null,
+   "stock": 16,
+   "isActive": true,
+   "isFeatured": false,
+   "isNew": false,
+   "shape": "compact",
+   "widthCm": 7,
+   "heightCm": 7,
+   "depthCm": 1.2,
+   "image": "products/miroir-poche.webp",
+   "gallery": [],
+   "placement": {
+    "fixtureId": "counter",
+    "level": 0,
+    "slot": 3,
+    "facings": 1
+   },
+   "variants": [],
+   "displayVariants": false
+  },
+  {
+   "id": "set-pinceaux",
+   "slug": "set-pinceaux",
+   "categoryId": "accessories",
+   "brand": "Saphir",
+   "name": {
+    "fr": "Set de 5 pinceaux maquillage",
+    "en": "5-piece makeup brush set",
+    "ar": "مجموعة 5 فرش للمكياج"
+   },
+   "description": {
+    "fr": "Poils synthétiques ultra-doux pour le teint, les joues et les yeux.",
+    "en": "Ultra-soft synthetic bristles for face, cheeks and eyes.",
+    "ar": "شعيرات صناعية ناعمة جداً للوجه والخدين والعينين."
+   },
+   "howToUse": {
+    "fr": "Nettoyer régulièrement et ranger à l’abri de l’humidité.",
+    "en": "Clean regularly and store away from moisture.",
+    "ar": "ينظف بانتظام ويحفظ بعيداً عن الرطوبة."
+   },
+   "ingredients": null,
+   "sizeLabel": "5 pièces",
+   "price": 149,
+   "promoPrice": null,
+   "stock": 26,
+   "isActive": true,
+   "isFeatured": false,
+   "isNew": false,
+   "shape": "box",
+   "widthCm": 10,
+   "heightCm": 19,
+   "depthCm": 3,
+   "image": "products/set-pinceaux.webp",
+   "gallery": [],
+   "placement": {
+    "fixtureId": "counter",
+    "level": 0,
+    "slot": 4,
+    "facings": 1
+   },
+   "variants": [],
+   "displayVariants": false
+  },
+  {
+   "id": "trousse-toilette",
+   "slug": "trousse-toilette",
+   "categoryId": "accessories",
+   "brand": "Lys & Lune",
+   "name": {
+    "fr": "Trousse de toilette matelassée",
+    "en": "Quilted toiletry bag",
+    "ar": "حقيبة أدوات تجميل مبطنة"
+   },
+   "description": {
+    "fr": "Nylon matelassé déperlant, fermeture zippée dorée.",
+    "en": "Water-resistant quilted nylon with a gold zip.",
+    "ar": "نايلون مبطن مقاوم للماء مع سحاب ذهبي."
+   },
+   "howToUse": {
+    "fr": "Nettoyer régulièrement et ranger à l’abri de l’humidité.",
+    "en": "Clean regularly and store away from moisture.",
+    "ar": "ينظف بانتظام ويحفظ بعيداً عن الرطوبة."
+   },
+   "ingredients": null,
+   "sizeLabel": "22 × 15 cm",
+   "price": 129,
+   "promoPrice": null,
+   "stock": 38,
+   "isActive": true,
+   "isFeatured": false,
+   "isNew": false,
+   "shape": "pouch",
+   "widthCm": 22,
+   "heightCm": 15,
+   "depthCm": 7,
+   "image": "products/trousse-toilette.webp",
+   "gallery": [],
+   "placement": {
+    "fixtureId": "island",
+    "level": 0,
+    "slot": 6,
+    "facings": 1
+   },
+   "variants": [],
+   "displayVariants": false
+  }
+ ],
+ "deliveryZones": [
+  {
+   "id": "casablanca",
+   "city": "Casablanca",
+   "fee": 25,
+   "eta": {
+    "fr": "24 h",
+    "en": "24 h",
+    "ar": "24 ساعة"
+   },
+   "isActive": true
+  },
+  {
+   "id": "rabat",
+   "city": "Rabat",
+   "fee": 30,
+   "eta": {
+    "fr": "24–48 h",
+    "en": "24–48 h",
+    "ar": "24–48 ساعة"
+   },
+   "isActive": true
+  },
+  {
+   "id": "mohammedia",
+   "city": "Mohammedia",
+   "fee": 30,
+   "eta": {
+    "fr": "24–48 h",
+    "en": "24–48 h",
+    "ar": "24–48 ساعة"
+   },
+   "isActive": true
+  },
+  {
+   "id": "marrakech",
+   "city": "Marrakech",
+   "fee": 35,
+   "eta": {
+    "fr": "24–48 h",
+    "en": "24–48 h",
+    "ar": "24–48 ساعة"
+   },
+   "isActive": true
+  },
+  {
+   "id": "tanger",
+   "city": "Tanger",
+   "fee": 35,
+   "eta": {
+    "fr": "24–48 h",
+    "en": "24–48 h",
+    "ar": "24–48 ساعة"
+   },
+   "isActive": true
+  },
+  {
+   "id": "fes",
+   "city": "Fès",
+   "fee": 35,
+   "eta": {
+    "fr": "24–48 h",
+    "en": "24–48 h",
+    "ar": "24–48 ساعة"
+   },
+   "isActive": true
+  },
+  {
+   "id": "agadir",
+   "city": "Agadir",
+   "fee": 40,
+   "eta": {
+    "fr": "48–72 h",
+    "en": "48–72 h",
+    "ar": "48–72 ساعة"
+   },
+   "isActive": true
+  },
+  {
+   "id": "other",
+   "city": "Autre ville / Other city",
+   "fee": 45,
+   "eta": {
+    "fr": "48–72 h",
+    "en": "48–72 h",
+    "ar": "48–72 ساعة"
+   },
+   "isActive": true
+  }
+ ]
+}

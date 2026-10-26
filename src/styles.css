@@ -1,0 +1,165 @@
+@import 'tailwindcss';
+
+/*
+ * Design tokens. Palette: porcelain surfaces, rosewater fills, a garnet "lipstick" primary,
+ * champagne hairlines, plum-tinted ink. Display type: Cormorant Garamond; UI: Jost; Arabic: Tajawal.
+ */
+@theme {
+  --color-porcelain: #fbf5f3;
+  --color-rosewater: #f0d5d8;
+  --color-blush: #f7e6e7;
+  --color-garnet: #6b1f3d;
+  --color-garnet-deep: #521630;
+  --color-champagne: #c9a46a;
+  --color-ink: #2a1820;
+  --color-mist: #8a777e;
+  --color-sage: #5f7a64;
+  --color-danger: #a3271f;
+
+  --font-display: 'Cormorant Garamond', 'Tajawal', Georgia, serif;
+  --font-sans: 'Jost', 'Tajawal', system-ui, sans-serif;
+
+  --shadow-float: 0 18px 50px -18px rgb(82 22 48 / 0.35), 0 2px 8px -2px rgb(82 22 48 / 0.12);
+  --shadow-soft: 0 8px 24px -12px rgb(82 22 48 / 0.28);
+
+  --ease-out-soft: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@layer base {
+  html,
+  body,
+  #root {
+    height: 100%;
+  }
+  html {
+    -webkit-tap-highlight-color: transparent;
+    text-size-adjust: 100%;
+  }
+  body {
+    margin: 0;
+    background: var(--color-porcelain);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    font-feature-settings: 'kern', 'liga';
+    -webkit-font-smoothing: antialiased;
+  }
+  html[dir='rtl'] body {
+    font-family: 'Tajawal', var(--font-sans);
+  }
+  html[dir='rtl'] .font-display {
+    font-family: 'Tajawal', var(--font-display);
+    font-weight: 700;
+    letter-spacing: 0;
+  }
+  :focus-visible {
+    outline: 2px solid var(--color-champagne);
+    outline-offset: 2px;
+  }
+  button {
+    cursor: pointer;
+  }
+  button:disabled {
+    cursor: not-allowed;
+  }
+}
+
+@layer components {
+  .glass {
+    background: rgb(251 245 243 / 0.86);
+    backdrop-filter: blur(14px) saturate(1.2);
+    -webkit-backdrop-filter: blur(14px) saturate(1.2);
+  }
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    border-radius: 999px;
+    background: var(--color-garnet);
+    color: #fff;
+    font-weight: 500;
+    padding: 0.8rem 1.4rem;
+    transition:
+      background 0.2s,
+      transform 0.2s var(--ease-out-soft);
+  }
+  .btn-primary:hover {
+    background: var(--color-garnet-deep);
+  }
+  .btn-primary:active {
+    transform: scale(0.97);
+  }
+  .btn-primary:disabled {
+    background: #b9a5ad;
+  }
+  .btn-quiet {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    border-radius: 999px;
+    border: 1px solid rgb(107 31 61 / 0.22);
+    color: var(--color-garnet);
+    font-weight: 500;
+    padding: 0.7rem 1.2rem;
+    background: transparent;
+    transition: background 0.2s;
+  }
+  .btn-quiet:hover {
+    background: rgb(240 213 216 / 0.55);
+  }
+  .field {
+    width: 100%;
+    border-radius: 14px;
+    border: 1px solid rgb(42 24 32 / 0.16);
+    background: #fff;
+    padding: 0.75rem 0.9rem;
+    font-size: 1rem;
+    color: var(--color-ink);
+  }
+  .field:focus {
+    outline: 2px solid var(--color-champagne);
+    outline-offset: 0;
+    border-color: transparent;
+  }
+  .hairline {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--color-champagne), transparent);
+  }
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    scrollbar-width: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+@keyframes pop {
+  0% {
+    transform: scale(0.6);
+  }
+  60% {
+    transform: scale(1.25);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes loading {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(300%);
+  }
+}

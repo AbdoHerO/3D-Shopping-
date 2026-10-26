@@ -1,0 +1,7 @@
+marble_diff.webp: marble_01 (Diffuse) — https://polyhaven.com/a/marble_01 — CC0
+marble_rough.webp: marble_01 (Rough) — https://polyhaven.com/a/marble_01 — CC0
+marble_nor.webp: marble_01 (nor_gl) — https://polyhaven.com/a/marble_01 — CC0
+plaster_nor.webp: grey_plaster (nor_gl) — https://polyhaven.com/a/grey_plaster — CC0
+facade_nor.webp: clay_plaster (nor_gl) — https://polyhaven.com/a/clay_plaster — CC0
+pavement_diff.webp: patio_tiles (Diffuse) — https://polyhaven.com/a/patio_tiles — CC0
+pavement_nor.webp: patio_tiles (nor_gl) — https://polyhaven.com/a/patio_tiles — CC0
