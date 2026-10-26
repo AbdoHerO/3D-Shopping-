@@ -1,29 +1,28 @@
 import { useMemo } from 'react'
 import { useTexture } from '@react-three/drei'
 import * as THREE from 'three'
-import { backlightTexture, flutedNormalTexture, mirrorTexture } from './textures'
+import { SHOP } from '@/lib/layout'
+import { ceilingGridTexture, checkerTexture, oakTexture, shelfGlowTexture } from './textures'
 
 const base = import.meta.env.BASE_URL + 'textures/'
 const TEXTURES = {
-  marbleDiff: base + 'marble_diff.webp',
-  marbleRough: base + 'marble_rough.webp',
-  marbleNor: base + 'marble_nor.webp',
   plasterNor: base + 'plaster_nor.webp',
   facadeNor: base + 'facade_nor.webp',
   pavementDiff: base + 'pavement_diff.webp',
   pavementNor: base + 'pavement_nor.webp',
 }
 
+/** Colours read from the photographs of the real shop. */
 export const PALETTE = {
-  wall: '#f3e2df',
-  ceiling: '#fbf8f6',
-  lacquer: '#fbf6f3',
-  rosePanel: '#e9c3c8',
-  blushPanel: '#f2d8da',
-  plum: '#5e1c36',
+  wall: '#f1f0ec',
+  shelf: '#f7f7f5',
+  black: '#141416',
+  oak: '#d6b48c',
+  stone: '#d9ccb6',
+  ink: '#1d1d1f',
+  ledWarm: '#ffdcae',
+  ledNeutral: '#fff6ea',
   gold: '#c9a46a',
-  ink: '#2a1820',
-  warmLight: '#ffe6cc',
 }
 
 function repeat(t: THREE.Texture, x: number, y: number, srgb = false) {
@@ -42,105 +41,101 @@ export type Materials = ReturnType<typeof useMaterials>
 export function useMaterials(width: number, depth: number) {
   const tex = useTexture(TEXTURES)
   return useMemo(() => {
+    // checkered tiles: the 2×2 texture covers two tiles each way
+    const tiles = 2 * SHOP.floorTile
     const floor = new THREE.MeshStandardMaterial({
-      map: repeat(tex.marbleDiff, width / 1.4, depth / 1.4, true),
-      roughnessMap: repeat(tex.marbleRough, width / 1.4, depth / 1.4),
-      normalMap: repeat(tex.marbleNor, width / 1.4, depth / 1.4),
-      normalScale: new THREE.Vector2(0.4, 0.4),
-      roughness: 0.55,
-      color: '#fbf6f4',
-      envMapIntensity: 0.9,
+      map: repeat(checkerTexture(), width / tiles, depth / tiles),
+      roughness: 0.34,
+      metalness: 0,
+      envMapIntensity: 0.55,
+    })
+    const ceiling = new THREE.MeshStandardMaterial({
+      map: repeat(ceilingGridTexture(), width / SHOP.ceilingPanel, depth / SHOP.ceilingPanel),
+      roughness: 0.95,
     })
     const wall = new THREE.MeshStandardMaterial({
       color: PALETTE.wall,
       roughness: 0.92,
       normalMap: repeat(tex.plasterNor, 3, 2),
-      normalScale: new THREE.Vector2(0.25, 0.25),
+      normalScale: new THREE.Vector2(0.15, 0.15),
     })
-    const ceiling = new THREE.MeshStandardMaterial({ color: PALETTE.ceiling, roughness: 0.95 })
-    const lacquer = new THREE.MeshStandardMaterial({ color: PALETTE.lacquer, roughness: 0.3, envMapIntensity: 0.8 })
-    const rosePanel = new THREE.MeshStandardMaterial({ color: PALETTE.rosePanel, roughness: 0.82 })
-    const blushPanel = new THREE.MeshStandardMaterial({ color: PALETTE.blushPanel, roughness: 0.82 })
-    const plum = new THREE.MeshStandardMaterial({ color: PALETTE.plum, roughness: 0.42, envMapIntensity: 0.9 })
-    const gold = new THREE.MeshStandardMaterial({ color: PALETTE.gold, metalness: 1, roughness: 0.28 })
-    const marbleTop = new THREE.MeshStandardMaterial({ color: '#f6f1ee', roughness: 0.18, envMapIntensity: 1.1 })
-    const fluted = new THREE.MeshStandardMaterial({
-      color: '#e6bcc2',
-      roughness: 0.6,
-      normalMap: repeat(flutedNormalTexture(), 6, 1),
-      normalScale: new THREE.Vector2(0.9, 0.9),
-    })
-    const flutedPlum = fluted.clone()
-    flutedPlum.color.set(PALETTE.plum)
-    flutedPlum.normalMap = repeat(flutedNormalTexture(), 5, 1)
+    // white melamine shelving, satin
+    const shelf = new THREE.MeshStandardMaterial({ color: PALETTE.shelf, roughness: 0.42, envMapIntensity: 0.6 })
+    const shelfBack = new THREE.MeshStandardMaterial({ color: '#f2f2f0', roughness: 0.7, envMapIntensity: 0.4 })
+    const oak = new THREE.MeshStandardMaterial({ map: repeat(oakTexture(), 1.6, 1), color: '#ffffff', roughness: 0.55, envMapIntensity: 0.5 })
+    // glossy black storefront panels and display frames
+    const black = new THREE.MeshStandardMaterial({ color: PALETTE.black, roughness: 0.22, metalness: 0.25, envMapIntensity: 1.1 })
+    const blackMatte = new THREE.MeshStandardMaterial({ color: '#1c1c1f', roughness: 0.6, metalness: 0.1 })
+    const chrome = new THREE.MeshStandardMaterial({ color: '#dcdde0', metalness: 1, roughness: 0.18 })
+    const gold = new THREE.MeshStandardMaterial({ color: PALETTE.gold, metalness: 1, roughness: 0.3 })
     const glass = new THREE.MeshStandardMaterial({
-      color: '#ffffff',
-      roughness: 0.05,
+      color: '#f4fbff',
+      roughness: 0.04,
       metalness: 0.1,
       transparent: true,
-      opacity: 0.16,
+      opacity: 0.14,
       depthWrite: false,
-      envMapIntensity: 1.6,
+      envMapIntensity: 1.4,
     })
     const shelfGlass = glass.clone()
-    shelfGlass.opacity = 0.35
-    shelfGlass.color.set('#f4fbff')
-    const acrylic = glass.clone()
-    acrylic.opacity = 0.5
-    acrylic.color.set('#fff7f8')
-    const mirror = new THREE.MeshBasicMaterial({ map: mirrorTexture() })
-    const led = new THREE.MeshBasicMaterial({ color: '#fff1df', toneMapped: false })
-    const bulb = new THREE.MeshBasicMaterial({ color: new THREE.Color('#fff4e6').multiplyScalar(1.6), toneMapped: false })
-    const backlight = new THREE.MeshBasicMaterial({ map: backlightTexture(), toneMapped: false })
-    backlight.color.setScalar(1.05)
-    const dark = new THREE.MeshStandardMaterial({ color: '#221a1e', roughness: 0.35, metalness: 0.4 })
-    const facade = new THREE.MeshStandardMaterial({
+    shelfGlass.opacity = 0.32
+    const glassEdge = new THREE.MeshStandardMaterial({ color: '#cfe3df', roughness: 0.1, transparent: true, opacity: 0.6 })
+    const ledWarm = new THREE.MeshBasicMaterial({ color: new THREE.Color(PALETTE.ledWarm).multiplyScalar(1.15), toneMapped: false })
+    const ledNeutral = new THREE.MeshBasicMaterial({ color: new THREE.Color(PALETTE.ledNeutral).multiplyScalar(1.1), toneMapped: false })
+    const bulb = new THREE.MeshBasicMaterial({ color: new THREE.Color('#fffaf2').multiplyScalar(1.7), toneMapped: false })
+    const glow = new THREE.MeshBasicMaterial({ map: shelfGlowTexture(), transparent: true, opacity: 0.55, blending: THREE.AdditiveBlending, depthWrite: false, toneMapped: false })
+    const screen = new THREE.MeshStandardMaterial({ color: '#0d1116', roughness: 0.18, metalness: 0.2, emissive: '#1b2633', emissiveIntensity: 0.6 })
+    const plastic = new THREE.MeshStandardMaterial({ color: '#2a2a2d', roughness: 0.45 })
+    const rail = new THREE.MeshStandardMaterial({ color: '#dcdcdc', roughness: 0.5 })
+    const whitePlastic = new THREE.MeshStandardMaterial({ color: '#f4f4f2', roughness: 0.35 })
+    const stone = new THREE.MeshStandardMaterial({
       normalMap: repeat(tex.facadeNor, 4, 2),
-      normalScale: new THREE.Vector2(0.6, 0.6),
-      color: '#f4e4d6',
+      normalScale: new THREE.Vector2(0.5, 0.5),
+      color: PALETTE.stone,
       roughness: 0.95,
     })
-    const facadeAlt = facade.clone()
-    facadeAlt.color.set('#e9e6e0')
-    const facadeWarm = facade.clone()
-    facadeWarm.color.set('#e9c9ad')
+    const stoneAlt = stone.clone()
+    stoneAlt.color.set('#cfc6b8')
     const pavement = new THREE.MeshStandardMaterial({
       map: repeat(tex.pavementDiff, 6, 3, true),
       normalMap: repeat(tex.pavementNor, 6, 3),
       roughness: 0.9,
-      color: '#e6dfda',
+      color: '#d9d4cf',
     })
-    const asphalt = new THREE.MeshStandardMaterial({ color: '#6a6266', roughness: 0.95 })
-    const foliage = new THREE.MeshStandardMaterial({ color: '#5f7a52', roughness: 0.85 })
-    const terracotta = new THREE.MeshStandardMaterial({ color: '#c98a6a', roughness: 0.8 })
-    const windowDark = new THREE.MeshStandardMaterial({ color: '#6f7a8c', roughness: 0.12, metalness: 0.55, envMapIntensity: 1.2 })
+    const asphalt = new THREE.MeshStandardMaterial({ color: '#5f5a5e', roughness: 0.95 })
+    const foliage = new THREE.MeshStandardMaterial({ color: '#4f6b45', roughness: 0.85 })
+    const pot = new THREE.MeshStandardMaterial({ color: '#e9e7e2', roughness: 0.4 })
+    const petal = new THREE.MeshStandardMaterial({ color: '#fbf8f6', roughness: 0.6 })
+    const windowDark = new THREE.MeshStandardMaterial({ color: '#5d6676', roughness: 0.12, metalness: 0.55, envMapIntensity: 1.2 })
     return {
       floor,
-      wall,
       ceiling,
-      lacquer,
-      rosePanel,
-      blushPanel,
-      plum,
+      wall,
+      shelf,
+      shelfBack,
+      oak,
+      black,
+      blackMatte,
+      chrome,
       gold,
-      marbleTop,
-      fluted,
-      flutedPlum,
       glass,
       shelfGlass,
-      acrylic,
-      mirror,
-      led,
+      glassEdge,
+      ledWarm,
+      ledNeutral,
       bulb,
-      backlight,
-      dark,
-      facade,
-      facadeAlt,
-      facadeWarm,
+      glow,
+      screen,
+      plastic,
+      rail,
+      whitePlastic,
+      stone,
+      stoneAlt,
       pavement,
       asphalt,
       foliage,
-      terracotta,
+      pot,
+      petal,
       windowDark,
     }
   }, [tex, width, depth])

@@ -5,7 +5,9 @@
  *
  * `art` only drives scripts/generate-demo-catalog.ts, which draws a packshot for each product.
  */
-import type { Category, DeliveryZone, I18nText, ProductShape, Settings } from '../../src/lib/types'
+import type { Category, DeliveryZone, I18nText, Settings } from '../../src/lib/types'
+import type { ArtShape } from './art'
+import { DEFAULT_FIXTURE_LABELS } from '../../src/lib/catalog-upgrade'
 
 export const t = (fr: string, en: string, ar: string): I18nText => ({ fr, en, ar })
 
@@ -42,9 +44,10 @@ export interface ProductSource {
   price: number
   promoPrice?: number
   stock?: number
-  shape: ProductShape
+  shape: ArtShape
   /** width × height × depth in cm */
   dims: [number, number, number]
+  /** Merchandising hint from the first layout: products are listed in this order when placed automatically. */
   at: [fixtureId: string, level: number, slot: number, facings?: number]
   art: ArtSpec
   variants?: VariantSource[]
@@ -77,15 +80,10 @@ export const settings: Settings = {
   instagramUrl: null,
   freeDeliveryThreshold: 500,
   store: { width: 3.5, depth: 6.5, ceiling: 3.0 },
-  fixtureLabels: {
-    counter: t('Caisse', 'Checkout', 'الصندوق'),
-    'wall-hair': t('Cheveux', 'Hair care', 'العناية بالشعر'),
-    'wall-skin': t('Soins visage', 'Skincare', 'العناية بالبشرة'),
-    'wall-nails': t('Mains & ongles', 'Hands & nails', 'اليدين والأظافر'),
-    'wall-makeup': t('Maquillage', 'Makeup', 'المكياج'),
-    'wall-perfume': t('Parfums', 'Fragrance', 'العطور'),
-    island: t('Promos & corps', 'Offers & body', 'العروض والجسم'),
-  },
+  fixtureLabels: DEFAULT_FIXTURE_LABELS,
+  // The street sign. The reference photos read "TIFAWIN / PARFUMERIE"; the shop's own name is used
+  // until the owner confirms the final branding (Admin → Settings → Storefront).
+  storefront: { title: 'MAISON LUMIÈRE', subtitle: 'PARFUMERIE', logoUrl: null },
 }
 
 export const categories: Category[] = [

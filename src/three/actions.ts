@@ -10,7 +10,7 @@ import { useUi } from '@/state/ui'
 import { assetUrl } from '@/lib/assets'
 import { findFacing } from './registry'
 import type { WorldFacing } from './facings'
-import { enterWalkMode, exitWalkMode, focusOn, goToViewpoint, placeOutside, playIntro, rig, viewpointFor } from './rig'
+import { enterWalkMode, exitWalkMode, focusOn, goToViewpoint, isGliding, placeOutside, playIntro, rig, viewpointFor } from './rig'
 
 const locale = () => (i18n.language as Locale) || 'fr'
 
@@ -32,7 +32,7 @@ export function goToFixture(id: string, u?: number) {
   if (rig.mode === 'walk') useUi.getState().setNavMode('guided')
   const f = layout.fixtures.find((x) => x.id === id)
   const vp = viewpointFor(layout, id)
-  const pan = f && u !== undefined ? u - f.length / 2 : 0
+  const pan = f && u !== undefined ? u - (vp.u ?? f.length / 2) : 0
   goToViewpoint(vp, { pan, onComplete: () => arrived(id) })
 }
 
@@ -150,6 +150,13 @@ if (typeof window !== 'undefined') {
       return info
         ? { calls: info.render.calls, triangles: info.render.triangles, textures: info.memory.textures, geometries: info.memory.geometries, programs: info.programs?.length ?? 0 }
         : null
+    },
+    /** True once no glide is running and the eased camera has caught up with its target. */
+    settled() {
+      const cam = rig.camera
+      if (!cam || isGliding()) return false
+      const yaw = Math.abs(Math.atan2(Math.sin(rig.live.yaw - rig.yaw), Math.cos(rig.live.yaw - rig.yaw)))
+      return cam.position.distanceTo(rig.pos) < 0.003 && yaw < 0.003
     },
     /** Screen position (CSS px) of a product on its shelf, or null when off screen. */
     project(productId: string, variantId?: string | null) {

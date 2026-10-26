@@ -1,16 +1,23 @@
 # Maison Lumière — a 3D beauty boutique you can shop from your phone
 
-An immersive web shop for a small women's cosmetics boutique (3.5 m × 6.5 m). Customers stand on
-the pavement, watch the doors slide open, walk in, browse real shelves (hair care, skincare,
-hands & nails, makeup, a backlit perfume wall, an offers island), tap a product, pick a shade or a
-size, fill their basket and **send the order straight to the shop on WhatsApp** — cash on
-delivery, anywhere in Morocco. French, Arabic (right-to-left) and English.
+An immersive web shop for a small women's cosmetics boutique (about 3.5 m × 6.5 m). Customers
+stand on the pavement in front of a black shopfront, watch the doors slide open, walk in, browse
+the white wall shelving (hair, body and hands, makeup, skincare, gift sets, a perfume wall), a
+nail-polish stand and a glass-topped counter, tap a product, pick a shade or a size, fill their
+basket and **send the order straight to the shop on WhatsApp** — cash on delivery, anywhere in
+Morocco. French, Arabic (right-to-left) and English.
+
+The room follows the owner's photographs of a real perfumery (kept out of this public repository,
+see `docs/reference/tifawin/README.md`): checkered floor, white ceiling grid with round downlights,
+white shelving on three walls, glass counter on an oak base, a freestanding polish stand. Its sizes
+are **estimates** (see *Make it yours*). Every product stands on the shelf as a 3D package built
+automatically from its photo (see *Product photos → 3D*).
 
 ![The street-side intro](docs/screenshots/desktop-01-street.jpg)
 
 | Inside the boutique | A product on its shelf | Phone |
 |---|---|---|
-| ![](docs/screenshots/desktop-02-entrance.jpg) | ![](docs/screenshots/desktop-10-product.jpg) | ![](docs/screenshots/phone-10-product.jpg) |
+| ![](docs/screenshots/desktop-02-entrance.jpg) | ![](docs/screenshots/desktop-11-product.jpg) | ![](docs/screenshots/phone-11-product.jpg) |
 
 > "Maison Lumière", its brands and its 81 products are **fictional demo content** so the shop can
 > be shown without anyone's trademarks. Replace them with your own (see *Make it yours*).
@@ -44,15 +51,20 @@ walks straight to a section. Add `?tier=low|medium|high` to force a graphics qua
 
 **The boutique**
 - Built to scale from three numbers (width, depth, ceiling). Change them in the admin and every
-  shelf, sign, camera stop and collision box rebuilds itself.
-- Fixtures: shelving walls with gold edges and LED strips, a stepped nail-polish rack, a makeup wall
-  with a lit vanity mirror, three backlit perfume arches with glass shelves, a two-tier offers island
-  under pendant lights, and a fluted counter with flowers and the shop's monogram.
-- A Parisian-style plum shopfront with a striped awning, sliding glass doors, shop-window podiums
-  showing featured products, and neighbouring facades at golden hour.
-- Lighting from soft "light cards" baked into an environment map, wall washes, glowing downlights,
-  contact shadows, and bloom plus ambient occlusion on capable devices. Free CC0 textures from
-  Poly Haven.
+  shelf, camera stop and collision box rebuilds itself. Room sizes from 2.8 × 4.5 m up are checked
+  (no overlapping furniture, a walkable aisle of at least 0.75 m).
+- Fixtures, as in the photos:
+  - left wall: tall white shelving in three runs (hair, body and hands, makeup);
+  - back wall: shelving over a light-oak base cabinet (skincare);
+  - right wall: the perfume wall with glass shelves and lit bays, then gift sets;
+  - a glass-topped counter on an oak base along the right wall, with the till at its far end and a
+    lit vitrine under the glass;
+  - a freestanding stepped nail-polish stand near the entrance;
+  - a black-framed display in each shop window, facing the street (featured products).
+- Checkered floor, white 60 cm ceiling grid with round downlights, neutral white light.
+- A black shopfront with a raised, lit sign. Its title, subtitle and logo are set in the admin;
+  nothing from the photographed shop's sign is hard-coded.
+- The "no 3D" fallback (`/catalog`) lists every product and sells them the same way.
 
 **Shopping**
 - Tap a section in the bar (or a shelf) and the camera glides there. Drag to slide along the shelf,
@@ -78,17 +90,19 @@ walks straight to a section. Add `?tier=low|medium|high` to force a graphics qua
   - Statuses from new to delivered. Cancelling an order puts its items back in stock.
   - A printable delivery slip and CSV export.
 - **Products:**
-  - French, Arabic and English text; photo upload, which warns when the photo has no transparent
-    background.
-  - Shades and sizes, price, offers and stock.
-  - Shelf placement, with a live check that the product fits on the shelf.
+  - French, Arabic and English text; shades and sizes, price, offers and stock.
+  - A photo upload that becomes a 3D package automatically after saving, with a status
+    (*Waiting*, *Preparing image*, *Preparing 3D*, *Ready*, *Needs review*, *Failed*), a live 3D
+    preview, the notes of the processing, and *Retry*. The list filters products by this status.
+  - Overrides for everything automatic: package type, size, shelf, position, orientation (upright
+    or flat), facings and display scale.
 - **Shelves:** a to-scale front view of each fixture with the real packshots. Move products along a
   shelf or between shelves, change their facings, or place new ones.
 - **Delivery:** cities, fees and delays; free-delivery threshold.
 - **Settings:**
   - Shop name, tagline, address, hours, Instagram.
   - The WhatsApp number that receives orders, order prefix, currency.
-  - Shop dimensions and the shelf sign texts.
+  - Shop dimensions, the shopfront sign (title, subtitle, logo) and the section names.
 
 **Two modes**
 
@@ -108,10 +122,17 @@ The fastest path is the admin, at `/admin`:
    hours, shop dimensions, sign texts.
 2. **Delivery:** your cities and fees.
 3. **Products:** edit or delete the demo products and add yours.
-   - For the photos, a front-facing **transparent PNG** looks best on the shelves. Remove the
-     background first with any background-removal tool. Plain photos work but show as cards.
-   - Enter each product's real **width and height in cm**, so it stands at the right size.
-4. **Shelves:** arrange everything.
+   - Photograph each product from the front on a **plain white or light-grey background** (or
+     upload a transparent PNG). The background is removed automatically; busy or coloured
+     backgrounds are refused and the product is flagged *Needs review*.
+   - Sizes are estimated from the label ("50 ml") and the photo's proportions and marked as
+     estimates. Enter the real **width, height and depth in cm** and tick *Measured* when you can.
+4. **Shelves:** new products are placed automatically; move anything you like.
+
+**The room's sizes are estimates.** The default 3.5 × 6.5 m, 3 m ceiling comes from the owner's
+"3 or 4 m by 6 or 7 m". Measure the shop and enter the real numbers in *Settings → Shop*. Shelf
+heights, bay widths, counter and stand sizes are estimates read from the photos; they live in one
+object, `SHOP` at the top of `src/lib/layout.ts`.
 
 In demo mode, publish your edits by exporting `catalog.json` (Settings → *Export catalog.json*),
 replacing `public/data/catalog.json` with it and redeploying. In live mode, edits are instant.
@@ -121,8 +142,73 @@ For developers:
   packshots (headless Chromium) and rewrites `catalog.json`.
 - `src/lib/layout.ts` is the floor plan: which fixture goes on which wall, the shelf heights and
   the camera stops. It's covered by unit tests for several room sizes.
+- `src/lib/packaging.ts` is the package library; `src/lib/auto-placement.ts` decides which
+  fixture each package family and category goes to.
 - `src/styles.css` holds the design tokens (colours and fonts). The 3D palette is in
   `src/three/materials.ts`.
+
+## Product photos → 3D
+
+Every product is drawn as a **package family** (33 of them: perfume bottles of several shapes,
+tall, pump, squeeze, flip-top, dropper and spray bottles, aerosols, roll-ons, jars, tubes,
+lipsticks, glosses, mascaras, pencils, foundations, compacts, palettes, nail polish, cartons,
+perfume boxes, gift sets, pouches, accessories). The model is a sweep of rounded cross-sections
+along the product's outline, with the real photo projected on its front. Nothing is invented: when
+the photo cannot be cut out, the product is shown as a flat card and flagged for review.
+
+What happens when the owner saves a product with a new photo (`src/pages/admin/asset-job.ts`):
+
+1. **Checks:** JPEG, PNG, WebP or AVIF (detected from the bytes, not the file name), 15 MB max,
+   at least 120 px on the long side.
+2. **The original is kept** untouched (browser storage in demo mode, `products/originals/` in the
+   Supabase bucket in live mode).
+3. **Cut-out:** a transparent PNG is used as is; a plain light or dark background is removed by a
+   flood fill from the borders, keeping light areas inside the product (labels). A box photographed
+   edge to edge is used whole as the box front.
+4. **Outline and family:** the silhouette is measured (32 widths from cap to base) and the package
+   family is inferred from the name (French and English keywords), the category and the outline.
+5. **Size:** estimated from the volume on the label and the photo's proportions, unless entered.
+6. **Model and shelf:** the 3D model is built in the browser from the family and the outline; the
+   product is placed on a free shelf of the right fixture (polish on the polish stand, palettes
+   flat under the counter glass, perfume on the perfume wall…) without overlapping anything.
+7. **Status:** *Ready*, *Needs review* (with the reasons) or *Failed* (with the error, and *Retry*).
+
+Saving never waits for this: the product is saved first and the job runs after.
+
+**AI image-to-3D (optional, not configured).** `src/lib/product-assets/model-provider.ts` defines
+the interface a real image-to-3D service would implement (submit, poll, fetch a GLB, validate it,
+time out). No provider is configured, so every product uses the procedural package model, and the
+admin says so. A provider must run server-side (for example a Supabase Edge Function), so its API
+key never reaches the browser. Rendering a generated GLB in the shop is not wired yet.
+
+The same pipeline runs in Node for the demo catalogue and for imports:
+
+```bash
+npm run assets:prepare                 # prepare products whose asset is missing or outdated
+npm run assets:prepare -- --force      # all products
+npm run assets:prepare -- --only=edp-rose-de-damas --replace-placements
+```
+
+## Importing products
+
+`npm run import:products -- data/imports/<source>.manifest.json [--dry-run]` imports products from
+a manifest you prepare from a supplier's price list or your own data:
+
+- **Permission first.** The manifest records the permission to use the source's texts and photos
+  (`permission.status: "granted"`, the basis and the licence). Anything else imports nothing.
+- **Nothing invented.** A product without a price, a stock or a photo is imported **inactive**
+  (not on sale) and listed in the report.
+- **Idempotent.** Products are matched by source name and source id: a second run updates them.
+- **Safe images.** Local files, or HTTPS downloads from the hosts listed in the manifest only.
+  Each photo goes through the pipeline above.
+- **A report** is written to `docs/import-reports/<source>-<date>.json`: discovered, imported,
+  updated, skipped, invalid, images unavailable, inactive, 3D ready, card fallbacks.
+
+`data/imports/README.md` describes the format. **Zinabel** (zinabel.ma) was checked and **not
+imported**: its terms of use forbid reusing its texts, images and databases without written
+authorisation. `data/imports/zinabel.manifest.json` records this; the blocked run's report is in
+`docs/import-reports/`. With Zinabel's written agreement, or with your own supplier data and
+photos, fill in a manifest and run the importer.
 
 ## Going live with Supabase (orders saved, owner alerts, shared admin)
 
@@ -130,6 +216,8 @@ For developers:
 2. **Create the tables.** In the SQL editor, run these files in order:
    - `supabase/migrations/20261026000000_boutique.sql` (tables, security rules, order functions)
    - `supabase/migrations/20261026000100_storage.sql` (the photo bucket)
+   - `supabase/migrations/20261026000200_product_assets.sql` (package families, 3D asset and
+     source columns; converts existing products)
    - `supabase/seed.sql` (the demo catalog; skip it to start empty, or regenerate it from your own
      `catalog.json` with `npx tsx scripts/generate-seed-sql.ts`)
 
@@ -195,10 +283,12 @@ lives under a sub-path.
 | `npm run dev` | Dev server with hot reload |
 | `npm run build` / `npm run preview` | Production build / serve it |
 | `npm run lint`, `npm run typecheck` | ESLint, TypeScript |
-| `npm test` | Unit tests: layout, shelf packing, pricing, WhatsApp message, **SQL + RLS in PGlite** |
-| `npm run e2e` | Playwright: walk in → tap a shade on the shelf → order → WhatsApp link; deep links; walking; catalog; Arabic RTL; admin. Desktop and phone. |
+| `npm test` | Unit tests: layout, shelf packing, auto-placement, image pipeline, importer, pricing, WhatsApp message, **SQL + RLS in PGlite** |
+| `npm run e2e` | Playwright: walk in → tap a shade on the shelf → order → WhatsApp link; deep links; walking; catalog; Arabic RTL; admin, including a new product photo → 3D → shelf → basket. Desktop and phone. |
 | `npm run screenshots` | Tour of every section, desktop and phone, into `docs/screenshots/` |
-| `npm run gen:catalog` | Redraw demo packshots and `catalog.json` |
+| `npm run gen:catalog` | Redraw demo packshots and `catalog.json` (`-- --data-only` keeps the packshots) |
+| `npm run assets:prepare` | Run the photo → 3D pipeline on `catalog.json` |
+| `npm run import:products -- <manifest>` | Import products from a permitted source |
 | `npm run assets:textures` | Re-download the Poly Haven textures |
 
 The browser tests need Chromium: run `npx playwright install chromium` once, or point
@@ -207,17 +297,21 @@ The browser tests need Chromium: run `npx playwright install chromium` once, or 
 ```
 src/
   three/        3D scene: Boutique (canvas), Room, Facade, Fixtures, Decor, Products (atlas + instancing),
-                CameraRig + rig.ts (guided glides, walking, intro), Basket (fly-to-basket), Lighting, Effects
+                packageGeometry (package models + shader), CameraRig + rig.ts (guided glides, walking,
+                intro), Basket (fly-to-basket), Lighting, Effects
   ui/           Overlay: Header, ZoneBar, ProductSheet, ProductDetails, CartDrawer, Checkout, Landing, MiniMap…
   pages/        Store, Catalog, Product, Checkout, Order, admin/*
-  lib/          layout.ts (floor plan), shelf-layout.ts (packing), pricing, whatsapp, data-source (demo | Supabase)
+  lib/          layout.ts (floor plan), shelf-layout.ts (packing), packaging.ts (package families),
+                product-assets/ (cut-out, silhouette, family, sizes, model provider), auto-placement.ts,
+                pricing, whatsapp, data-source (demo | Supabase)
   state/        zustand stores: catalog, cart (persisted), ui
   i18n/         fr, ar, en
 public/         catalog.json, product packshots, CC0 textures
 supabase/       migrations, seed, notify-order edge function
-scripts/        catalog + packshot generator, seed generator, link-preview pre-render, textures
+scripts/        catalog + packshot generator, asset preparation, importer, seed generator, link previews
+data/imports/   import manifests (one per source, with its permission)
 tests/          unit (Vitest), e2e (Playwright)
-docs/           video analysis, build prompt, research, screenshots
+docs/           video analysis, build prompt, research, redesign plan, reference photos, import reports, screenshots
 .claude/skills/ Claude Code skills used to build this (three.js pack, frontend-design, webapp-testing)
 ```
 
@@ -225,8 +319,11 @@ docs/           video analysis, build prompt, research, screenshots
 postprocessing, GSAP (with SplitText), Motion, zustand, react-hook-form + zod, i18next, and
 Supabase. Dependencies are pinned to exact versions.
 
-**Performance.** The whole boutique renders in about 105–120 draw calls:
-- Every product on every shelf is packed into two or three texture atlases and drawn instanced.
+**Performance.** Measured on the low tier with the 81 demo products: about 150–175 draw calls
+and 230–250k triangles.
+- Every product's photo is packed into texture atlases; each product is one instanced mesh per
+  atlas page, whatever its number of facings.
+- Package models have three detail levels (the device's quality tier picks one).
 - Fixtures are merged per material.
 - There are no real-time shadows.
 
@@ -252,6 +349,10 @@ turns camera glides into cuts. Every product is also reachable from the list vie
 - **Baked lighting from Blender** (Route B in `docs/RESEARCH.md`). It would give softer, more
   realistic light. The current lighting is real-time and cheap.
 - **A photoreal scan of the real shop** with Gaussian splats (Route C).
+- **Generated 3D models.** The image-to-3D provider interface exists, but no provider is configured
+  and the shop does not load GLB files yet; every product uses its procedural package model.
+- **Real products and measurements.** The 81 products are fictional demo content and the room's
+  sizes are estimates. The owner's photos and price list (or a permitted supplier feed) are needed.
 - **Online card payment.** `payment_method` is ready for it; only cash on delivery is wired.
 - **Automatic WhatsApp messages from the shop** through the WhatsApp Business API. Today the
   customer sends the pre-written message, and the owner replies from the admin.

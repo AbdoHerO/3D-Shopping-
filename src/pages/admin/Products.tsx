@@ -7,23 +7,32 @@ import { useLocale } from '@/ui/hooks'
 import { useAdmin } from './store'
 import { Card, Toggle } from './ui'
 import { useA } from './text'
+import { AssetStatusBadge } from './AssetBits'
 
 export default function Products() {
   const a = useA()
   const { text, money } = useLocale()
   const catalog = useAdmin((s) => s.catalog)!
   const save = useAdmin((s) => s.saveProduct)
+  const prepare = useAdmin((s) => s.prepare)
+  const jobs = useAdmin((s) => s.jobs)
   const [query, setQuery] = useState('')
   const [cat, setCat] = useState('all')
+  const [state, setState] = useState<'all' | 'pending' | 'review' | 'failed'>('all')
 
   const list = useMemo(() => {
     const q = query.trim().toLowerCase()
     return catalog.products.filter(
       (p) =>
         (cat === 'all' || p.categoryId === cat) &&
+        (state === 'all' || (p.asset?.status ?? 'pending') === state) &&
         (!q || `${p.brand} ${p.name.fr} ${p.name.en} ${p.name.ar} ${p.slug}`.toLowerCase().includes(q)),
     )
-  }, [catalog, query, cat])
+  }, [catalog, query, cat, state])
+  const waiting = catalog.products.filter((p) => !p.asset || p.asset.status === 'pending' || p.asset.status === 'failed')
+  const prepareWaiting = async () => {
+    for (const p of waiting) await prepare(p.id)
+  }
 
   return (
     <div className="flex flex-col gap-4">
@@ -34,8 +43,19 @@ export default function Products() {
           {a('Nouveau produit', 'New product')}
         </Link>
       </div>
-      <div className="flex flex-col gap-3 sm:flex-row">
+      <div className="flex flex-col flex-wrap gap-3 sm:flex-row">
         <input className="field !rounded-full sm:max-w-xs" placeholder={a('Rechercher', 'Search')} value={query} onChange={(e) => setQuery(e.target.value)} />
+        <select className="field !w-auto !rounded-full" value={state} onChange={(e) => setState(e.target.value as typeof state)} data-testid="asset-filter">
+          <option value="all">{a('Tous les modèles 3D', 'All 3D models')}</option>
+          <option value="pending">{a('En attente', 'Waiting')}</option>
+          <option value="review">{a('À vérifier', 'Needs review')}</option>
+          <option value="failed">{a('En échec', 'Failed')}</option>
+        </select>
+        {waiting.length > 0 && (
+          <button className="btn-quiet h-11 !py-0 text-sm" onClick={prepareWaiting} disabled={Object.keys(jobs).length > 0}>
+            {a(`Préparer ${waiting.length} en attente`, `Prepare ${waiting.length} waiting`)}
+          </button>
+        )}
         <select className="field !w-auto !rounded-full" value={cat} onChange={(e) => setCat(e.target.value)}>
           <option value="all">{a('Toutes les catégories', 'All categories')}</option>
           {catalog.categories.map((c) => (
@@ -55,7 +75,7 @@ export default function Products() {
             const price = priceOf(p, p.variants[0] ?? null)
             return (
               <li key={p.id} className="flex items-center gap-3 py-2">
-                <img src={assetUrl(p.image)} alt="" className="h-12 w-10 shrink-0 object-contain" />
+                <img src={assetUrl(p.asset?.cutout || p.image)} alt="" className="h-12 w-10 shrink-0 object-contain" />
                 <Link to={`/admin/products/${p.id}`} className="min-w-0 flex-1">
                   <p className="truncate font-medium hover:text-garnet">{text(p.name)}</p>
                   <p className="truncate text-xs text-mist">
@@ -63,6 +83,7 @@ export default function Products() {
                     {!p.placement && ` · ${a('pas en rayon', 'not on a shelf')}`}
                   </p>
                 </Link>
+                <AssetStatusBadge product={p} />
                 <span className="hidden text-sm tabular-nums sm:block">{money(price.effective)}</span>
                 <span className={`w-12 text-end text-sm tabular-nums ${stock <= 3 ? 'text-danger' : 'text-mist'}`}>{stock}</span>
                 <Toggle checked={p.isActive} onChange={(v) => void save({ ...p, isActive: v })} label="" />

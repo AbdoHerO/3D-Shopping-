@@ -12,8 +12,8 @@ export function Effects({ tier }: { tier: Tier }) {
   if (tier === 'high') {
     return (
       <EffectComposer multisampling={4}>
-        <N8AO aoRadius={0.45} intensity={1.8} distanceFalloff={0.8} quality="medium" halfRes />
-        <Bloom mipmapBlur luminanceThreshold={0.92} luminanceSmoothing={0.2} intensity={0.55} radius={0.62} />
+        <N8AO aoRadius={0.35} intensity={1.4} distanceFalloff={0.8} quality="medium" halfRes />
+        <Bloom mipmapBlur luminanceThreshold={0.96} luminanceSmoothing={0.15} intensity={0.35} radius={0.5} />
         <ToneMapping mode={ToneMappingMode.NEUTRAL} />
       </EffectComposer>
     )
@@ -21,7 +21,7 @@ export function Effects({ tier }: { tier: Tier }) {
   if (tier === 'medium') {
     return (
       <EffectComposer multisampling={0}>
-        <Bloom mipmapBlur luminanceThreshold={0.92} luminanceSmoothing={0.2} intensity={0.5} radius={0.6} />
+        <Bloom mipmapBlur luminanceThreshold={0.96} luminanceSmoothing={0.15} intensity={0.3} radius={0.5} />
         <ToneMapping mode={ToneMappingMode.NEUTRAL} />
       </EffectComposer>
     )

@@ -2,7 +2,7 @@ import { test } from '@playwright/test'
 import { enterBoutique, goToShelf, tapProduct } from './helpers'
 
 // Visual review: one picture per section of the shop, desktop and phone (npm run screenshots).
-const SHELVES = ['counter', 'wall-hair', 'wall-nails', 'island', 'wall-skin', 'wall-makeup', 'wall-perfume']
+const SHELVES = ['stand-nails', 'wall-hair', 'wall-body', 'wall-makeup', 'wall-skin', 'wall-gifts', 'wall-perfume', 'counter']
 const OUT = 'docs/screenshots'
 
 test('boutique tour', async ({ page }, info) => {

@@ -3,6 +3,7 @@ import { Link } from 'react-router'
 import { assetUrl, productImage } from '@/lib/assets'
 import { createLayout } from '@/lib/layout'
 import { firstFreeSlot, layoutFixture, shelfItemsFor } from '@/lib/shelf-layout'
+import { autoPlace } from '@/lib/auto-placement'
 import type { Product } from '@/lib/types'
 import { Icon } from '@/ui/Icon'
 import { useLocale } from '@/ui/hooks'
@@ -20,9 +21,10 @@ export default function Placement() {
   const catalog = useAdmin((s) => s.catalog)!
   const save = useAdmin((s) => s.saveProduct)
   const layout = useMemo(() => createLayout(catalog.settings.store), [catalog.settings.store])
-  const [fixtureId, setFixtureId] = useState(layout.fixtures[1]?.id ?? layout.fixtures[0].id)
+  const shelves = useMemo(() => layout.fixtures.filter((f) => f.stock === 'shelf'), [layout])
+  const [fixtureId, setFixtureId] = useState(shelves[0].id)
   const [selected, setSelected] = useState<string | null>(null)
-  const fixture = layout.fixtures.find((f) => f.id === fixtureId) ?? layout.fixtures[0]
+  const fixture = shelves.find((f) => f.id === fixtureId) ?? shelves[0]
   const result = useMemo(() => layoutFixture(fixture, shelfItemsFor(fixture, catalog.products)), [fixture, catalog.products])
   const byId = useMemo(() => new Map(catalog.products.map((p) => [p.id, p])), [catalog.products])
   const onShelf = catalog.products.filter((p) => p.placement?.fixtureId === fixture.id)
@@ -58,7 +60,7 @@ export default function Placement() {
   }
   const facings = async (d: -1 | 1) => {
     if (!sel?.placement) return
-    await save({ ...sel, placement: { ...sel.placement, facings: Math.min(6, Math.max(1, sel.placement.facings + d)) } })
+    await save({ ...sel, placement: { ...sel.placement, facings: Math.min(10, Math.max(1, sel.placement.facings + d)) } })
   }
   const place = async (p: Product) => {
     const slot = firstFreeSlot(fixture, shelfItemsFor(fixture, catalog.products), p.widthCm / 100)
@@ -66,6 +68,15 @@ export default function Placement() {
     await save({ ...p, placement: { fixtureId: fixture.id, level: slot.level, slot: slot.slot, facings: 2 } })
     setSelected(p.id)
   }
+  const placeAuto = async (p: Product) => {
+    const placement = autoPlace(p, catalog.products.filter((x) => x.id !== p.id && x.isActive && x.placement), layout)
+    if (!placement) return
+    await save({ ...p, placement })
+    setFixtureId(placement.fixtureId)
+    setSelected(p.id)
+  }
+  const frame = fixture.kind === 'nailStand' ? '#1c1c1f' : fixture.kind === 'counter' ? '#d6b48c' : '#e4e4e1'
+  const panel = fixture.kind === 'nailStand' ? '#2a2a2d' : fixture.kind === 'perfumeWall' ? '#fbefe0' : fixture.kind === 'counter' ? '#eef4f3' : '#f6f6f4'
 
   return (
     <div className="flex flex-col gap-4">
@@ -77,7 +88,7 @@ export default function Placement() {
         </Link>
       </div>
       <div className="no-scrollbar flex gap-1.5 overflow-x-auto">
-        {layout.fixtures.map((f) => (
+        {shelves.map((f) => (
           <button
             key={f.id}
             onClick={() => {
@@ -86,7 +97,7 @@ export default function Placement() {
             }}
             className={`h-9 shrink-0 rounded-full px-3 text-sm ${f.id === fixture.id ? 'bg-garnet text-white' : 'bg-white ring-1 ring-ink/10'}`}
           >
-            {text(catalog.settings.fixtureLabels[f.id])}
+            {catalog.settings.fixtureLabels[f.id] ? text(catalog.settings.fixtureLabels[f.id]) : f.id}
           </button>
         ))}
       </div>
@@ -100,12 +111,12 @@ export default function Placement() {
       <div className="grid gap-4 xl:grid-cols-[1fr_340px]">
         <Card>
           <svg viewBox={`-0.05 -0.05 ${fixture.length + 0.1} ${H + 0.1}`} className="w-full" role="img" aria-label={text(catalog.settings.fixtureLabels[fixture.id])}>
-            <rect x={0} y={H - fixture.height} width={fixture.length} height={fixture.height} rx={0.02} fill={fixture.kind === 'perfumeWall' ? '#5e1c36' : '#f2d6d9'} />
+            <rect x={0} y={H - fixture.height} width={fixture.length} height={fixture.height} rx={0.02} fill={frame} />
             {fixture.bays.map((b, i) => (
               <g key={i}>
-                <rect x={b.u0} y={H - fixture.height + 0.12} width={b.u1 - b.u0} height={fixture.height - 0.24} fill={fixture.kind === 'perfumeWall' ? '#f9e3d4' : '#ead0d4'} rx={0.01} />
+                <rect x={b.u0} y={H - fixture.height + 0.04} width={b.u1 - b.u0} height={fixture.height - 0.08} fill={panel} rx={0.01} />
                 {b.levels.map((l) => (
-                  <rect key={l} x={b.u0} y={H - fixture.levels[l]} width={b.u1 - b.u0} height={0.015} fill="#c9a46a" />
+                  <rect key={l} x={b.u0} y={H - fixture.levels[l]} width={b.u1 - b.u0} height={0.015} fill={fixture.kind === 'nailStand' ? '#555' : '#c8c8c4'} />
                 ))}
               </g>
             ))}
@@ -180,6 +191,9 @@ export default function Placement() {
                   <li key={p.id} className="flex items-center gap-2 text-sm">
                     <img src={assetUrl(p.image)} alt="" className="h-10 w-8 object-contain" />
                     <span className="min-w-0 flex-1 truncate">{text(p.name)}</span>
+                    <button className="btn-quiet h-8 !px-3 !py-0 text-xs" onClick={() => placeAuto(p)} title={a('Choisit le rayon et l’étagère', 'Chooses the fixture and shelf')}>
+                      {a('Auto', 'Auto')}
+                    </button>
                     <button className="btn-quiet h-8 !px-3 !py-0 text-xs" onClick={() => place(p)}>
                       {a('Mettre ici', 'Place here')}
                     </button>

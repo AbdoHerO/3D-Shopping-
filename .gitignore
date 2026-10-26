@@ -9,3 +9,7 @@ playwright-report
 .env.local
 .DS_Store
 .vite
+
+# photos of the real shop used as a reference: kept local, the repository is public
+docs/reference/tifawin/*
+!docs/reference/tifawin/README.md

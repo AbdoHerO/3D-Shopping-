@@ -1,5 +1,6 @@
 /** Converts between database rows (snake_case, see supabase/migrations) and app types. */
-import type { Category, DeliveryZone, Order, OrderStatus, Product, Variant } from './types'
+import { normaliseFamily } from './packaging'
+import type { Category, DeliveryZone, Order, OrderStatus, Product, ProductAsset, ProductSource, Variant } from './types'
 
 export interface ProductRow {
   id: string
@@ -28,6 +29,11 @@ export interface ProductRow {
   slot_order: number | null
   facings: number | null
   display_variants: boolean
+  /** Added by 20261026000200_product_assets.sql. */
+  orientation?: 'upright' | 'flat'
+  display_scale?: number
+  asset?: ProductAsset | null
+  source?: ProductSource | null
   product_variants?: VariantRow[]
 }
 
@@ -76,7 +82,7 @@ export function rowToProduct(r: ProductRow): Product {
     isActive: r.is_active,
     isFeatured: r.is_featured,
     isNew: r.is_new,
-    shape: r.shape,
+    shape: normaliseFamily(r.shape),
     widthCm: Number(r.width_cm),
     heightCm: Number(r.height_cm),
     depthCm: Number(r.depth_cm),
@@ -84,10 +90,19 @@ export function rowToProduct(r: ProductRow): Product {
     gallery: r.gallery ?? [],
     placement:
       r.fixture_id != null
-        ? { fixtureId: r.fixture_id, level: r.shelf_level ?? 0, slot: r.slot_order ?? 0, facings: r.facings ?? 2 }
+        ? {
+            fixtureId: r.fixture_id,
+            level: r.shelf_level ?? 0,
+            slot: r.slot_order ?? 0,
+            facings: r.facings ?? 2,
+            ...(r.orientation === 'flat' ? { orientation: 'flat' as const } : {}),
+            ...(r.display_scale != null && Number(r.display_scale) !== 1 ? { scale: Number(r.display_scale) } : {}),
+          }
         : null,
     variants,
     displayVariants: r.display_variants,
+    asset: r.asset ?? null,
+    source: r.source ?? null,
   }
 }
 
@@ -119,6 +134,10 @@ export function productToRow(p: Product): Omit<ProductRow, 'product_variants'> {
     slot_order: p.placement?.slot ?? null,
     facings: p.placement?.facings ?? null,
     display_variants: p.displayVariants,
+    orientation: p.placement?.orientation ?? 'upright',
+    display_scale: p.placement?.scale ?? 1,
+    asset: p.asset ?? null,
+    source: p.source ?? null,
   }
 }
 

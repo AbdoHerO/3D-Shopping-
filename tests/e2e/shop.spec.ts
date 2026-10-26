@@ -3,18 +3,18 @@ import { enterBoutique, goToShelf, tapProduct } from './helpers'
 
 test('walk in, tap a shade on the shelf and send the order by WhatsApp', async ({ page }) => {
   await enterBoutique(page)
-  await goToShelf(page, 'wall-nails')
-  await tapProduct(page, 'vernis-brillance', 'bordeaux')
+  await goToShelf(page, 'stand-nails')
+  await tapProduct(page, 'vernis-pastel', 'menthe')
 
   const sheet = page.getByTestId('product-sheet')
-  await expect(sheet).toContainText('Vernis à ongles Brillance')
-  await expect(sheet).toContainText('Bordeaux')
+  await expect(sheet).toContainText('Vernis Collection pastel')
+  await expect(sheet).toContainText('Menthe')
   await page.getByTestId('add-to-cart').click()
-  await expect(page.getByTestId('toast').first()).toContainText('Vernis à ongles Brillance')
+  await expect(page.getByTestId('toast').first()).toContainText('Vernis Collection pastel')
   await expect(page.getByTestId('cart-count')).toHaveText('1')
 
   await page.getByTestId('cart-button').click()
-  await expect(page.getByTestId('cart-lines')).toContainText('Bordeaux')
+  await expect(page.getByTestId('cart-lines')).toContainText('Menthe')
   await page.getByTestId('checkout-button').click()
 
   // validation first
@@ -34,7 +34,7 @@ test('walk in, tap a shade on the shelf and send the order by WhatsApp', async (
   const href = await page.getByTestId('whatsapp-link').getAttribute('href')
   expect(href).toContain('https://wa.me/212600000000?text=')
   const message = decodeURIComponent(href!.split('text=')[1])
-  expect(message).toContain('1 × Vernis à ongles Brillance — Bordeaux')
+  expect(message).toContain('1 × Vernis Collection pastel — Menthe')
   expect(message).toContain('Casablanca')
   expect(message).toContain('+212612345678')
   expect(message).toContain('paiement à la livraison')

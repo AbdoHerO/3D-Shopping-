@@ -13,9 +13,6 @@ const OUT = join(process.cwd(), 'public/textures')
 
 // [asset id, Poly Haven map name, output file, webp quality, desaturate+lighten]
 const MAPS: [string, string, string, number, boolean?][] = [
-  ['marble_01', 'Diffuse', 'marble_diff.webp', 82, true],
-  ['marble_01', 'Rough', 'marble_rough.webp', 70],
-  ['marble_01', 'nor_gl', 'marble_nor.webp', 88],
   ['grey_plaster', 'nor_gl', 'plaster_nor.webp', 85],
   ['clay_plaster', 'nor_gl', 'facade_nor.webp', 85],
   ['patio_tiles', 'Diffuse', 'pavement_diff.webp', 80, true],

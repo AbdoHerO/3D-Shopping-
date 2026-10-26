@@ -1,12 +1,12 @@
 import * as THREE from 'three'
-import type { StoreLayout } from '@/lib/layout'
+import { SHOP, type StoreLayout } from '@/lib/layout'
 
 export const FRONT_WALL = 0.2
 
 /** Openings in the front wall, shared by the interior face, the facade and the glazing. */
 export function frontOpenings(layout: StoreLayout) {
   const { door, windows } = layout
-  return [{ x0: -door.width / 2, x1: door.width / 2, y0: 0, y1: door.height }, ...windows]
+  return [{ x0: door.x0, x1: door.x1, y0: 0, y1: door.height }, ...windows]
 }
 
 export function wallWithHoles(x0: number, x1: number, y0: number, y1: number, holes: { x0: number; x1: number; y0: number; y1: number }[]) {
@@ -28,3 +28,13 @@ export function wallWithHoles(x0: number, x1: number, y0: number, y1: number, ho
   return shape
 }
 
+
+/** Ceiling downlight positions: two rows along the shop, one fitting every other ceiling panel. */
+export function downlightSpots(layout: StoreLayout) {
+  const { width: W, depth: D } = layout.dims
+  const P = SHOP.ceilingPanel
+  const cols = W > 3.2 ? [-W / 4, W / 4] : [-W / 5, W / 5]
+  const out: [number, number][] = []
+  for (let z = -0.75; z > -D + 0.5; z -= 2 * P) for (const x of cols) out.push([x, z])
+  return out
+}

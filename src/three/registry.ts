@@ -7,7 +7,7 @@ export const productRegistry = {
 
 /** The front-row facing of a product (or of one of its shades), preferring shelves over windows. */
 export function findFacing(productId: string, variantId?: string | null): WorldFacing | null {
-  const list = productRegistry.facings.filter((f) => f.productId === productId && !f.back)
+  const list = productRegistry.facings.filter((f) => f.productId === productId)
   const onShelf = list.filter((f) => f.fixtureId)
   const pool = onShelf.length ? onShelf : list
   if (variantId) {

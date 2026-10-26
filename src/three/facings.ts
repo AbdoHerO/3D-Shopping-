@@ -1,76 +1,87 @@
 import * as THREE from 'three'
 import { localToWorld, type Fixture, type StoreLayout } from '@/lib/layout'
-import { layoutFixture, shelfItemsFor, type PlacedFacing } from '@/lib/shelf-layout'
+import type { Orientation } from '@/lib/packaging'
+import { layoutFixture, shelfItemsFor, type PlacedFacing, type ShelfItem } from '@/lib/shelf-layout'
 import type { Product } from '@/lib/types'
 
-/** A product card placed in the world. */
+/** One product model placed in the world. */
 export interface WorldFacing {
   key: string
   productId: string
   variantId: string | null
   fixtureId: string | null
   u: number
+  /** Bottom centre of the model (lying items: centre of their underside). */
   position: THREE.Vector3
   rotationY: number
+  /** Model size in metres (real product size × display scale). */
   width: number
   height: number
-  /** back rows are darker copies standing behind the front row */
-  back: boolean
+  depth: number
+  orientation: Orientation
 }
-
-const BACK_OFFSET = 0.085
 
 export function imageKey(productId: string, variantId: string | null) {
   return variantId ? `${productId}:${variantId}` : productId
 }
 
+/** Window display cases show the featured products of their categories, filled level by level. */
+function featuredItems(f: Fixture, products: Product[], categories: string[]): ShelfItem[] {
+  const pool = products.filter(
+    (p) => p.isActive && p.isFeatured && categories.includes(p.categoryId) && (p.variants.length ? p.variants.some((v) => v.stock > 0) : p.stock > 0),
+  )
+  if (pool.length === 0) return []
+  const items: ShelfItem[] = []
+  f.levels.forEach((y, level) => {
+    const clearance = (f.levels[level + 1] ?? f.height) - y - 0.03
+    const fits = pool.filter((p) => p.heightCm / 100 <= clearance && p.depthCm / 100 <= f.depth - 0.04)
+    fits.forEach((p, i) => {
+      const variantId = p.displayVariants ? (p.variants[(level + i) % p.variants.length]?.id ?? null) : null
+      items.push({
+        key: `${f.id}:${p.id}:${level}`,
+        productId: p.id,
+        variantId,
+        widthM: p.widthCm / 100,
+        heightM: p.heightCm / 100,
+        depthM: p.depthCm / 100,
+        level,
+        slot: (i + level) % fits.length,
+        facings: 1,
+        autoFacings: true,
+        orientation: 'upright',
+      })
+    })
+  })
+  return items
+}
+
 export function computeFacings(layout: StoreLayout, products: Product[]): WorldFacing[] {
   const out: WorldFacing[] = []
-  const push = (f: Fixture, p: PlacedFacing, back: boolean) => {
-    const z = f.productZ - (back ? BACK_OFFSET : 0)
+  const push = (f: Fixture, p: PlacedFacing) => {
+    const flat = p.orientation === 'flat'
+    // lying items: the shelf layout's height is their thickness and its depth their length
+    const height = flat ? p.depthM : p.heightM
+    const depth = flat ? p.heightM : p.depthM
+    const z = f.levelZ?.[p.level] ?? f.productZ
+    const position = flat ? localToWorld(f, p.u, p.y + depth / 2, z + height / 2) : localToWorld(f, p.u, p.y, z)
     out.push({
-      key: p.key + (back ? ':b' : ''),
+      key: p.key,
       productId: p.productId,
       variantId: p.variantId,
       fixtureId: f.id,
       u: p.u,
-      position: new THREE.Vector3(...localToWorld(f, p.u, p.y, z)),
+      position: new THREE.Vector3(...position),
       rotationY: f.rotationY,
       width: p.widthM,
-      height: p.heightM,
-      back,
+      height,
+      depth,
+      orientation: p.orientation,
     })
   }
   for (const f of layout.fixtures) {
-    const result = layoutFixture(f, shelfItemsFor(f, products))
-    for (const p of result.facings) {
-      push(f, p, false)
-      const flat = p.depthM < 0.025
-      if (!flat && f.productZ - BACK_OFFSET > 0.05 && f.kind !== 'counter') push(f, p, true)
-    }
+    const items = f.stock === 'shelf' ? shelfItemsFor(f, products) : featuredItems(f, products, f.stock.featured)
+    const result = layoutFixture(f, items)
+    for (const p of result.facings) push(f, p)
   }
-  // featured products on the window podiums, facing the street
-  const featured = products.filter(
-    (p) => p.isActive && p.isFeatured && p.stock > 0 && !['box', 'palette', 'compact', 'pouch'].includes(p.shape),
-  )
-  layout.windowSpots.forEach((spot, i) => {
-    const p = featured[i % Math.max(1, featured.length)]
-    if (!p) return
-    const variantId = p.displayVariants ? (p.variants[0]?.id ?? null) : null
-    const scale = Math.min(1.6, 0.26 / Math.max(0.08, p.heightCm / 100))
-    out.push({
-      key: `window:${i}`,
-      productId: p.id,
-      variantId,
-      fixtureId: null,
-      u: 0,
-      position: new THREE.Vector3(spot.x, spot.top, spot.z),
-      rotationY: 0,
-      width: (p.widthCm / 100) * scale,
-      height: (p.heightCm / 100) * scale,
-      back: false,
-    })
-  })
   return out
 }
-

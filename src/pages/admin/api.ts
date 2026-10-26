@@ -26,6 +26,9 @@ import {
   type ProductRow,
 } from '@/lib/supabase-mapping'
 import type { Catalog, DeliveryZone, Order, OrderStatus, Product, Settings } from '@/lib/types'
+import { upgradeCatalog } from '@/lib/catalog-upgrade'
+import { assetUrl } from '@/lib/assets'
+import { getOriginal, putOriginal } from '@/lib/original-store'
 
 export interface AdminApi {
   mode: 'demo' | 'live'
@@ -41,7 +44,16 @@ export interface AdminApi {
   listOrders(): Promise<Order[]>
   setOrderStatus(number: string, status: OrderStatus): Promise<void>
   uploadImage(file: Blob, name: string): Promise<string>
+  /** Stores an untouched original upload; returns a reference for readOriginal. */
+  uploadOriginal(file: Blob, name: string): Promise<string>
+  readOriginal(ref: string): Promise<Blob>
   resetDemo?(): Promise<void>
+}
+
+async function fetchBlob(url: string) {
+  const res = await fetch(url)
+  if (!res.ok) throw new Error(`Could not read the photo (HTTP ${res.status}).`)
+  return res.blob()
 }
 
 // ---------------------------------------------------------------------------------------------
@@ -50,11 +62,11 @@ export interface AdminApi {
 async function demoCatalog(): Promise<Catalog> {
   try {
     const raw = localStorage.getItem(DEMO_CATALOG_KEY)
-    if (raw) return JSON.parse(raw) as Catalog
+    if (raw) return upgradeCatalog(JSON.parse(raw) as Catalog)
   } catch {
     /* fall through */
   }
-  return fetchDemoCatalog()
+  return upgradeCatalog(await fetchDemoCatalog())
 }
 
 async function updateDemo(fn: (c: Catalog) => Catalog) {
@@ -111,6 +123,15 @@ const demoApi: AdminApi = {
     saveLocalOrders(orders)
   },
   uploadImage: async (file) => blobToDataUrl(file),
+  uploadOriginal: (file, name) => putOriginal(file, name),
+  readOriginal: async (ref) => {
+    if (ref.startsWith('idb:')) {
+      const blob = await getOriginal(ref)
+      if (!blob) throw new Error('The original photo is no longer stored in this browser; choose the photo again.')
+      return blob
+    }
+    return fetchBlob(assetUrl(ref))
+  },
   resetDemo: async () => saveDemoCatalog(null),
 }
 
@@ -151,12 +172,12 @@ const liveApi: AdminApi = {
       db.from('products').select('*, product_variants(*)').order('created_at'),
       db.from('delivery_zones').select('*').order('sort'),
     ])
-    return {
+    return upgradeCatalog({
       settings: (check(settings) as { data: Settings }).data,
       categories: (check(categories) as CategoryRow[]).map(rowToCategory),
       products: (check(products) as ProductRow[]).map(rowToProduct),
       deliveryZones: (check(zones) as DeliveryZoneRow[]).map(rowToZone),
-    }
+    })
   },
   async saveProduct(p) {
     const db = await supabase()
@@ -197,33 +218,14 @@ const liveApi: AdminApi = {
     check(await db.storage.from('products').upload(path, file, { contentType: file.type || 'image/webp', upsert: false }))
     return db.storage.from('products').getPublicUrl(path).data.publicUrl
   },
+  async uploadOriginal(file, name) {
+    const db = await supabase()
+    const ext = ({ 'image/jpeg': 'jpg', 'image/png': 'png', 'image/webp': 'webp', 'image/avif': 'avif' } as Record<string, string>)[file.type] ?? 'img'
+    const path = `originals/${name.replace(/[^a-z0-9-]/gi, '-').toLowerCase()}-${Date.now()}.${ext}`
+    check(await db.storage.from('products').upload(path, file, { contentType: file.type || 'application/octet-stream', upsert: false }))
+    return db.storage.from('products').getPublicUrl(path).data.publicUrl
+  },
+  readOriginal: (ref) => fetchBlob(assetUrl(ref)),
 }
 
 export const adminApi: AdminApi = IS_LIVE ? liveApi : demoApi
-
-/**
- * Resizes a photo to at most 900 px high as WebP (keeping transparency) and reports whether it
- * has a transparent background, which looks best on the 3D shelves.
- */
-export async function prepareImage(file: File): Promise<{ blob: Blob; transparent: boolean; width: number; height: number }> {
-  const bitmap = await createImageBitmap(file)
-  const scale = Math.min(1, 900 / bitmap.height, 900 / bitmap.width)
-  const w = Math.round(bitmap.width * scale)
-  const h = Math.round(bitmap.height * scale)
-  const canvas = document.createElement('canvas')
-  canvas.width = w
-  canvas.height = h
-  const ctx = canvas.getContext('2d')!
-  ctx.drawImage(bitmap, 0, 0, w, h)
-  const corners = [
-    [0, 0],
-    [w - 1, 0],
-    [0, h - 1],
-    [w - 1, h - 1],
-  ].map(([x, y]) => ctx.getImageData(x, y, 1, 1).data[3])
-  const transparent = corners.some((a) => a < 20)
-  const blob = await new Promise<Blob>((resolve) =>
-    canvas.toBlob((b) => resolve(b!), 'image/webp', 0.88),
-  )
-  return { blob, transparent, width: w, height: h }
-}

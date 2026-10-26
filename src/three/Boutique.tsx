@@ -1,4 +1,4 @@
-import { Suspense, useEffect, useMemo, useState } from 'react'
+import { Suspense, useCallback, useEffect, useMemo, useState } from 'react'
 import { Canvas, useThree, type ThreeEvent } from '@react-three/fiber'
 import { PerformanceMonitor } from '@react-three/drei'
 import * as THREE from 'three'
@@ -18,6 +18,7 @@ import { CameraRig } from './CameraRig'
 import { Basket } from './Basket'
 import { HotspotTracker } from './HotspotTracker'
 import { Effects, type Tier } from './Effects'
+import { DETAIL } from './packageGeometry'
 import { signFont } from './fonts'
 import { closeProduct, enterBoutique, onFacingClick, onFixtureClick } from './actions'
 import { rig, walkTo } from './rig'
@@ -46,6 +47,12 @@ function Scene({ tier }: { tier: Tier }) {
     [settings, locale],
   )
   const setReady = useUi((s) => s.setSceneReady)
+  const onReady = useCallback(() => setReady(true), [setReady])
+  // the street sign: configured text, or the shop name until the owner sets it
+  const storefront = useMemo(
+    () => settings.storefront ?? { title: settings.shopName.toUpperCase(), subtitle: tr(settings.tagline, locale), logoUrl: settings.logoUrl ?? null },
+    [settings, locale],
+  )
   const gl = useThree((s) => s.gl)
 
   useEffect(() => {
@@ -68,11 +75,11 @@ function Scene({ tier }: { tier: Tier }) {
       <Lighting dims={layout.dims} />
       <Room layout={layout} m={m} />
       <group onClick={(e) => (e.stopPropagation(), useUi.getState().phase === 'outside' && enterBoutique())}>
-        <Facade layout={layout} m={m} shopName={settings.shopName} tagline={tr(settings.tagline, locale)} />
+        <Facade layout={layout} m={m} storefront={storefront} />
       </group>
       <Fixtures fixtures={layout.fixtures} m={m} labelFor={labelFor} font={signFont(locale)} onSelect={onFixtureClick} />
-      <Decor layout={layout} m={m} shopName={settings.shopName} />
-      <Products layout={layout} products={products} onPick={onFacingClick} onReady={() => setReady(true)} />
+      <Decor layout={layout} m={m} />
+      <Products layout={layout} products={products} onPick={onFacingClick} onReady={onReady} detail={DETAIL[tier]} />
       <mesh rotation-x={-Math.PI / 2} position={[0, 0.004, -layout.dims.depth / 2]} onClick={onFloor}>
         <planeGeometry args={[layout.dims.width, layout.dims.depth]} />
         <meshBasicMaterial transparent opacity={0} depthWrite={false} />
@@ -105,7 +112,7 @@ export default function Boutique() {
       style={{ touchAction: 'none' }}
       data-testid="boutique-canvas"
     >
-      <color attach="background" args={['#efe0d6']} />
+      <color attach="background" args={['#e9e7e4']} />
       <PerformanceMonitor flipflops={3} onDecline={() => step(-1)} onIncline={() => step(1)} onFallback={() => setTier('low')} />
       <Suspense fallback={null}>
         <Scene tier={tier} />

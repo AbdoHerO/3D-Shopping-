@@ -16,7 +16,9 @@
     "e2e": "playwright test",
     "screenshots": "playwright test tests/e2e/screenshots.spec.ts",
     "gen:catalog": "tsx scripts/generate-demo-catalog.ts",
-    "assets:textures": "tsx scripts/fetch-polyhaven.ts"
+    "assets:textures": "tsx scripts/fetch-polyhaven.ts",
+    "assets:prepare": "tsx scripts/prepare-assets.mts",
+    "import:products": "tsx scripts/import-products.ts"
   },
   "engines": {
     "node": ">=20.19"

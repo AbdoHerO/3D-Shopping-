@@ -192,3 +192,110 @@ export function mirrorTexture() {
     return t
   })
 }
+
+/** Grey and white checkered floor tiles with fine grout (one 2×2 tile repeat). */
+export function checkerTexture() {
+  return memo('checker', () => {
+    const [c, g] = canvas(512, 512)
+    const tile = 256
+    for (let i = 0; i < 2; i++) {
+      for (let j = 0; j < 2; j++) {
+        g.fillStyle = (i + j) % 2 ? '#a9a8ab' : '#ecebea'
+        g.fillRect(i * tile, j * tile, tile, tile)
+      }
+    }
+    // a faint stone mottle so large areas do not look flat
+    const img = g.getImageData(0, 0, 512, 512)
+    let seed = 7
+    const rnd = () => ((seed = (seed * 16807) % 2147483647) / 2147483647)
+    for (let k = 0; k < img.data.length; k += 4) {
+      const n = (rnd() - 0.5) * 7
+      img.data[k] += n
+      img.data[k + 1] += n
+      img.data[k + 2] += n
+    }
+    g.putImageData(img, 0, 0)
+    g.strokeStyle = 'rgba(120,118,120,0.55)'
+    g.lineWidth = 2
+    for (const v of [1, 256, 511]) {
+      g.beginPath()
+      g.moveTo(v, 0)
+      g.lineTo(v, 512)
+      g.moveTo(0, v)
+      g.lineTo(512, v)
+      g.stroke()
+    }
+    const t = new THREE.CanvasTexture(c)
+    t.colorSpace = THREE.SRGBColorSpace
+    t.wrapS = t.wrapT = THREE.RepeatWrapping
+    t.anisotropy = 8
+    return t
+  })
+}
+
+/** One suspended-ceiling panel with its T-bar edge (repeated every panel). */
+export function ceilingGridTexture() {
+  return memo('ceiling-grid', () => {
+    const [c, g] = canvas(256, 256)
+    g.fillStyle = '#f7f7f5'
+    g.fillRect(0, 0, 256, 256)
+    // fine fissured mineral-fibre texture
+    let seed = 11
+    const rnd = () => ((seed = (seed * 16807) % 2147483647) / 2147483647)
+    for (let i = 0; i < 900; i++) {
+      g.fillStyle = `rgba(150,150,150,${0.04 + rnd() * 0.06})`
+      g.fillRect(rnd() * 256, rnd() * 256, 1 + rnd() * 2, 1)
+    }
+    g.fillStyle = '#d9d9d6'
+    g.fillRect(0, 0, 256, 5)
+    g.fillRect(0, 0, 5, 256)
+    g.fillStyle = 'rgba(0,0,0,0.08)'
+    g.fillRect(5, 5, 251, 2)
+    g.fillRect(5, 5, 2, 251)
+    const t = new THREE.CanvasTexture(c)
+    t.colorSpace = THREE.SRGBColorSpace
+    t.wrapS = t.wrapT = THREE.RepeatWrapping
+    t.anisotropy = 8
+    return t
+  })
+}
+
+/** Light oak veneer (counter base, back-wall cabinet). */
+export function oakTexture() {
+  return memo('oak', () => {
+    const [c, g] = canvas(512, 128)
+    g.fillStyle = '#d8b48a'
+    g.fillRect(0, 0, 512, 128)
+    let seed = 3
+    const rnd = () => ((seed = (seed * 16807) % 2147483647) / 2147483647)
+    for (let i = 0; i < 160; i++) {
+      const y = rnd() * 128
+      g.strokeStyle = `rgba(${150 + rnd() * 40},${105 + rnd() * 30},${70 + rnd() * 20},${0.12 + rnd() * 0.2})`
+      g.lineWidth = 0.6 + rnd() * 1.6
+      g.beginPath()
+      g.moveTo(0, y)
+      for (let x = 0; x <= 512; x += 32) g.lineTo(x, y + Math.sin(x / 60 + i) * 1.5 + (rnd() - 0.5))
+      g.stroke()
+    }
+    const t = new THREE.CanvasTexture(c)
+    t.colorSpace = THREE.SRGBColorSpace
+    t.wrapS = t.wrapT = THREE.RepeatWrapping
+    return t
+  })
+}
+
+/** Soft vertical light falling on a back panel from an LED strip at the top of a shelf. */
+export function shelfGlowTexture() {
+  return memo('shelf-glow', () => {
+    const [c, g] = canvas(64, 128)
+    const grad = g.createLinearGradient(0, 0, 0, 128)
+    grad.addColorStop(0, 'rgba(255,225,180,0.95)')
+    grad.addColorStop(0.45, 'rgba(255,214,165,0.35)')
+    grad.addColorStop(1, 'rgba(255,214,165,0)')
+    g.fillStyle = grad
+    g.fillRect(0, 0, 64, 128)
+    const t = new THREE.CanvasTexture(c)
+    t.colorSpace = THREE.SRGBColorSpace
+    return t
+  })
+}

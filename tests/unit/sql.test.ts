@@ -51,6 +51,10 @@ beforeAll(async () => {
     grant usage on schema public, auth to anon, authenticated;
   `)
   await db.exec(readFileSync('supabase/migrations/20261026000000_boutique.sql', 'utf8'))
+  // a row written before the redesign, to check the asset migration upgrades it
+  await db.exec(`insert into categories (id, slug, name) values ('legacy', 'legacy', '{}'::jsonb);
+    insert into products (id, slug, category_id, name, price, shape, is_active) values ('legacy-shampoo', 'legacy-shampoo', 'legacy', '{"fr":"Ancien"}'::jsonb, 10, 'bottle', false);`)
+  await db.exec(readFileSync('supabase/migrations/20261026000200_product_assets.sql', 'utf8'))
   // Supabase grants table privileges to these roles by default; RLS then decides.
   await db.exec(`
     grant select, insert, update, delete on all tables in schema public to anon, authenticated;
@@ -166,3 +170,25 @@ describe('set_order_status', () => {
     ).rejects.toThrow(/forbidden/)
   })
 })
+
+describe('product assets migration', () => {
+  it('upgrades the first shape names to package families', async () => {
+    const r = await db.query<{ shape: string; orientation: string; display_scale: string; asset: unknown }>(
+      `select shape, orientation, display_scale, asset from products where id = 'legacy-shampoo'`,
+    )
+    expect(r.rows[0]).toMatchObject({ shape: 'bottle-tall', orientation: 'upright', asset: null })
+    expect(Number(r.rows[0].display_scale)).toBe(1)
+  })
+
+  it('refuses unknown package families and out-of-range display scales', async () => {
+    await expect(db.exec(`update products set shape = 'teapot' where id = 'legacy-shampoo'`)).rejects.toThrow()
+    await expect(db.exec(`update products set display_scale = 3 where id = 'legacy-shampoo'`)).rejects.toThrow()
+  })
+
+  it('keeps one record per imported source id', async () => {
+    const src = `'{"kind":"import","name":"brand-feed","id":"SKU-1"}'::jsonb`
+    await db.exec(`insert into products (id, slug, category_id, name, price, source) values ('imp-a', 'imp-a', 'legacy', '{"fr":"A"}'::jsonb, 5, ${src})`)
+    await expect(db.exec(`insert into products (id, slug, category_id, name, price, source) values ('imp-b', 'imp-b', 'legacy', '{"fr":"B"}'::jsonb, 5, ${src})`)).rejects.toThrow()
+  })
+})
+

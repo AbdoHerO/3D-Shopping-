@@ -9,6 +9,7 @@ const page = await browser.newPage({ viewport: { width: +w, height: +h }, device
 const logs = []
 page.on('console', (m) => logs.push(`[${m.type()}] ${m.text()}`))
 page.on('pageerror', (e) => logs.push(`[pageerror] ${e.message}`))
+if (process.env.SKIP_ONBOARDING) await page.addInitScript(() => localStorage.setItem('boutique.onboarded', '1'))
 await page.goto(url)
 await page.waitForTimeout(+wait)
 for (const a of actions) {

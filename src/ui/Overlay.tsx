@@ -94,8 +94,9 @@ export function MiniMap({ className = '' }: { className?: string }) {
       <svg viewBox={`${-W / 2 - pad} ${-pad} ${W + pad * 2} ${D + pad * 2}`} className="block h-full w-full" role="img">
         <title>{t('store.map')}</title>
         <rect x={-W / 2} y={0} width={W} height={D} rx={0.08} fill="#fbf1ef" stroke="#c9a46a" strokeWidth={0.03} />
-        <line x1={-layout.door.width / 2} x2={layout.door.width / 2} y1={0} y2={0} stroke="#fbf5f3" strokeWidth={0.08} />
+        <line x1={layout.door.x0} x2={layout.door.x1} y1={0} y2={0} stroke="#fbf5f3" strokeWidth={0.08} />
         {layout.fixtures.map((f, i) => {
+          if (!f.browsable) return null
           const c = layout.colliders[i]
           const x = c.min[0]
           const y = -c.max[1]
@@ -103,7 +104,7 @@ export function MiniMap({ className = '' }: { className?: string }) {
           const h = c.max[1] - c.min[1]
           return (
             <g key={f.id} className="cursor-pointer" onClick={() => goToFixture(f.id)}>
-              <rect x={x} y={y} width={w} height={h} rx={0.04} fill={f.kind === 'perfumeWall' ? '#6b1f3d' : '#e8b9c1'} />
+              <rect x={x} y={y} width={w} height={h} rx={0.04} fill={f.kind === 'perfumeWall' ? '#6b1f3d' : f.kind === 'counter' ? '#c9a46a' : '#e8b9c1'} />
               <text
                 x={x + w / 2}
                 y={y + h / 2}

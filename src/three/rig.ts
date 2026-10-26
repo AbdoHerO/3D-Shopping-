@@ -78,6 +78,11 @@ export function killTween() {
   tween = null
 }
 
+/** True while a glide, walk or intro tween is still running. */
+export function isGliding() {
+  return tween?.isActive() ?? false
+}
+
 interface GoOptions {
   pan?: number
   zoom?: number
@@ -158,7 +163,7 @@ export function viewpointFor(layout: StoreLayout, id: string) {
  */
 export function focusOn(layout: StoreLayout, fixture: Fixture, u: number, y: number, height: number) {
   const vp = viewpointFor(layout, fixture.id)
-  const pan = u - fixture.length / 2
+  const pan = Math.min(vp.pan?.max ?? 0, Math.max(vp.pan?.min ?? 0, u - (vp.u ?? fixture.length / 2)))
   const eye = vp.position[1]
   const d = Math.max(0.6, horizontalDistance(vp, fixture))
   const toProduct = Math.atan2(y + height / 2 - eye, d)

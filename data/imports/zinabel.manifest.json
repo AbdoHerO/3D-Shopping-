@@ -1,0 +1,16 @@
+{
+  "source": {
+    "name": "zinabel",
+    "label": "Zinabel.ma — Maquillage",
+    "url": "https://www.zinabel.ma/319-maquillage",
+    "imageHosts": [],
+    "permission": {
+      "status": "denied",
+      "basis": "Zinabel.ma Conditions d'utilisation (operator: Alina distribution SARLAU, Casablanca)",
+      "reference": "https://www.zinabel.ma/content/3-conditions-utilisation",
+      "date": "2026-10-26",
+      "notes": "The terms reserve all rights on the site's texts, images and databases and forbid using, reproducing, copying or publishing them without Alina distribution's authorisation, for commercial or non-commercial purposes. No authorisation has been given, so no product data or image is taken from the site. Set status to \"granted\" (with the written authorisation as reference) and list the products once Alina distribution agrees."
+    }
+  },
+  "products": []
+}

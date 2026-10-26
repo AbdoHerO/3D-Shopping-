@@ -3,7 +3,8 @@
  * real proportions (px = cm × PX) with cylindrical shading, metallic caps and a printed label, so
  * the 3D shelves look stocked before the owner uploads real product photos.
  */
-import type { ProductShape } from '../../src/lib/types'
+/** Drawing styles of the demo packshots (the first data model's shapes; mapped to package families on export). */
+export type ArtShape = 'bottle' | 'pump' | 'spray' | 'dropper' | 'jar' | 'tube' | 'perfume' | 'lipstick' | 'gloss' | 'pen' | 'compact' | 'palette' | 'polish' | 'box' | 'pouch' | 'roll'
 import type { ArtSpec } from './source'
 
 export const PX = 32
@@ -102,7 +103,7 @@ class Svg {
 
 export interface ArtInput {
   id: string
-  shape: ProductShape
+  shape: ArtShape
   wCm: number
   hCm: number
   brand: string
@@ -139,7 +140,7 @@ function label(s: Svg, x: number, y: number, w: number, h: number, input: ArtInp
   })
 }
 
-const shapes: Record<ProductShape, (s: Svg, i: ArtInput) => void> = {
+const shapes: Record<ArtShape, (s: Svg, i: ArtInput) => void> = {
   bottle(s, i) {
     const { W, H } = s
     const capH = H * (i.art.style === 1 ? 0.1 : 0.13)

@@ -1,8 +1,10 @@
 /**
  * Builds public/data/catalog.json and draws a transparent WebP packshot for every demo product
- * (and every shade) by rendering the SVGs from scripts/catalog/art.ts in headless Chromium.
+ * (and every shade) by rendering the SVGs from scripts/catalog/art.ts in headless Chromium, then
+ * runs the shared product-to-3D preparation and automatic shelf placement over the result.
  *
- *   npm run gen:catalog
+ *   npm run gen:catalog                # draw packshots + data
+ *   npm run gen:catalog -- --data-only  # keep the existing packshots, rebuild the data
  */
 import { chromium } from '@playwright/test'
 import sharp from 'sharp'
@@ -10,7 +12,9 @@ import { mkdirSync, readFileSync, rmSync, writeFileSync } from 'node:fs'
 import { join } from 'node:path'
 import { renderArt, type ArtInput } from './catalog/art'
 import { categories, deliveryZones, products as sources, settings, t } from './catalog/source'
+import { normaliseFamily } from '../src/lib/packaging'
 import type { Catalog, I18nText, Product } from '../src/lib/types'
+import { prepareCatalog } from './lib/catalog-assets'
 
 const ROOT = process.cwd()
 const OUT_IMG = join(ROOT, 'public/products')
@@ -64,13 +68,17 @@ const OUT_OF_STOCK = new Set(['chouchous-satin'])
 const LOW_STOCK = new Set(['edp-iris-velours'])
 
 async function main() {
-  rmSync(OUT_IMG, { recursive: true, force: true })
-  mkdirSync(OUT_IMG, { recursive: true })
+  const drawImages = !process.argv.includes('--data-only')
+  if (drawImages) {
+    rmSync(OUT_IMG, { recursive: true, force: true })
+    mkdirSync(OUT_IMG, { recursive: true })
+  }
   mkdirSync(OUT_DATA, { recursive: true })
 
   const jobs: { file: string; input: ArtInput }[] = []
-  const products: Product[] = sources.map((src) => {
-    const [fixtureId, level, slot, facings = 2] = src.at
+  // the first layout's order (fixture, level, slot) is kept as the merchandising order
+  const ordered = [...sources].sort((a, b) => a.at[0].localeCompare(b.at[0]) || a.at[1] - b.at[1] || a.at[2] - b.at[2])
+  const products: Product[] = ordered.map((src) => {
     const variants = (src.variants ?? []).map((v) => {
       const hasArt = Boolean(v.colorHex)
       const file = `${src.slug}--${v.id}.webp`
@@ -130,15 +138,17 @@ async function main() {
       isActive: true,
       isFeatured: Boolean(src.featured),
       isNew: Boolean(src.isNew),
-      shape: src.shape,
+      shape: normaliseFamily(src.shape),
       widthCm: src.dims[0],
       heightCm: src.dims[1],
       depthCm: src.dims[2],
       image: `products/${mainFile}`,
       gallery: [],
-      placement: { fixtureId, level, slot, facings },
+      placement: null,
       variants,
       displayVariants: Boolean(src.displayVariants),
+      asset: null,
+      source: { kind: 'demo', name: 'Maison Lumière demo catalogue', id: src.slug, url: null, license: 'Fictional demo content drawn by scripts/catalog/art.ts', attribution: null },
     }
   })
 
@@ -152,6 +162,17 @@ async function main() {
     svg { display: block; margin: 8px; }
     text { text-rendering: geometricPrecision; }`
 
+  let n = 0
+  if (drawImages) n = await drawPackshots(jobs, css)
+
+  const draft: Catalog = { settings, categories, products, deliveryZones }
+  const { catalog, report } = await prepareCatalog(draft, { publicDir: join(ROOT, 'public'), curated: true, force: true, replacePlacements: true })
+  writeFileSync(join(OUT_DATA, 'catalog.json'), JSON.stringify(catalog, null, 1) + '\n')
+  console.log(`catalog.json: ${products.length} products, ${n} packshots drawn`)
+  console.log(`assets: ${report.ready} ready, ${report.review} to review, ${report.failed} failed; ${report.placed} placed, ${report.unplaced.length} unplaced ${report.unplaced.join(', ')}`)
+}
+
+async function drawPackshots(jobs: { file: string; input: ArtInput }[], css: string) {
   // CHROMIUM_PATH lets CI or sandboxes use a preinstalled Chromium instead of `npx playwright install`
   const browser = await chromium.launch({ executablePath: process.env.CHROMIUM_PATH || undefined })
   const page = await browser.newPage({ deviceScaleFactor: 2 })
@@ -184,10 +205,7 @@ async function main() {
     n++
   }
   await browser.close()
-
-  const catalog: Catalog = { settings, categories, products, deliveryZones }
-  writeFileSync(join(OUT_DATA, 'catalog.json'), JSON.stringify(catalog, null, 1) + '\n')
-  console.log(`catalog.json: ${products.length} products, ${n} packshots written`)
+  return n
 }
 
 main().catch((e) => {

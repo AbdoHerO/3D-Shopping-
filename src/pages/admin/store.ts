@@ -2,6 +2,7 @@ import { create } from 'zustand'
 import { useCatalog } from '@/state/catalog'
 import type { Catalog, DeliveryZone, Order, OrderStatus, Product, Settings } from '@/lib/types'
 import { adminApi } from './api'
+import { prepareProductAsset, type JobPhase } from './asset-job'
 
 interface AdminState {
   catalog: Catalog | null
@@ -11,7 +12,11 @@ interface AdminState {
   notice: string | null
   load: () => Promise<void>
   loadOrders: () => Promise<void>
-  saveProduct: (p: Product) => Promise<boolean>
+  /** Saves a product; with `prepare`, its 3D asset is prepared right after (without blocking). */
+  saveProduct: (p: Product, opts?: { prepare?: boolean }) => Promise<boolean>
+  /** Product-to-3D jobs running in this tab, by product id. */
+  jobs: Record<string, JobPhase>
+  prepare: (id: string) => Promise<void>
   deleteProduct: (id: string) => Promise<boolean>
   saveSettings: (s: Settings) => Promise<boolean>
   saveZones: (z: DeliveryZone[]) => Promise<boolean>
@@ -65,7 +70,36 @@ export const useAdmin = create<AdminState>((set, get) => {
         set({ error: e instanceof Error ? e.message : String(e) })
       }
     },
-    saveProduct: (p) => run(() => adminApi.saveProduct(p), 'saved'),
+    saveProduct: async (p, opts) => {
+      const ok = await run(() => adminApi.saveProduct(p), 'saved')
+      if (ok && opts?.prepare) void get().prepare(p.id)
+      return ok
+    },
+    jobs: {},
+    prepare: async (id) => {
+      const setPhase = (phase: JobPhase | null) =>
+        set((s) => {
+          const jobs = { ...s.jobs }
+          if (phase) jobs[id] = phase
+          else delete jobs[id]
+          return { jobs }
+        })
+      const catalog = get().catalog
+      const product = catalog?.products.find((p) => p.id === id)
+      if (!catalog || !product || get().jobs[id]) return
+      setPhase('image')
+      try {
+        const next = await prepareProductAsset(product, catalog, setPhase)
+        await adminApi.saveProduct(next)
+        const fresh = await adminApi.loadCatalog()
+        set({ catalog: fresh })
+        await syncPublic(fresh)
+      } catch (e) {
+        set({ error: e instanceof Error ? e.message : String(e) })
+      } finally {
+        setPhase(null)
+      }
+    },
     deleteProduct: (id) => run(() => adminApi.deleteProduct(id), 'deleted'),
     saveSettings: (s) => run(() => adminApi.saveSettings(s), 'saved'),
     saveZones: (z) => run(() => adminApi.saveZones(z), 'saved'),

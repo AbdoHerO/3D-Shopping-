@@ -1,4 +1,5 @@
 import type { Bay, Fixture } from './layout'
+import type { Orientation } from './packaging'
 import type { Product } from './types'
 
 /** One physical item to stand on a shelf: a product, or one shade of it when variants are displayed. */
@@ -14,6 +15,8 @@ export interface ShelfItem {
   facings: number
   /** Facings may grow to fill empty shelf space. */
   autoFacings: boolean
+  /** Lying items (palettes, compacts) use their depth as height on the shelf. */
+  orientation: Orientation
 }
 
 export interface PlacedFacing {
@@ -30,6 +33,7 @@ export interface PlacedFacing {
   heightM: number
   depthM: number
   facingIndex: number
+  orientation: Orientation
 }
 
 export interface ShelfLayoutResult {
@@ -41,8 +45,11 @@ export interface ShelfLayoutResult {
 }
 
 const GAP = 0.012
-const MAX_FACINGS = 6
+/** Real shelves repeat a product side by side; up to 10 facings for a product, 2 per shade. */
+const MAX_FACINGS = 10
 const MAX_VARIANT_FACINGS = 2
+/** Facings grow until a bay is this full. */
+const FILL = 0.94
 const MAX_SPREAD_GAP = 0.06
 
 /** Expands the products placed on a fixture into shelf items (one per displayed variant). */
@@ -50,13 +57,20 @@ export function shelfItemsFor(fixture: Fixture, products: Product[]): ShelfItem[
   const items: ShelfItem[] = []
   for (const p of products) {
     if (!p.isActive || !p.placement || p.placement.fixtureId !== fixture.id) continue
+    const k = Math.min(2, Math.max(0.5, p.placement.scale ?? 1))
+    const orientation: Orientation = p.placement.orientation ?? 'upright'
+    const w = (p.widthCm / 100) * k
+    const h = (p.heightCm / 100) * k
+    const d = Math.max(0.006, (p.depthCm / 100) * k)
     const base = {
       productId: p.id,
-      widthM: p.widthCm / 100,
-      heightM: p.heightCm / 100,
-      depthM: Math.max(0.015, p.depthCm / 100),
+      widthM: w,
+      // lying items: their thickness is what stands above the shelf, their height runs back
+      heightM: orientation === 'flat' ? d : h,
+      depthM: orientation === 'flat' ? h : d,
       level: Math.min(Math.max(0, p.placement.level), fixture.levels.length - 1),
       slot: p.placement.slot,
+      orientation,
     }
     if (p.displayVariants && p.variants.length > 0) {
       p.variants.forEach((v, i) =>
@@ -168,13 +182,29 @@ export function layoutFixture(fixture: Fixture, items: ShelfItem[]): ShelfLayout
       return
     }
 
-    // 1. split the ordered items into contiguous groups, one per bay, balanced by width
-    const groups = distribute(onLevel, bays)
+    // 1. a level with fewer products than bays: a product runs on into the next bays as one
+    //    block of facings (as shops do with fast sellers) instead of leaving bays empty
+    let blocks = onLevel
+    const auto = onLevel.filter((it) => it.autoFacings)
+    if (onLevel.length < bays.length && auto.length > 0) {
+      const extra = new Map<string, number>()
+      for (let e = 0; e < bays.length - onLevel.length; e++) {
+        const it = auto[e % auto.length]
+        extra.set(it.key, (extra.get(it.key) ?? 0) + 1)
+      }
+      blocks = onLevel.flatMap((it) => [
+        it,
+        ...Array.from({ length: extra.get(it.key) ?? 0 }, (_, b) => ({ ...it, key: `${it.key}~${b + 1}`, slot: it.slot + (b + 1) / 1000 })),
+      ])
+    }
+
+    // 2. split the ordered items into contiguous groups, one per bay, balanced by width
+    const groups = distribute(blocks, bays)
     for (const it of groups.overflow) {
       result.overflow.push({ productId: it.productId, variantId: it.variantId, reason: 'level-full' })
     }
 
-    // 2. grow facings, 3. spread
+    // 3. grow facings, 4. spread
     for (const g of groups.groups) {
       if (g.items.length === 0) continue
       const capacity = g.bay.u1 - g.bay.u0
@@ -183,7 +213,7 @@ export function layoutFixture(fixture: Fixture, items: ShelfItem[]): ShelfLayout
         grew = false
         for (const it of g.items) {
           if (it.facings >= (it.autoFacings ? MAX_FACINGS : MAX_VARIANT_FACINGS)) continue
-          if (widthOf(g.items) + it.widthM <= capacity * 0.9) {
+          if (widthOf(g.items) + it.widthM <= capacity * FILL) {
             it.facings += 1
             grew = true
           }
@@ -208,6 +238,7 @@ export function layoutFixture(fixture: Fixture, items: ShelfItem[]): ShelfLayout
             heightM: it.heightM,
             depthM: it.depthM,
             facingIndex: f,
+            orientation: it.orientation,
           })
           cursor += it.widthM
         }
